@@ -1,0 +1,103 @@
+# -*- coding: utf-8 -*-
+
+# Form implementation generated from reading ui file 'ui/mainwindow.ui'
+#
+# Created by: PyQt5 UI code generator 5.12.1
+#
+# WARNING! All changes made in this file will be lost!
+
+from PyQt5 import QtCore, QtGui, QtWidgets
+
+
+class Ui_MainWindow(object):
+    def setupUi(self, MainWindow):
+        MainWindow.setObjectName("MainWindow")
+        MainWindow.resize(626, 505)
+        self.centralWidget = QtWidgets.QWidget(MainWindow)
+        self.centralWidget.setObjectName("centralWidget")
+        self.tabWidget = QtWidgets.QTabWidget(self.centralWidget)
+        self.tabWidget.setGeometry(QtCore.QRect(9, 90, 611, 351))
+        self.tabWidget.setObjectName("tabWidget")
+        self.materialTab = QtWidgets.QWidget()
+        self.materialTab.setObjectName("materialTab")
+        self.tableWidget = QtWidgets.QTableWidget(self.materialTab)
+        self.tableWidget.setGeometry(QtCore.QRect(5, 10, 591, 201))
+        self.tableWidget.setObjectName("tableWidget")
+        self.tableWidget.setColumnCount(0)
+        self.tableWidget.setRowCount(0)
+        self.gridLayoutWidget_2 = QtWidgets.QWidget(self.materialTab)
+        self.gridLayoutWidget_2.setGeometry(QtCore.QRect(10, 220, 581, 91))
+        self.gridLayoutWidget_2.setObjectName("gridLayoutWidget_2")
+        self.gridLayout_2 = QtWidgets.QGridLayout(self.gridLayoutWidget_2)
+        self.gridLayout_2.setContentsMargins(11, 11, 11, 11)
+        self.gridLayout_2.setSpacing(6)
+        self.gridLayout_2.setObjectName("gridLayout_2")
+        self.progressBar = QtWidgets.QProgressBar(self.gridLayoutWidget_2)
+        self.progressBar.setProperty("value", 24)
+        self.progressBar.setObjectName("progressBar")
+        self.gridLayout_2.addWidget(self.progressBar, 1, 0, 1, 3)
+        self.pushButton_2 = QtWidgets.QPushButton(self.gridLayoutWidget_2)
+        self.pushButton_2.setObjectName("pushButton_2")
+        self.gridLayout_2.addWidget(self.pushButton_2, 0, 2, 1, 1)
+        self.pushButton = QtWidgets.QPushButton(self.gridLayoutWidget_2)
+        self.pushButton.setObjectName("pushButton")
+        self.gridLayout_2.addWidget(self.pushButton, 0, 1, 1, 1)
+        self.pushButton_3 = QtWidgets.QPushButton(self.gridLayoutWidget_2)
+        self.pushButton_3.setObjectName("pushButton_3")
+        self.gridLayout_2.addWidget(self.pushButton_3, 0, 0, 1, 1)
+        self.tabWidget.addTab(self.materialTab, "")
+        self.certificateTab = QtWidgets.QWidget()
+        self.certificateTab.setObjectName("certificateTab")
+        self.tableWidget_2 = QtWidgets.QTableWidget(self.certificateTab)
+        self.tableWidget_2.setGeometry(QtCore.QRect(10, 10, 591, 201))
+        self.tableWidget_2.setObjectName("tableWidget_2")
+        self.tableWidget_2.setColumnCount(0)
+        self.tableWidget_2.setRowCount(0)
+        self.tabWidget.addTab(self.certificateTab, "")
+        self.sendTab = QtWidgets.QWidget()
+        self.sendTab.setObjectName("sendTab")
+        self.tabWidget.addTab(self.sendTab, "")
+        self.gridLayoutWidget = QtWidgets.QWidget(self.centralWidget)
+        self.gridLayoutWidget.setGeometry(QtCore.QRect(10, 0, 601, 80))
+        self.gridLayoutWidget.setObjectName("gridLayoutWidget")
+        self.gridLayout = QtWidgets.QGridLayout(self.gridLayoutWidget)
+        self.gridLayout.setContentsMargins(11, 11, 11, 11)
+        self.gridLayout.setSpacing(6)
+        self.gridLayout.setObjectName("gridLayout")
+        self.comboBox = QtWidgets.QComboBox(self.gridLayoutWidget)
+        self.comboBox.setObjectName("comboBox")
+        self.gridLayout.addWidget(self.comboBox, 1, 1, 1, 1)
+        self.dateEdit = QtWidgets.QDateEdit(self.gridLayoutWidget)
+        self.dateEdit.setObjectName("dateEdit")
+        self.gridLayout.addWidget(self.dateEdit, 1, 0, 1, 1)
+        self.label = QtWidgets.QLabel(self.gridLayoutWidget)
+        self.label.setObjectName("label")
+        self.gridLayout.addWidget(self.label, 0, 0, 1, 1)
+        self.label_2 = QtWidgets.QLabel(self.gridLayoutWidget)
+        self.label_2.setObjectName("label_2")
+        self.gridLayout.addWidget(self.label_2, 0, 1, 1, 1)
+        MainWindow.setCentralWidget(self.centralWidget)
+        self.mainToolBar = QtWidgets.QToolBar(MainWindow)
+        self.mainToolBar.setObjectName("mainToolBar")
+        MainWindow.addToolBar(QtCore.Qt.TopToolBarArea, self.mainToolBar)
+        self.statusBar = QtWidgets.QStatusBar(MainWindow)
+        self.statusBar.setObjectName("statusBar")
+        MainWindow.setStatusBar(self.statusBar)
+
+        self.retranslateUi(MainWindow)
+        self.tabWidget.setCurrentIndex(0)
+        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
+    def retranslateUi(self, MainWindow):
+        _translate = QtCore.QCoreApplication.translate
+        MainWindow.setWindowTitle(_translate("MainWindow", "MindSphere Academy Training Tool"))
+        self.pushButton_2.setText(_translate("MainWindow", "Save "))
+        self.pushButton.setText(_translate("MainWindow", "Add Watermark"))
+        self.pushButton_3.setText(_translate("MainWindow", "Open"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.materialTab), _translate("MainWindow", "1. Material Generator"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.certificateTab), _translate("MainWindow", "2. Certificate Generator"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.sendTab), _translate("MainWindow", "3. Send"))
+        self.label.setText(_translate("MainWindow", "Type in Training Date"))
+        self.label_2.setText(_translate("MainWindow", "Choose Training"))
+
+
