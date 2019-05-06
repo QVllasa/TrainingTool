@@ -9,6 +9,11 @@ from PyQt5.QtCore import *
 from qtpy.QtWidgets import *
 
 from ui.mainwindow import Ui_MainWindow
+from PyPDF4 import PdfFileWriter, PdfFileReader
+from io import BytesIO
+from reportlab.pdfgen import canvas
+from reportlab.lib.colors import Color
+from compressor import compress
 
 app = QApplication(sys.argv)
 
@@ -27,6 +32,9 @@ class MainWindow(QMainWindow):
         self.ui.saveMat.clicked.connect(self.saveFiles)
 
     #   print(glob.glob('files/Material/*.pdf'))
+    def addWatermark(self):
+        obj = Worker()
+        obj.start()
 
     def saveFiles(self):
         self.currentFile = self.ui.matCombo.currentText()
@@ -53,11 +61,43 @@ class Worker(QThread):
         self.currentFile = filename
 
     def run(self) -> None:
-        pass
-        # material = open(self.currentFile, 'rb')
-        # pdfReader = PyPDF4.PdfFileReader(material)
-        # output = PyPDF4.PdfFileWriter()
+        buffer = BytesIO()
+        file = open('files/Material/PDF/Basic_App_Dev_Training_V2.3.pdf', 'rb')
+        material = PdfFileReader(file)
+        x = material.getPage(0).mediaBox[-2]
+        y = material.getPage(0).mediaBox[-1]
 
+        pageNum = material.getNumPages()
+
+        p = canvas.Canvas(buffer)
+        r = Color(0, 0, 0, alpha=0.5)
+        p.setFont('Helvetica', 75)
+        p.setFillColor(r)
+        p.setPageSize((x, y))
+
+        p.translate(x / 2, y / 2)
+        p.rotate(45)
+        p.drawCentredString(0, 0, "holaaaaaaaaaaaa")
+
+        p.showPage()
+        p.save()
+        buffer.seek(0)
+
+        watermark = PdfFileReader(buffer)
+        output = PdfFileWriter()
+        # add the "watermark" (which is the new pdf) on the existing page
+
+        for page in range(pageNum):
+            slide = material.getPage(page)
+            slide.mergePage(watermark.getPage(0))
+            slide.compressContentStreams()
+            output.addPage(slide)
+
+        outputStream = open('output.pdf', 'wb')
+        output.write(outputStream)
+        outputStream.close()
+
+        compress('output.pdf', 'output.pdf', power=4)
 
 
 window = MainWindow()
