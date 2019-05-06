@@ -1,6 +1,6 @@
 import glob
 import sys
-import PyPDF4
+import os
 
 from os import listdir
 from os.path import isfile, join
@@ -30,15 +30,16 @@ class MainWindow(QMainWindow):
         self.addFiles()
         self.ui.addPart.clicked.connect(self.addCell)
         self.ui.saveMat.clicked.connect(self.saveFiles)
+        self.ui.addWat.clicked.connect(self.addWatermark)
 
     #   print(glob.glob('files/Material/*.pdf'))
     def addWatermark(self):
-        obj = Worker()
-        obj.start()
+        self.obj = Worker('files/Material/PDF/'+str(self.ui.matCombo.currentText()))
+        self.obj.start()
 
     def saveFiles(self):
         self.currentFile = self.ui.matCombo.currentText()
-        for i in glob.glob('files/Material/*.pdf'):
+        for i in glob.glob('files/Material/PDF/*.pdf'):
             if self.currentFile in i:
                 self.currentFile = i
                 print(i)
@@ -48,21 +49,21 @@ class MainWindow(QMainWindow):
         self.ui.materialList.insertRow(row)
 
     def addFiles(self):
-        self.onlyfiles = [f for f in listdir('files/Material/') if isfile(join('files/Material', f))]
+        self.onlyfiles = [f for f in listdir('files/Material/PDF/') if isfile(join('files/Material/PDF/', f))]
         self.ui.matCombo.addItems(self.onlyfiles)
 
 
 class Worker(QThread):
     blabla = pyqtSignal(str)
 
-    def __init__(self, filename, ):
+    def __init__(self, filename):
         QThread.__init__(self)
 
         self.currentFile = filename
 
     def run(self) -> None:
         buffer = BytesIO()
-        file = open('files/Material/PDF/Basic_App_Dev_Training_V2.3.pdf', 'rb')
+        file = open(self.currentFile, 'rb')
         material = PdfFileReader(file)
         x = material.getPage(0).mediaBox[-2]
         y = material.getPage(0).mediaBox[-1]
@@ -86,18 +87,21 @@ class Worker(QThread):
         watermark = PdfFileReader(buffer)
         output = PdfFileWriter()
         # add the "watermark" (which is the new pdf) on the existing page
-
+        count = float(0)
         for page in range(pageNum):
             slide = material.getPage(page)
             slide.mergePage(watermark.getPage(0))
             slide.compressContentStreams()
             output.addPage(slide)
+            count += float(100) / float(len(range(pageNum)))
+            print(round(count))
 
         outputStream = open('output.pdf', 'wb')
         output.write(outputStream)
         outputStream.close()
 
-        compress('output.pdf', 'output.pdf', power=4)
+        compress('output.pdf', 'output_mat.pdf', power=3)
+        os.remove('output.pdf')
 
 
 window = MainWindow()
