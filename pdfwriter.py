@@ -14,16 +14,14 @@ y = pdf.getPage(0).mediaBox[-1]
 # create a new PDF with Reportlab
 p = canvas.Canvas(buffer)
 r = Color(0,0,0, alpha = 0.5)
-p.setFont('Helvetica', 85)
+p.setFont('Helvetica', 75)
 p.setFillColor(r)
 p.setPageSize((x, y))
 #p.saveState()
 p.translate(x/2, y/2)
 p.rotate(45)
 p.drawCentredString(0, 0, "holaaaaaaaaaaaa")
-
 #p.restoreState()
-
 p.showPage() #so anything you draw on the canvas after calling it will go on the next page.
 p.save()
 
