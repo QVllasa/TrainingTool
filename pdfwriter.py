@@ -1,26 +1,32 @@
+from PyPDF4 import PdfFileWriter, PdfFileReader
+from io import BytesIO
 from reportlab.pdfgen import canvas
-from PyPDF4 import PdfFileReader, PdfFileMerger, PdfFileWriter
-import io
-#packet = io.BytesIO()
-file = 'files/Material/PDF/Basic_App_Dev_Training_V2.3.pdf'
-pdf = PdfFileReader(file, 'rb')
-x = pdf.getPage(0).mediaBox[-1]
-y = pdf.getPage(0).mediaBox[-2]
+from reportlab.lib.pagesizes import A4
 
-c = canvas.Canvas('hello.pdf')
-c.drawString(200,200, 'Welcome to reportlab!')
-c.setPageSize((y,x))
-c.save()
+buffer = BytesIO()
 
+# create a new PDF with Reportlab
+p = canvas.Canvas(buffer, pagesize=A4)
+p.drawString(100, 100, "holaaaaaaaaaaaa")
+p.showPage()
+p.save()
 
-watermark = PdfFileReader('hello.pdf', 'rb')
-page = watermark.getPage(0)
-page.rotateClockwise(90)
+#move to the beginning of the StringIO buffer
+buffer.seek(0)
+newPdf = PdfFileReader(buffer)
 
-
-writer = PdfFileWriter()
-writer.addPage(page)
-result = open('result.pdf', 'wb')
-
-writer.write(result)
-result.close()
+#######DEBUG NEW PDF created#############
+pdf1 = buffer.getvalue()
+open('pdf1.pdf', 'wb').write(pdf1)
+#########################################
+# read your existing PDF
+existingPdf = PdfFileReader(open('plantilla.pdf', 'rb'))
+output = PdfFileWriter()
+# add the "watermark" (which is the new pdf) on the existing page
+page = existingPdf.getPage(0)
+page.mergePage(newPdf.getPage(0))
+output.addPage(page)
+# finally, write "output" to a real file
+outputStream = open('output.pdf', 'wb')
+output.write(outputStream)
+outputStream.close()
