@@ -2,35 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="876578b6-8cf7-4ed6-9d07-98b24fa50834" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/pdfwriter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/Participant_list_3.0 (1).xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/new version/Certification/MindSphere_Academy_Certified Consultant.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/new version/Certification/MindSphere_Academy_Certified Trainer.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/new version/Certification/MindSphere_Academy_Certified Trainer_v0.2.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/new version/MindSphere_Academy_attendance_certificate_Basic_application_Development_training_V2.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/new version/MindSphere_Academy_attendance_certificate_Basic_application_Development_training_V2.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/new version/MindSphere_Academy_attendance_certificate_Edge_Analytics_training_V2.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/new version/MindSphere_Academy_attendance_certificate_Edge_Analytics_training_V2.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/new version/MindSphere_Academy_attendance_certificate_Introduction_Training_V2.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/new version/MindSphere_Academy_attendance_certificate_Introduction_Training_V2.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/new version/MindSphere_Academy_attendance_certificate_Introduction_Webinar_V2.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/new version/MindSphere_Academy_attendance_certificate_Introduction_Webinar_V2.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/new version/MindSphere_Academy_attendance_certificate_MC_API_training_V2.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/new version/MindSphere_Academy_attendance_certificate_MC_API_training_V2.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/new version/MindSphere_Academy_attendance_certificate_MC_Device_training_V2.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/new version/MindSphere_Academy_attendance_certificate_MC_Device_training_V2.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/new version/MindSphere_Academy_attendance_certificate_MC_Integration_training_V2.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/new version/MindSphere_Academy_attendance_certificate_MC_Integration_training_V2.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/new version/MindSphere_Academy_attendance_certificate_MC_IoT_Extension_V2.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/new version/MindSphere_Academy_attendance_certificate_MC_IoT_Extension_V2.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/new version/MindSphere_Academy_attendance_certificate_MC_LIB_training_V2.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/new version/MindSphere_Academy_attendance_certificate_MC_LIB_training_V2.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/participant_list_all-v0.1 (1).xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/mainwindow.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui/mainwindow.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/mainwindow.ui" beforeDir="false" afterPath="$PROJECT_DIR$/ui/mainwindow.ui" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pdfwriter.py" beforeDir="false" afterPath="$PROJECT_DIR$/pdfwriter.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -55,10 +28,10 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pdfwriter.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
+            <state relative-caret-position="289">
+              <caret line="17" column="17" lean-forward="true" selection-start-line="17" selection-start-column="17" selection-end-line="17" selection-end-column="17" />
               <folding>
-                <element signature="e#0#35#0" expanded="true" />
+                <element signature="e#0#47#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -292,19 +265,46 @@
       <option name="project" value="LOCAL" />
       <updated>1557136748485</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="inital upload">
+      <created>1557155479459</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1557155479459</updated>
+    </task>
+    <task id="LOCAL-00006" summary="inital upload">
+      <created>1557156664847</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1557156664847</updated>
+    </task>
+    <task id="LOCAL-00007" summary="inital upload">
+      <created>1557156762244</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1557156762244</updated>
+    </task>
+    <task id="LOCAL-00008" summary="inital upload">
+      <created>1557156818775</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1557156818775</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1176" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.29083246" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.29083246" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32950193" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32950193" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -349,10 +349,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pdfwriter.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
+        <state relative-caret-position="289">
+          <caret line="17" column="17" lean-forward="true" selection-start-line="17" selection-start-column="17" selection-end-line="17" selection-end-column="17" />
           <folding>
-            <element signature="e#0#35#0" expanded="true" />
+            <element signature="e#0#47#0" expanded="true" />
           </folding>
         </state>
       </provider>
