@@ -48,8 +48,8 @@ class MainWindow(QMainWindow):
 
         print(self.path+self.currentFile)
 
-        #self.obj = Worker(self.path, self.currentFile, self.participantList)
-        #self.obj.start()
+        self.obj = Worker(self.path, self.currentFile, self.participantList)
+        self.obj.start()
 
     def getParticipants(self):
         for i in range(0,self.ui.participants.rowCount()):
@@ -97,42 +97,41 @@ class Worker(QThread):
         self.currentFile = filename
         self.plist = plist
         self.path = path
+        self.buffer = BytesIO()
+        self.file = open(self.path + self.currentFile, 'rb')
+        self.material = PdfFileReader(self.file)
+        self.x = self.material.getPage(0).mediaBox[-2]
+        self.y = self.material.getPage(0).mediaBox[-1]
 
-    def run(self) -> None:
+        self.pageNum = self.material.getNumPages()
+
+        self.p = canvas.Canvas(self.buffer)
+        self.r = Color(0, 0, 0, alpha=0.5)
+        self.p.setFont('Helvetica', 75)
+        self.p.setFillColor(self.r)
+        self.p.setPageSize((self.x, self.y))
+
+        self.p.translate(self.x / 2, self.y / 2)
+        self.p.rotate(45)
+
+    def run(self):
         for participant in self.plist:
             if participant.email:
-                buffer = BytesIO()
-                file = open(self.path+self.currentFile, 'rb')
-                material = PdfFileReader(file)
-                x = material.getPage(0).mediaBox[-2]
-                y = material.getPage(0).mediaBox[-1]
+                self.p.drawCentredString(0, 0, participant.email)
+                self.p.showPage()
+                self.p.save()
+                self.buffer.seek(0)
 
-                pageNum = material.getNumPages()
-
-                p = canvas.Canvas(buffer)
-                r = Color(0, 0, 0, alpha=0.5)
-                p.setFont('Helvetica', 75)
-                p.setFillColor(r)
-                p.setPageSize((x, y))
-
-                p.translate(x / 2, y / 2)
-                p.rotate(45)
-                p.drawCentredString(0, 0, participant.email)
-
-                p.showPage()
-                p.save()
-                buffer.seek(0)
-
-                watermark = PdfFileReader(buffer)
+                watermark = PdfFileReader(self.buffer)
                 output = PdfFileWriter()
                 # add the "watermark" (which is the new pdf) on the existing page
                 count = float(0)
-                for page in range(pageNum):
-                    slide = material.getPage(page)
+                for page in range(self.pageNum):
+                    slide = self.material.getPage(page)
                     slide.mergePage(watermark.getPage(0))
                     slide.compressContentStreams()
                     output.addPage(slide)
-                    count += float(100) / float(len(range(pageNum)))
+                    count += float(100) / float(len(range(self.pageNum)))
                     print(round(count))
 
                 outputStream = open('output.pdf', 'wb')
