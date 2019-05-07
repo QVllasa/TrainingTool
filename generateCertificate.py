@@ -6,7 +6,7 @@ from compressor import compress
 import os
 
 buffer = BytesIO()
-file = open('files/Material/PDF/Basic_App_Dev_Training_V2.3.pdf', 'rb')
+file = open('files/new_version/MindSphere_Academy_attendance_certificate_Basic_application_Development_training_V2.pdf', 'rb')
 material = PdfFileReader(file)
 x = material.getPage(0).mediaBox[-2]
 y = material.getPage(0).mediaBox[-1]
@@ -30,14 +30,13 @@ buffer.seek(0)
 watermark = PdfFileReader(buffer)
 output = PdfFileWriter()
 # add the "watermark" (which is the new pdf) on the existing page
-count = float(0)
+
 for page in range(pageNum):
     slide = material.getPage(page)
     slide.mergePage(watermark.getPage(0))
     slide.compressContentStreams()
     output.addPage(slide)
-    count += float(100)/float(len(range(pageNum)))
-    print(round(count))
+
 
 
 outputStream = open('output.pdf', 'wb')
