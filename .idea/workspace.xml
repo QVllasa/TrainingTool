@@ -260,9 +260,9 @@
     </configuration>
     <list>
       <item itemvalue="Python.build" />
+      <item itemvalue="Python.compTest" />
       <item itemvalue="Python.main" />
       <item itemvalue="Python.pdfwriter" />
-      <item itemvalue="Python.compTest" />
     </list>
     <recent_temporary>
       <list>
