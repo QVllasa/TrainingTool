@@ -158,7 +158,7 @@ class MWorker(QThread):
             outputStream = open('output.pdf', 'wb')
             output.write(outputStream)
             outputStream.close()
-            compress('output.pdf', 'temp/' + str(newfile) + '_' + str(participant.email) + '.pdf', power=2)
+            compress('output.pdf', 'temp/' + str(newfile) + '_' + str(participant.email) + '.pdf', power=0)
             os.remove('output.pdf')
 
         self.finish.emit('finished')
