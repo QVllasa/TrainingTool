@@ -30,7 +30,7 @@ class Ui_MainWindow(object):
         self.gridLayout_2.setSpacing(6)
         self.gridLayout_2.setObjectName("gridLayout_2")
         self.progressBarMat = QtWidgets.QProgressBar(self.gridLayoutWidget_2)
-        self.progressBarMat.setProperty("value", 24)
+        self.progressBarMat.setProperty("value", 0)
         self.progressBarMat.setObjectName("progressBarMat")
         self.gridLayout_2.addWidget(self.progressBarMat, 3, 0, 1, 4)
         self.saveMat = QtWidgets.QPushButton(self.gridLayoutWidget_2)
