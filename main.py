@@ -48,13 +48,13 @@ class MainWindow(QMainWindow):
 
         print(self.path+self.currentFile)
 
-        self.obj = Worker(self.path, self.currentFile, self.participantList)
+        self.obj = MWorker(self.path, self.currentFile, self.participantList)
         self.obj.start()
 
     def getParticipants(self):
         for i in range(0,self.ui.participants.rowCount()):
             self.participant = Participant()
-            if not self.ui.participants.item(i, 0) == None:
+            if not self.ui.participants.item(i, 2) == None:
                 self.participant.firstname = self.ui.participants.item(i, 0).text()
                 self.participant.lastname = self.ui.participants.item(i, 1).text()
                 self.participant.email = self.ui.participants.item(i, 2).text()
@@ -88,7 +88,7 @@ class Participant():
     def __repr__(self):
         return self.firstname+'  '+self.lastname+'  '+self.email
 
-class Worker(QThread):
+class MWorker(QThread):
     blabla = pyqtSignal(str)
 
     def __init__(self,path, filename, plist):
@@ -102,45 +102,42 @@ class Worker(QThread):
         self.material = PdfFileReader(self.file)
         self.x = self.material.getPage(0).mediaBox[-2]
         self.y = self.material.getPage(0).mediaBox[-1]
-
         self.pageNum = self.material.getNumPages()
-
         self.p = canvas.Canvas(self.buffer)
         self.r = Color(0, 0, 0, alpha=0.5)
         self.p.setFont('Helvetica', 75)
         self.p.setFillColor(self.r)
         self.p.setPageSize((self.x, self.y))
-
         self.p.translate(self.x / 2, self.y / 2)
         self.p.rotate(45)
 
     def run(self):
         for participant in self.plist:
-            if participant.email:
-                self.p.drawCentredString(0, 0, participant.email)
-                self.p.showPage()
-                self.p.save()
-                self.buffer.seek(0)
 
-                watermark = PdfFileReader(self.buffer)
-                output = PdfFileWriter()
-                # add the "watermark" (which is the new pdf) on the existing page
-                count = float(0)
-                for page in range(self.pageNum):
-                    slide = self.material.getPage(page)
-                    slide.mergePage(watermark.getPage(0))
-                    slide.compressContentStreams()
-                    output.addPage(slide)
-                    count += float(100) / float(len(range(self.pageNum)))
-                    print(round(count))
+            self.p.drawCentredString(0, 0, participant.email)
+            self.p.showPage()
+            self.p.save()
+            self.buffer.seek(0)
 
-                outputStream = open('output.pdf', 'wb')
-                output.write(outputStream)
-                outputStream.close()
-                print('hierhierhiehirhierhier')
-                compress('output.pdf', 'output_'+participant.email+'.pdf', power=3)
-                os.remove('output.pdf')
-            else: print('empty email')
+            watermark = PdfFileReader(self.buffer)
+            output = PdfFileWriter()
+            # add the "watermark" (which is the new pdf) on the existing page
+            count = float(0)
+            for page in range(self.pageNum):
+                slide = self.material.getPage(page)
+                slide.mergePage(watermark.getPage(0))
+                slide.compressContentStreams()
+                output.addPage(slide)
+                count += float(100) / float(len(range(self.pageNum)))
+                print(round(count))
+
+            outputStream = open('output.pdf', 'wb')
+            output.write(outputStream)
+            outputStream.close()
+            print('hierhierhiehirhierhier')
+            compress('output.pdf', 'output_'+participant.email+'.pdf', power=3)
+            os.remove('output.pdf')
+
 
 
 window = MainWindow()
