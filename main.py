@@ -53,12 +53,12 @@ class MainWindow(QMainWindow):
 
     def getParticipants(self):
         for i in range(0,self.ui.participants.rowCount()):
-            participant = Participant()
+            self.participant = Participant()
             if not self.ui.participants.item(i, 0) == None:
-                participant.firstname = self.ui.participants.item(i, 0).text()
-                participant.lastname = self.ui.participants.item(i, 1).text()
-                participant.email = self.ui.participants.item(i, 2).text()
-                self.participantList.append(participant)
+                self.participant.firstname = self.ui.participants.item(i, 0).text()
+                self.participant.lastname = self.ui.participants.item(i, 1).text()
+                self.participant.email = self.ui.participants.item(i, 2).text()
+                self.participantList.append(self.participant)
 
 
                 #print(self.participant.firstname, self.participant.lastname, self.participant.email)

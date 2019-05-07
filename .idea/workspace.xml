@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="876578b6-8cf7-4ed6-9d07-98b24fa50834" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/TrainingTool.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/TrainingTool.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/mainwindow.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui/mainwindow.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/mainwindow.ui" beforeDir="false" afterPath="$PROJECT_DIR$/ui/mainwindow.ui" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -20,8 +16,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="53" column="30" lean-forward="true" selection-start-line="53" selection-start-column="30" selection-end-line="53" selection-end-column="30" />
+            <state relative-caret-position="505">
+              <caret line="80" column="20" lean-forward="true" selection-start-line="80" selection-start-column="20" selection-end-line="80" selection-end-column="20" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -72,6 +68,7 @@
     <findStrings>
       <find>power</find>
       <find>currentFile</find>
+      <find>participant</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -346,7 +343,14 @@
       <option name="project" value="LOCAL" />
       <updated>1557184499808</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="create participant class">
+      <created>1557231777667</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1557231777667</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -394,7 +398,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="inital upload" />
     <MESSAGE value="add watermark to all pdf pages" />
-    <option name="LAST_COMMIT_MESSAGE" value="add watermark to all pdf pages" />
+    <MESSAGE value="create participant class" />
+    <option name="LAST_COMMIT_MESSAGE" value="create participant class" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/ui/mainwindow.py">
@@ -440,8 +445,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="53" column="30" lean-forward="true" selection-start-line="53" selection-start-column="30" selection-end-line="53" selection-end-column="30" />
+        <state relative-caret-position="505">
+          <caret line="80" column="20" lean-forward="true" selection-start-line="80" selection-start-column="20" selection-end-line="80" selection-end-column="20" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>
