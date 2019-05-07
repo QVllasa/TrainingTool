@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'ui\mainwindow.ui'
+# Form implementation generated from reading ui file 'ui/mainwindow.ui'
 #
 # Created by: PyQt5 UI code generator 5.12.1
 #
@@ -30,7 +30,7 @@ class Ui_MainWindow(object):
         self.gridLayout_2.setSpacing(6)
         self.gridLayout_2.setObjectName("gridLayout_2")
         self.progressBarMat = QtWidgets.QProgressBar(self.gridLayoutWidget_2)
-        self.progressBarMat.setProperty("value", 0)
+        self.progressBarMat.setProperty("value", 24)
         self.progressBarMat.setObjectName("progressBarMat")
         self.gridLayout_2.addWidget(self.progressBarMat, 3, 0, 1, 4)
         self.saveMat = QtWidgets.QPushButton(self.gridLayoutWidget_2)
@@ -40,6 +40,8 @@ class Ui_MainWindow(object):
         self.addWat.setObjectName("addWat")
         self.gridLayout_2.addWidget(self.addWat, 2, 2, 1, 1)
         self.participants = QtWidgets.QTableWidget(self.gridLayoutWidget_2)
+        self.participants.setEnabled(True)
+        self.participants.setEditTriggers(QtWidgets.QAbstractItemView.AnyKeyPressed|QtWidgets.QAbstractItemView.DoubleClicked|QtWidgets.QAbstractItemView.EditKeyPressed)
         self.participants.setObjectName("participants")
         self.participants.setColumnCount(3)
         self.participants.setRowCount(0)
@@ -49,7 +51,7 @@ class Ui_MainWindow(object):
         self.participants.setHorizontalHeaderItem(1, item)
         item = QtWidgets.QTableWidgetItem()
         self.participants.setHorizontalHeaderItem(2, item)
-        self.participants.horizontalHeader().setVisible(True)
+        self.participants.horizontalHeader().setVisible(False)
         self.participants.horizontalHeader().setCascadingSectionResizes(False)
         self.participants.horizontalHeader().setStretchLastSection(True)
         self.gridLayout_2.addWidget(self.participants, 0, 0, 1, 4)
@@ -82,7 +84,7 @@ class Ui_MainWindow(object):
         self.generateCert.setObjectName("generateCert")
         self.gridLayout_3.addWidget(self.generateCert, 3, 2, 1, 1)
         self.progressBarCert = QtWidgets.QProgressBar(self.gridLayoutWidget_3)
-        self.progressBarCert.setProperty("value", 24)
+        self.progressBarCert.setProperty("value", 0)
         self.progressBarCert.setObjectName("progressBarCert")
         self.gridLayout_3.addWidget(self.progressBarCert, 4, 0, 1, 4)
         self.label_9 = QtWidgets.QLabel(self.gridLayoutWidget_3)
@@ -104,6 +106,7 @@ class Ui_MainWindow(object):
         self.trainerText.setObjectName("trainerText")
         self.gridLayout_3.addWidget(self.trainerText, 2, 1, 1, 3)
         self.certDate = QtWidgets.QDateEdit(self.gridLayoutWidget_3)
+        self.certDate.setCalendarPopup(True)
         self.certDate.setObjectName("certDate")
         self.gridLayout_3.addWidget(self.certDate, 0, 1, 1, 1)
         self.tabWidget.addTab(self.certificateTab, "")
@@ -174,7 +177,7 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusBar)
 
         self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):

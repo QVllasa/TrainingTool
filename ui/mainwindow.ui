@@ -36,7 +36,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="materialTab">
      <attribute name="title">
@@ -55,7 +55,7 @@
        <item row="3" column="0" colspan="4">
         <widget class="QProgressBar" name="progressBarMat">
          <property name="value">
-          <number>24</number>
+          <number>0</number>
          </property>
         </widget>
        </item>
@@ -82,7 +82,7 @@
           <set>QAbstractItemView::AnyKeyPressed|QAbstractItemView::DoubleClicked|QAbstractItemView::EditKeyPressed</set>
          </property>
          <attribute name="horizontalHeaderVisible">
-          <bool>true</bool>
+          <bool>false</bool>
          </attribute>
          <attribute name="horizontalHeaderCascadingSectionResizes">
           <bool>false</bool>
@@ -161,7 +161,7 @@
        <item row="4" column="0" colspan="4">
         <widget class="QProgressBar" name="progressBarCert">
          <property name="value">
-          <number>24</number>
+          <number>0</number>
          </property>
         </widget>
        </item>
@@ -200,7 +200,11 @@
         <widget class="QLineEdit" name="trainerText"/>
        </item>
        <item row="0" column="1">
-        <widget class="QDateEdit" name="certDate"/>
+        <widget class="QDateEdit" name="certDate">
+         <property name="calendarPopup">
+          <bool>true</bool>
+         </property>
+        </widget>
        </item>
       </layout>
      </widget>
