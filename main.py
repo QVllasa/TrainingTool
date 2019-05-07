@@ -23,85 +23,125 @@ class MainWindow(QMainWindow):
         super().__init__(parent)
 
         self.currentFile = ''
+        self.path = 'files/Material/PDF/'
+        self.participantList = []
+
+
 
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
         self.addFiles()
         self.ui.addPart.clicked.connect(self.addCell)
-        self.ui.saveMat.clicked.connect(self.saveFiles)
+       # self.ui.saveMat.clicked.connect(self.saveFiles)
         self.ui.addWat.clicked.connect(self.addWatermark)
 
     #   print(glob.glob('files/Material/*.pdf'))
     def addWatermark(self):
-        self.obj = Worker('files/Material/PDF/'+str(self.ui.matCombo.currentText()))
-        self.obj.start()
-
-    def saveFiles(self):
+        self.getParticipants()
         self.currentFile = self.ui.matCombo.currentText()
-        for i in glob.glob('files/Material/PDF/*.pdf'):
-            if self.currentFile in i:
-                self.currentFile = i
-                print(i)
+
+
+        #for i in self.participantList:
+         #   print(i)
+
+
+        print(self.path+self.currentFile)
+
+        #self.obj = Worker(self.path, self.currentFile, self.participantList)
+        #self.obj.start()
+
+    def getParticipants(self):
+        for i in range(0,self.ui.participants.rowCount()):
+            participant = Participant()
+            if not self.ui.participants.item(i, 0) == None:
+                participant.firstname = self.ui.participants.item(i, 0).text()
+                participant.lastname = self.ui.participants.item(i, 1).text()
+                participant.email = self.ui.participants.item(i, 2).text()
+                self.participantList.append(participant)
+
+
+                #print(self.participant.firstname, self.participant.lastname, self.participant.email)
+
+        for s in self.participantList:
+            print(s)
+
+
+    # def saveFiles(self):
+    #     self.currentFile = self.ui.matCombo.currentText()
 
     def addCell(self):
-        row = self.ui.materialList.rowCount()
-        self.ui.materialList.insertRow(row)
+        row = self.ui.participants.rowCount()
+        self.ui.participants.insertRow(row)
 
     def addFiles(self):
-        self.onlyfiles = [f for f in listdir('files/Material/PDF/') if isfile(join('files/Material/PDF/', f))]
+        self.onlyfiles = [f for f in listdir(self.path) if isfile(join(self.path, f))]
         self.ui.matCombo.addItems(self.onlyfiles)
 
+class Participant():
+    def __init__(self):
+
+        self.firstname = ''
+        self.lastname = ''
+        self.email = ''
+
+    def __repr__(self):
+        return self.firstname+'  '+self.lastname+'  '+self.email
 
 class Worker(QThread):
     blabla = pyqtSignal(str)
 
-    def __init__(self, filename):
+    def __init__(self,path, filename, plist):
         QThread.__init__(self)
 
         self.currentFile = filename
+        self.plist = plist
+        self.path = path
 
     def run(self) -> None:
-        buffer = BytesIO()
-        file = open(self.currentFile, 'rb')
-        material = PdfFileReader(file)
-        x = material.getPage(0).mediaBox[-2]
-        y = material.getPage(0).mediaBox[-1]
+        for participant in self.plist:
+            if participant.email:
+                buffer = BytesIO()
+                file = open(self.path+self.currentFile, 'rb')
+                material = PdfFileReader(file)
+                x = material.getPage(0).mediaBox[-2]
+                y = material.getPage(0).mediaBox[-1]
 
-        pageNum = material.getNumPages()
+                pageNum = material.getNumPages()
 
-        p = canvas.Canvas(buffer)
-        r = Color(0, 0, 0, alpha=0.5)
-        p.setFont('Helvetica', 75)
-        p.setFillColor(r)
-        p.setPageSize((x, y))
+                p = canvas.Canvas(buffer)
+                r = Color(0, 0, 0, alpha=0.5)
+                p.setFont('Helvetica', 75)
+                p.setFillColor(r)
+                p.setPageSize((x, y))
 
-        p.translate(x / 2, y / 2)
-        p.rotate(45)
-        p.drawCentredString(0, 0, "holaaaaaaaaaaaa")
+                p.translate(x / 2, y / 2)
+                p.rotate(45)
+                p.drawCentredString(0, 0, participant.email)
 
-        p.showPage()
-        p.save()
-        buffer.seek(0)
+                p.showPage()
+                p.save()
+                buffer.seek(0)
 
-        watermark = PdfFileReader(buffer)
-        output = PdfFileWriter()
-        # add the "watermark" (which is the new pdf) on the existing page
-        count = float(0)
-        for page in range(pageNum):
-            slide = material.getPage(page)
-            slide.mergePage(watermark.getPage(0))
-            slide.compressContentStreams()
-            output.addPage(slide)
-            count += float(100) / float(len(range(pageNum)))
-            print(round(count))
+                watermark = PdfFileReader(buffer)
+                output = PdfFileWriter()
+                # add the "watermark" (which is the new pdf) on the existing page
+                count = float(0)
+                for page in range(pageNum):
+                    slide = material.getPage(page)
+                    slide.mergePage(watermark.getPage(0))
+                    slide.compressContentStreams()
+                    output.addPage(slide)
+                    count += float(100) / float(len(range(pageNum)))
+                    print(round(count))
 
-        outputStream = open('output.pdf', 'wb')
-        output.write(outputStream)
-        outputStream.close()
-
-        compress('output.pdf', 'output_mat.pdf', power=3)
-        os.remove('output.pdf')
+                outputStream = open('output.pdf', 'wb')
+                output.write(outputStream)
+                outputStream.close()
+                print('hierhierhiehirhierhier')
+                compress('output.pdf', 'output_'+participant.email+'.pdf', power=3)
+                os.remove('output.pdf')
+            else: print('empty email')
 
 
 window = MainWindow()
