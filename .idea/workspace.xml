@@ -5,29 +5,8 @@
       <change beforePath="$PROJECT_DIR$/.idea/TrainingTool.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/TrainingTool.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docxToPDF.py" beforeDir="false" afterPath="$PROJECT_DIR$/docxToPDF.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/files/new version/Certification/MindSphere_Academy_Certified Consultant.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/files/new version/Certification/MindSphere_Academy_Certified Trainer.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/files/new version/Certification/MindSphere_Academy_Certified Trainer_v0.2.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/files/new version/MindSphere_Academy_attendance_certificate_Basic_application_Development_training_V2.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/files/new version/MindSphere_Academy_attendance_certificate_Basic_application_Development_training_V2.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/files/new version/MindSphere_Academy_attendance_certificate_Edge_Analytics_training_V2.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/files/new version/MindSphere_Academy_attendance_certificate_Edge_Analytics_training_V2.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/files/new version/MindSphere_Academy_attendance_certificate_Introduction_Training_V2.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/files/new version/MindSphere_Academy_attendance_certificate_Introduction_Training_V2.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/files/new version/MindSphere_Academy_attendance_certificate_Introduction_Webinar_V2.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/files/new version/MindSphere_Academy_attendance_certificate_Introduction_Webinar_V2.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/files/new version/MindSphere_Academy_attendance_certificate_MC_API_training_V2.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/files/new version/MindSphere_Academy_attendance_certificate_MC_API_training_V2.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/files/new version/MindSphere_Academy_attendance_certificate_MC_Device_training_V2.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/files/new version/MindSphere_Academy_attendance_certificate_MC_Device_training_V2.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/files/new version/MindSphere_Academy_attendance_certificate_MC_Integration_training_V2.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/files/new version/MindSphere_Academy_attendance_certificate_MC_Integration_training_V2.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/files/new version/MindSphere_Academy_attendance_certificate_MC_IoT_Extension_V2.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/files/new version/MindSphere_Academy_attendance_certificate_MC_IoT_Extension_V2.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/files/new version/MindSphere_Academy_attendance_certificate_MC_LIB_training_V2.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/files/new version/MindSphere_Academy_attendance_certificate_MC_LIB_training_V2.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docxToPDF.py" beforeDir="false" afterPath="$PROJECT_DIR$/generateCertificate.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pdfwriter.py" beforeDir="false" afterPath="$PROJECT_DIR$/misc/pdfwriter.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -40,34 +19,31 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2346">
-              <caret line="154" selection-start-line="154" selection-end-line="154" />
-              <folding>
-                <element signature="e#0#11#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="-1070">
+              <caret line="48" lean-forward="true" selection-start-line="48" selection-end-line="48" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/compressor.py">
+        <entry file="file://$PROJECT_DIR$/misc/pdfwriter.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" selection-start-line="14" selection-end-line="14" />
+            <state relative-caret-position="255">
+              <caret line="17" column="26" lean-forward="true" selection-end-line="48" />
               <folding>
-                <element signature="e#382#397#0" expanded="true" />
+                <element signature="e#0#47#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/docxToPDF.py">
+        <entry file="file://$PROJECT_DIR$/generateCertificate.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+            <state relative-caret-position="435">
+              <caret line="29" column="33" lean-forward="true" selection-start-line="29" selection-start-column="33" selection-end-line="29" selection-end-column="33" />
               <folding>
-                <element signature="e#0#9#0" expanded="true" />
+                <element signature="e#0#47#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -76,7 +52,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ui/mainwindow.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="646">
+            <state relative-caret-position="570">
               <caret line="38" column="68" selection-start-line="38" selection-start-column="68" selection-end-line="38" selection-end-column="68" />
             </state>
           </provider>
@@ -96,13 +72,9 @@
       <find>power</find>
       <find>newfile</find>
       <find>pro</find>
-      <find>\</find>
-      <find>/</find>
     </findStrings>
     <replaceStrings>
       <replace />
-      <replace>/</replace>
-      <replace>\\</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -118,12 +90,13 @@
         <option value="$PROJECT_DIR$/ui/mainwindow.py" />
         <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/docxToPDF.py" />
+        <option value="$PROJECT_DIR$/generateCertificate.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="644" />
-    <option name="y" value="15" />
+    <option name="x" value="252" />
+    <option name="y" value="23" />
     <option name="width" value="2280" />
     <option name="height" value="1342" />
   </component>
@@ -136,7 +109,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -147,12 +119,18 @@
             <path>
               <item name="TrainingTool" type="b2602c69:ProjectViewProjectNode" />
               <item name="TrainingTool" type="462c0819:PsiDirectoryNode" />
-              <item name="files" type="462c0819:PsiDirectoryNode" />
+              <item name="misc" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TrainingTool" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TrainingTool" type="462c0819:PsiDirectoryNode" />
+              <item name="ui" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -177,7 +155,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.docxToPDF">
+  <component name="RunManager" selected="Python.main">
     <configuration name="build" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="TrainingTool" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -232,7 +210,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/docxToPDF.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/generateCertificate.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -274,7 +252,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pdfwriter.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/misc/pdfwriter.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -292,8 +270,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.docxToPDF" />
         <item itemvalue="Python.main" />
+        <item itemvalue="Python.docxToPDF" />
         <item itemvalue="Python.pdfwriter" />
         <item itemvalue="Python.compTest" />
         <item itemvalue="Python.build" />
@@ -305,7 +283,7 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="4054586e-83c3-4709-a95e-6c4b1870f80e" name="Default Changelist" comment="update" />
+      <changelist id="876578b6-8cf7-4ed6-9d07-98b24fa50834" name="Default Changelist" comment="" />
       <created>1554937469955</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -406,16 +384,16 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="644" y="15" width="2280" height="1342" extended-state="0" />
+    <frame x="252" y="23" width="2280" height="1342" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.3322926" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.33244798" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49911714" visible="true" weight="0.32754344" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.3995037" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49911714" visible="true" weight="0.3288" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -428,19 +406,19 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
     <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.3322926" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2548558" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49911714" visible="true" weight="0.32754344" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.3995037" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3288" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49933466" weight="0.3296" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.3288" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50088286" side_tool="true" weight="0.3288" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32982457" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32950193" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Python Console" order="10" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -462,6 +440,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/compressor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1564">
+          <caret line="68" column="53" selection-start-line="68" selection-start-column="53" selection-end-line="68" selection-end-column="53" />
+          <folding>
+            <element signature="e#382#397#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/misc/compTest.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
@@ -469,49 +457,36 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pdfwriter.py">
+    <entry file="file://$PROJECT_DIR$/ui/mainwindow.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-6">
-          <caret line="6" selection-start-line="6" selection-end-line="6" />
+        <state relative-caret-position="570">
+          <caret line="38" column="68" selection-start-line="38" selection-start-column="68" selection-end-line="38" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1070">
+          <caret line="48" lean-forward="true" selection-start-line="48" selection-end-line="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/misc/pdfwriter.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="26" lean-forward="true" selection-end-line="48" />
           <folding>
             <element signature="e#0#47#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
+    <entry file="file://$PROJECT_DIR$/generateCertificate.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2346">
-          <caret line="154" selection-start-line="154" selection-end-line="154" />
+        <state relative-caret-position="435">
+          <caret line="29" column="33" lean-forward="true" selection-start-line="29" selection-start-column="33" selection-end-line="29" selection-end-column="33" />
           <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/compressor.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" selection-start-line="14" selection-end-line="14" />
-          <folding>
-            <element signature="e#382#397#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ui/mainwindow.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="38" column="68" selection-start-line="38" selection-start-column="68" selection-end-line="38" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docxToPDF.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
+            <element signature="e#0#47#0" expanded="true" />
           </folding>
         </state>
       </provider>
