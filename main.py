@@ -155,11 +155,12 @@ class MWorker(QThread):
 
             newfile = self.currentFile.replace('.pdf', '')
 
-            outputStream = open('output.pdf', 'wb')
+            #outputStream = open('output.pdf', 'wb')
+            outputStream = open('temp/' + str(newfile) + '_' + str(participant.email) + '.pdf', 'wb')
             output.write(outputStream)
             outputStream.close()
-            compress('output.pdf', 'temp/' + str(newfile) + '_' + str(participant.email) + '.pdf', power=0)
-            os.remove('output.pdf')
+            #compress('output.pdf', 'temp/' + str(newfile) + '_' + str(participant.email) + '.pdf', power=0)
+            #os.remove('output.pdf')
 
         self.finish.emit('finished')
         count = float(0)
