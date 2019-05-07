@@ -49,7 +49,7 @@ class MainWindow(QMainWindow):
         print(self.path+self.currentFile)
 
         self.obj = MWorker(self.path, self.currentFile, self.participantList)
-        self.obj.start()
+        #self.obj.start()
 
     def getParticipants(self):
         for i in range(0,self.ui.participants.rowCount()):
@@ -98,7 +98,7 @@ class MWorker(QThread):
         self.plist = plist
         self.path = path
         self.buffer = BytesIO()
-        self.file = open(self.path + self.currentFile, 'rb')
+        self.file = open(str(self.path)+str(self.currentFile), 'rb')
         self.material = PdfFileReader(self.file)
         self.x = self.material.getPage(0).mediaBox[-2]
         self.y = self.material.getPage(0).mediaBox[-1]
@@ -114,7 +114,7 @@ class MWorker(QThread):
     def run(self):
         for participant in self.plist:
 
-            self.p.drawCentredString(0, 0, participant.email)
+            self.p.drawCentredString(0, 0, str(participant.email))
             self.p.showPage()
             self.p.save()
             self.buffer.seek(0)
@@ -135,7 +135,7 @@ class MWorker(QThread):
             output.write(outputStream)
             outputStream.close()
             print('hierhierhiehirhierhier')
-            compress('output.pdf', 'output_'+participant.email+'.pdf', power=3)
+            compress('output.pdf', 'output_'+str(participant.email)+'.pdf', power=3)
             os.remove('output.pdf')
 
 
