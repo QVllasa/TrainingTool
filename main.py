@@ -1,10 +1,6 @@
-import glob
 import sys
-import os
 import shutil
-import fileinput
 
-# from config import trainers, locations
 from os import listdir
 from os.path import isfile, join
 
@@ -27,7 +23,6 @@ class MainWindow(QMainWindow):
     def __init__(self, parent=None):
         super().__init__(parent)
 
-
         self.configFile = 'config.txt'
         self.currentFile = ''
         self.path = 'files/Material/PDF/'
@@ -48,7 +43,17 @@ class MainWindow(QMainWindow):
     #   print(glob.glob('files/Material/*.pdf'))
 
     def genCertificate(self):
-        pass
+        dateTo = self.ui.certDateTo.text()
+        dateFrom = self.ui.certDateFrom.text()
+
+        print('date '+dateFrom+'.'+' - '+dateTo)
+        # self.getParticipants()
+        # self.currentFile = self.ui.matCombo.currentText()
+        #
+        # self.obj = CWorker(self.participant.firstname, self.participant.lastname, date, )
+        # self.obj.finish.connect(self.disableEnable)
+        # self.obj.progress.connect(self.progressing)
+        # self.obj.start()
 
     def removingLocation(self):
         pass
@@ -123,14 +128,14 @@ class MainWindow(QMainWindow):
             for j in lines[x + 1:b]:
                 if not j.strip() in AllItemsTrainer:
                     self.ui.trainerCombo.addItem(j.strip())
-                else: continue
+                else:
+                    continue
 
             for j in lines[y + 1:]:
                 if not j.strip() in AllItemsLocation:
                     self.ui.locationCombo.addItem(j.strip())
-                else: continue
-
-
+                else:
+                    continue
 
     def addWatermark(self):
 
@@ -164,7 +169,7 @@ class MainWindow(QMainWindow):
                 self.participant.email = self.ui.participants.item(i, 2).text()
                 self.participantList.append(self.participant)
 
-                # print(self.participant.firstname, self.participant.lastname, self.participant.email)
+
 
         for s in self.participantList:
             print(s)
