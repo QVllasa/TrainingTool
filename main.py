@@ -2,7 +2,9 @@ import glob
 import sys
 import os
 import shutil
+import fileinput
 
+# from config import trainers, locations
 from os import listdir
 from os.path import isfile, join
 
@@ -10,6 +12,8 @@ from PyQt5.QtCore import *
 from qtpy.QtWidgets import *
 
 from ui.mainwindow import Ui_MainWindow
+from ui.addLocationDialog import Ui_LocationDialog
+from ui.addTrainerDialog import Ui_TrainerDialog
 from PyPDF4 import PdfFileWriter, PdfFileReader
 from io import BytesIO
 from reportlab.pdfgen import canvas
@@ -23,19 +27,111 @@ class MainWindow(QMainWindow):
     def __init__(self, parent=None):
         super().__init__(parent)
 
+
+        self.configFile = 'config.txt'
         self.currentFile = ''
         self.path = 'files/Material/PDF/'
         self.participantList = []
 
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
+        self.getComboBoxes()
 
         self.addFiles()
         self.ui.addPart.clicked.connect(self.addCell)
         self.ui.saveMat.clicked.connect(self.saveFiles)
         self.ui.addWat.clicked.connect(self.addWatermark)
+        self.ui.generateCert.clicked.connect(self.genCertificate)
+        self.ui.addLocation.clicked.connect(self.addingLocation)
+        self.ui.addTrainer.clicked.connect(self.addingTrainer)
 
     #   print(glob.glob('files/Material/*.pdf'))
+
+    def genCertificate(self):
+        pass
+
+    def removingLocation(self):
+        pass
+
+    def addingLocation(self):
+        self.locationDialog = QDialog()
+        self.uiLocationDialog = Ui_LocationDialog()
+        self.uiLocationDialog.setupUi(self.locationDialog)
+        self.locationDialog.show()
+        rsp = self.locationDialog.exec_()
+        if rsp == 1:
+            f = open(self.configFile, "r")
+            contents = f.readlines()
+            f.close()
+
+            for i in contents:
+                if 'location' in i:
+                    index = contents.index(i)
+                elif 'trainer' in i:
+                    continue
+            if not self.uiLocationDialog.locationInput.text() in contents:
+                contents.insert(index + 1, self.uiLocationDialog.locationInput.text() + '\n')
+
+            f = open(self.configFile, "w")
+            contents = "".join(contents)
+            f.write(contents)
+            f.close()
+        self.getComboBoxes()
+
+    def removingTrainer(self):
+        pass
+
+    def addingTrainer(self):
+        self.trainerDialog = QDialog()
+        self.uiTrainerDialog = Ui_TrainerDialog()
+        self.uiTrainerDialog.setupUi(self.trainerDialog)
+        self.trainerDialog.show()
+        rsp = self.trainerDialog.exec_()
+        if rsp == 1:
+            f = open(self.configFile, "r")
+            contents = f.readlines()
+            f.close()
+
+            for i in contents:
+                if 'trainer' in i:
+                    index = contents.index(i)
+                elif 'location' in i:
+                    continue
+            if not self.uiTrainerDialog.trainerInput.text() in contents:
+                contents.insert(index + 1, self.uiTrainerDialog.trainerInput.text() + '\n')
+
+            f = open(self.configFile, "w")
+            contents = "".join(contents)
+            f.write(contents)
+            f.close()
+        self.getComboBoxes()
+
+    def getComboBoxes(self):
+        AllItemsTrainer = [self.ui.trainerCombo.itemText(i) for i in range(self.ui.trainerCombo.count())]
+        AllItemsLocation = [self.ui.locationCombo.itemText(i) for i in range(self.ui.locationCombo.count())]
+
+        with open('config.txt', 'r') as file:
+            x = int
+            b = int
+            y = int
+            lines = file.readlines()
+            for i in lines:
+                if 'trainer' in i: x = lines.index(i)
+                if len(i.strip()) == 0: b = lines.index(i)
+                if 'location' in i: y = lines.index(i)
+
+            for j in lines[x + 1:b]:
+                if not j.strip() in AllItemsTrainer:
+                    self.ui.trainerCombo.addItem(j.strip())
+                else: continue
+
+            for j in lines[y + 1:]:
+                if not j.strip() in AllItemsLocation:
+                    self.ui.locationCombo.addItem(j.strip())
+                else: continue
+
+
+
     def addWatermark(self):
 
         self.ui.participants.clearSelection()
@@ -74,12 +170,10 @@ class MainWindow(QMainWindow):
             print(s)
 
     def saveFiles(self):
-        file = str(QFileDialog.getExistingDirectory(self, "Select Directory")+'/')
+        file = str(QFileDialog.getExistingDirectory(self, "Select Directory") + '/')
         temp = 'temp/'
         onlyfiles = [f for f in listdir(temp) if isfile(join(temp, f))]
         for i in onlyfiles:
-            #print(temp + i)
-            #print(file + i)
             shutil.move(temp + i, file + i)
 
     def addCell(self):
@@ -104,7 +198,6 @@ class Participant():
 
 class MWorker(QThread):
     progress = pyqtSignal(float)
-
     finish = pyqtSignal(str)
 
     def __init__(self, path, filename, plist):
@@ -155,16 +248,26 @@ class MWorker(QThread):
 
             newfile = self.currentFile.replace('.pdf', '')
 
-            #outputStream = open('output.pdf', 'wb')
-            outputStream = open('temp/' + str(newfile) + '_' + str(participant.email) + '.pdf', 'wb')
+            outputStream = open('temp/mat/' + str(newfile) + '_' + str(participant.email) + '.pdf', 'wb')
             output.write(outputStream)
             outputStream.close()
-            #compress('output.pdf', 'temp/' + str(newfile) + '_' + str(participant.email) + '.pdf', power=0)
-            #os.remove('output.pdf')
+            # compress('output.pdf', 'temp/' + str(newfile) + '_' + str(participant.email) + '.pdf', power=0)
+            # os.remove('output.pdf')
 
         self.finish.emit('finished')
         count = float(0)
         self.progress.emit(count)
+
+
+class CWorker(QThread):
+    progress = pyqtSignal(float)
+    finish = pyqtSignal(str)
+
+    def __init__(self, fname, lname, date, location, path, filename):
+        QThread.__init__(self)
+
+    def run(self):
+        pass
 
 
 window = MainWindow()
@@ -172,6 +275,5 @@ window.show()
 
 sys.exit(app.exec_())
 
-
-#TODO
-#programm nicht schließbar, ohne dass man save bei Material/Certificate geklickt hat
+# TODO
+# programm nicht schließbar, ohne dass man save bei Material/Certificate geklickt hat
