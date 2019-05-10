@@ -62,7 +62,7 @@ class MainWindow(QMainWindow):
         else:
             date = dateTo
 
-        self.getParticipants()
+
         path = self.certificatePath
         filename = self.ui.certCombo.currentText()
         location = self.ui.locationCombo.currentText()
@@ -300,7 +300,13 @@ class MainWindow(QMainWindow):
                 self.participant.firstname = self.ui.participants.item(i, 0).text()
                 self.participant.lastname = self.ui.participants.item(i, 1).text()
                 self.participant.email = self.ui.participants.item(i, 2).text()
-                self.participantList.append(self.participant)
+ #TODO
+            for j in self.participantList:
+                if j.email == self.participant.email:
+
+                    print('schon drin')
+                    self.participantList.append(self.participant)
+            else: continue
 
         for s in self.participantList:
             print(s)
@@ -403,6 +409,7 @@ class CWorker(QThread):
     def run(self):
         for i in self.participants:
             print(i)
+        print('ENDE')
         # generateCertificate()
 
 

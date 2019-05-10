@@ -1,31 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4054586e-83c3-4709-a95e-6c4b1870f80e" name="Default Changelist" comment="Location and Trainer added">
+    <list default="true" id="4054586e-83c3-4709-a95e-6c4b1870f80e" name="Default Changelist" comment="generate Certificate method addded to main">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.txt" beforeDir="false" afterPath="$PROJECT_DIR$/config.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/files/new_version/MindSphere_Academy_attendance_certificate_Basic_application_Development_training_V2.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/files/Certificates/MindSphere_Academy_attendance_certificate_Basic_application_Development_training_V2.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/files/new_version/MindSphere_Academy_attendance_certificate_Edge_Analytics_training_V2.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/files/Certificates/MindSphere_Academy_attendance_certificate_Edge_Analytics_training_V2.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/files/new_version/MindSphere_Academy_attendance_certificate_Introduction_Training_V2.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/files/Certificates/MindSphere_Academy_attendance_certificate_Introduction_Training_V2.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/files/new_version/MindSphere_Academy_attendance_certificate_Introduction_Webinar_V2.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/files/Certificates/MindSphere_Academy_attendance_certificate_Introduction_Webinar_V2.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/files/new_version/MindSphere_Academy_attendance_certificate_MC_API_training_V2.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/files/Certificates/MindSphere_Academy_attendance_certificate_MC_API_training_V2.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/files/new_version/MindSphere_Academy_attendance_certificate_MC_Device_training_V2.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/files/Certificates/MindSphere_Academy_attendance_certificate_MC_Device_training_V2.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/files/new_version/MindSphere_Academy_attendance_certificate_MC_Integration_training_V2.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/files/Certificates/MindSphere_Academy_attendance_certificate_MC_Integration_training_V2.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/files/new_version/MindSphere_Academy_attendance_certificate_MC_IoT_Extension_V2.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/files/Certificates/MindSphere_Academy_attendance_certificate_MC_IoT_Extension_V2.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/files/new_version/MindSphere_Academy_attendance_certificate_MC_LIB_training_V2.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/files/Certificates/MindSphere_Academy_attendance_certificate_MC_LIB_training_V2.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/Siemens_Sans/SISAN03.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/Siemens_Sans/SISAN06.TTF" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/Siemens_Sans/SISAN08.TTF" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/Siemens_Sans/SISAN33.TTF" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/Siemens_Sans/SISAN36.TTF" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/Siemens_Sans/SISAN38.TTF" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/addLocationDialog.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui/addLocationDialog.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/addLocationDialog.ui" beforeDir="false" afterPath="$PROJECT_DIR$/ui/addLocationDialog.ui" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/addTrainerDialog.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui/addTrainerDialog.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/addTrainerDialog.ui" beforeDir="false" afterPath="$PROJECT_DIR$/ui/addTrainerDialog.ui" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/mainwindow.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui/mainwindow.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/mainwindow.ui" beforeDir="false" afterPath="$PROJECT_DIR$/ui/mainwindow.ui" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/misc/Siemens_Sans/.SISAN03.ttf.icloud" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/misc/Siemens_Sans/.SISAN06.TTF.icloud" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -38,11 +18,24 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="463">
-              <caret line="94" column="29" lean-forward="true" selection-start-line="94" selection-start-column="29" selection-end-line="94" selection-end-column="29" />
+            <state relative-caret-position="310">
+              <caret line="301" column="52" selection-start-line="301" selection-start-column="52" selection-end-line="301" selection-end-column="52" />
               <folding>
                 <element signature="e#0#6#0" expanded="true" />
+                <element signature="e#2219#2332#0" />
+                <element signature="e#3027#3983#0" />
                 <element signature="e#1854#2711#0" />
+                <element signature="e#3275#3926#0" />
+                <element signature="e#4062#5077#0" />
+                <element signature="e#2795#3641#0" />
+                <element signature="e#5930#6779#0" />
+                <element signature="e#5209#5587#0" />
+                <element signature="e#5472#5692#0" />
+                <element signature="e#5308#5498#0" />
+                <element signature="e#5282#5320#0" />
+                <element signature="e#5959#6202#0" />
+                <element signature="e#6235#6362#0" />
+                <element signature="e#6779#9053#0" />
               </folding>
             </state>
           </provider>
@@ -101,8 +94,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/generateCertificate.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="536">
-              <caret line="39" column="51" selection-start-line="39" selection-start-column="51" selection-end-line="39" selection-end-column="51" />
+            <state relative-caret-position="237">
+              <caret line="22" column="22" lean-forward="true" selection-start-line="22" selection-start-column="22" selection-end-line="22" selection-end-column="22" />
               <folding>
                 <element signature="e#0#47#0" expanded="true" />
               </folding>
@@ -144,6 +137,8 @@
       <find>AllItemsTrainer</find>
       <find>AllItemsLoca</find>
       <find>rowCount</find>
+      <find>getParticipants</find>
+      <find>GETparticipants</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -212,6 +207,12 @@
               <item name="TrainingTool" type="b2602c69:ProjectViewProjectNode" />
               <item name="TrainingTool" type="462c0819:PsiDirectoryNode" />
               <item name="misc" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TrainingTool" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TrainingTool" type="462c0819:PsiDirectoryNode" />
+              <item name="misc" type="462c0819:PsiDirectoryNode" />
+              <item name="Siemens_Sans" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -519,26 +520,40 @@
       <option name="project" value="LOCAL" />
       <updated>1557362919830</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Location and Trainer added">
+      <created>1557488577637</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1557488577637</updated>
+    </task>
+    <task id="LOCAL-00023" summary="generate Certificate method addded to main">
+      <created>1557489442566</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1557489442566</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="947" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21157324" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21157324" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49911714" visible="true" weight="0.28304094" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49849308" visible="true" weight="0.28304094" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49933466" weight="0.3296" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.3288" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50088286" side_tool="true" weight="0.3288" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5015069" side_tool="true" weight="0.28304094" />
       <window_info anchor="bottom" id="Python Console" order="10" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -571,7 +586,8 @@
     <MESSAGE value="update" />
     <MESSAGE value="create script for certificates" />
     <MESSAGE value="Location and Trainer added" />
-    <option name="LAST_COMMIT_MESSAGE" value="Location and Trainer added" />
+    <MESSAGE value="generate Certificate method addded to main" />
+    <option name="LAST_COMMIT_MESSAGE" value="generate Certificate method addded to main" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/compressor.py">
@@ -656,16 +672,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/generateCertificate.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="536">
-          <caret line="39" column="51" selection-start-line="39" selection-start-column="51" selection-end-line="39" selection-end-column="51" />
-          <folding>
-            <element signature="e#0#47#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ui/LocationListDialog.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -676,13 +682,36 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/generateCertificate.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="237">
+          <caret line="22" column="22" lean-forward="true" selection-start-line="22" selection-start-column="22" selection-end-line="22" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#47#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="463">
-          <caret line="94" column="29" lean-forward="true" selection-start-line="94" selection-start-column="29" selection-end-line="94" selection-end-column="29" />
+        <state relative-caret-position="310">
+          <caret line="301" column="52" selection-start-line="301" selection-start-column="52" selection-end-line="301" selection-end-column="52" />
           <folding>
             <element signature="e#0#6#0" expanded="true" />
+            <element signature="e#2219#2332#0" />
+            <element signature="e#3027#3983#0" />
             <element signature="e#1854#2711#0" />
+            <element signature="e#3275#3926#0" />
+            <element signature="e#4062#5077#0" />
+            <element signature="e#2795#3641#0" />
+            <element signature="e#5930#6779#0" />
+            <element signature="e#5209#5587#0" />
+            <element signature="e#5472#5692#0" />
+            <element signature="e#5308#5498#0" />
+            <element signature="e#5282#5320#0" />
+            <element signature="e#5959#6202#0" />
+            <element signature="e#6235#6362#0" />
+            <element signature="e#6779#9053#0" />
           </folding>
         </state>
       </provider>
