@@ -36,7 +36,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="materialTab">
      <attribute name="title">
@@ -144,7 +144,7 @@
         <x>10</x>
         <y>10</y>
         <width>664</width>
-        <height>223</height>
+        <height>228</height>
        </rect>
       </property>
       <layout class="QGridLayout" name="gridLayout_3">
@@ -242,12 +242,12 @@
           </widget>
          </item>
          <item>
-          <widget class="QLabel" name="label_12">
+          <widget class="QCheckBox" name="checkBoxFrom">
+           <property name="layoutDirection">
+            <enum>Qt::RightToLeft</enum>
+           </property>
            <property name="text">
             <string>from</string>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
            </property>
           </widget>
          </item>

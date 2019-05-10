@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4054586e-83c3-4709-a95e-6c4b1870f80e" name="Default Changelist" comment="generate Certificate method addded to main">
+    <list default="true" id="4054586e-83c3-4709-a95e-6c4b1870f80e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/generateCertificate.py" beforeDir="false" afterPath="$PROJECT_DIR$/generateCertificate.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/Siemens_Sans/.SISAN03.ttf.icloud" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/Siemens_Sans/.SISAN06.TTF.icloud" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/mainwindow.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui/mainwindow.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/mainwindow.ui" beforeDir="false" afterPath="$PROJECT_DIR$/ui/mainwindow.ui" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,8 +19,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="310">
-              <caret line="301" column="52" selection-start-line="301" selection-start-column="52" selection-end-line="301" selection-end-column="52" />
+            <state relative-caret-position="291">
+              <caret line="397" lean-forward="true" selection-start-line="397" selection-end-line="397" />
               <folding>
                 <element signature="e#0#6#0" expanded="true" />
                 <element signature="e#2219#2332#0" />
@@ -29,10 +30,12 @@
                 <element signature="e#4062#5077#0" />
                 <element signature="e#2795#3641#0" />
                 <element signature="e#5930#6779#0" />
+                <element signature="e#4670#5004#0" />
                 <element signature="e#5209#5587#0" />
                 <element signature="e#5472#5692#0" />
                 <element signature="e#5308#5498#0" />
                 <element signature="e#5282#5320#0" />
+                <element signature="e#10680#11161#0" />
                 <element signature="e#5959#6202#0" />
                 <element signature="e#6235#6362#0" />
                 <element signature="e#6779#9053#0" />
@@ -94,8 +97,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/generateCertificate.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="237">
-              <caret line="22" column="22" lean-forward="true" selection-start-line="22" selection-start-column="22" selection-end-line="22" selection-end-column="22" />
+            <state relative-caret-position="321">
+              <caret line="23" column="24" lean-forward="true" selection-start-line="23" selection-start-column="24" selection-end-line="23" selection-end-column="24" />
               <folding>
                 <element signature="e#0#47#0" expanded="true" />
               </folding>
@@ -161,17 +164,18 @@
         <option value="$PROJECT_DIR$/removeFiles.py" />
         <option value="$PROJECT_DIR$/demo.py" />
         <option value="$PROJECT_DIR$/ui/mainwindow.py" />
-        <option value="$PROJECT_DIR$/generateCertificate.py" />
         <option value="$PROJECT_DIR$/config.py" />
         <option value="$PROJECT_DIR$/configTest.py" />
         <option value="$PROJECT_DIR$/config.txt" />
         <option value="$PROJECT_DIR$/ui/addLocationDialog.py" />
         <option value="$PROJECT_DIR$/ui/addTrainerDialog.py" />
+        <option value="$PROJECT_DIR$/classTesting.py" />
+        <option value="$PROJECT_DIR$/generateCertificate.py" />
         <option value="$PROJECT_DIR$/main.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="y" value="23" />
     <option name="width" value="1680" />
     <option name="height" value="947" />
@@ -202,17 +206,6 @@
               <item name="TrainingTool" type="462c0819:PsiDirectoryNode" />
               <item name="files" type="462c0819:PsiDirectoryNode" />
               <item name="Material" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TrainingTool" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TrainingTool" type="462c0819:PsiDirectoryNode" />
-              <item name="misc" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TrainingTool" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TrainingTool" type="462c0819:PsiDirectoryNode" />
-              <item name="misc" type="462c0819:PsiDirectoryNode" />
-              <item name="Siemens_Sans" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -262,6 +255,27 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/build.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="classTesting" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="TrainingTool" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/classTesting.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -356,6 +370,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.classTesting" />
         <item itemvalue="Python.configTest" />
         <item itemvalue="Python.generateCertificate" />
         <item itemvalue="Python.demo" />
@@ -534,11 +549,18 @@
       <option name="project" value="LOCAL" />
       <updated>1557489442566</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="generate Certificate method addded to main">
+      <created>1557489943687</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1557489943687</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1680" height="947" extended-state="0" />
+    <frame x="-1" y="23" width="1680" height="947" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21157324" />
@@ -580,6 +602,7 @@
     </layout-to-restore>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="CHECK_NEW_TODO" value="false" />
     <MESSAGE value="inital upload" />
     <MESSAGE value="add watermark to all pdf pages" />
     <MESSAGE value="finished material generator" />
@@ -682,10 +705,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/classTesting.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/generateCertificate.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="237">
-          <caret line="22" column="22" lean-forward="true" selection-start-line="22" selection-start-column="22" selection-end-line="22" selection-end-column="22" />
+        <state relative-caret-position="321">
+          <caret line="23" column="24" lean-forward="true" selection-start-line="23" selection-start-column="24" selection-end-line="23" selection-end-column="24" />
           <folding>
             <element signature="e#0#47#0" expanded="true" />
           </folding>
@@ -694,8 +724,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="310">
-          <caret line="301" column="52" selection-start-line="301" selection-start-column="52" selection-end-line="301" selection-end-column="52" />
+        <state relative-caret-position="291">
+          <caret line="397" lean-forward="true" selection-start-line="397" selection-end-line="397" />
           <folding>
             <element signature="e#0#6#0" expanded="true" />
             <element signature="e#2219#2332#0" />
@@ -705,10 +735,12 @@
             <element signature="e#4062#5077#0" />
             <element signature="e#2795#3641#0" />
             <element signature="e#5930#6779#0" />
+            <element signature="e#4670#5004#0" />
             <element signature="e#5209#5587#0" />
             <element signature="e#5472#5692#0" />
             <element signature="e#5308#5498#0" />
             <element signature="e#5282#5320#0" />
+            <element signature="e#10680#11161#0" />
             <element signature="e#5959#6202#0" />
             <element signature="e#6235#6362#0" />
             <element signature="e#6779#9053#0" />

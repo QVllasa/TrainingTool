@@ -38,7 +38,6 @@ class MainWindow(QMainWindow):
         self.ui.setupUi(self)
         self.getComboBoxes()
 
-        self.getComboBoxes()
         self.ui.addPart.clicked.connect(self.addCell)
         self.ui.saveMat.clicked.connect(self.saveFiles)
         self.ui.addWat.clicked.connect(self.addWatermark)
@@ -61,7 +60,6 @@ class MainWindow(QMainWindow):
             date = dateFrom + '.' + ' - ' + dateTo
         else:
             date = dateTo
-
 
         path = self.certificatePath
         filename = self.ui.certCombo.currentText()
@@ -294,22 +292,14 @@ class MainWindow(QMainWindow):
 
     def getParticipants(self):
         self.ui.participants.setEnabled(False)
+        self.participantList =[]
         for i in range(0, self.ui.participants.rowCount()):
-            self.participant = Participant()
             if self.ui.participants.item(i, 2):
-                self.participant.firstname = self.ui.participants.item(i, 0).text()
-                self.participant.lastname = self.ui.participants.item(i, 1).text()
-                self.participant.email = self.ui.participants.item(i, 2).text()
- #TODO
-            for j in self.participantList:
-                if j.email == self.participant.email:
+                firstname = self.ui.participants.item(i, 0).text()
+                lastname = self.ui.participants.item(i, 1).text()
+                email = self.ui.participants.item(i, 2).text()
+                self.participantList.append(Participant(firstname, lastname, email))
 
-                    print('schon drin')
-                    self.participantList.append(self.participant)
-            else: continue
-
-        for s in self.participantList:
-            print(s)
 
     def saveFiles(self):
         file = str(QFileDialog.getExistingDirectory(self, "Select Directory") + '/')
@@ -325,14 +315,11 @@ class MainWindow(QMainWindow):
 
 
 class Participant():
-    def __init__(self):
-        self.firstname = ''
-        self.lastname = ''
-        self.email = ''
+    def __init__(self, firstname, lastname, email):
+        self.firstname, self.lastname, self.email = firstname, lastname, email
 
     def __repr__(self):
-        return self.firstname + '  ' + self.lastname + '  ' + self.email
-
+        return self.firstname+' '+self.lastname+' '+self.email
 
 class MWorker(QThread):
     progress = pyqtSignal(float)
@@ -403,13 +390,15 @@ class CWorker(QThread):
 
     def __init__(self, participants, date, location, path, filename):
         QThread.__init__(self)
-
         self.participants = participants
+        self.date = date
+        self.location = location
+        self.path = path
+        self.filename = filename
 
     def run(self):
-        for i in self.participants:
-            print(i)
-        print('ENDE')
+        for participant in self.participants:
+            generateCertificate(participant.firstname, participant.lastname, self.date, self.location, self.path, self.filename)
         # generateCertificate()
 
 
