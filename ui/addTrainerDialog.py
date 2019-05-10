@@ -10,12 +10,12 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 
 class Ui_TrainerDialog(object):
-    def setupUi(self, Dialog):
-        Dialog.setObjectName("Dialog")
-        Dialog.resize(400, 103)
-        Dialog.setMinimumSize(QtCore.QSize(400, 103))
-        Dialog.setMaximumSize(QtCore.QSize(400, 103))
-        self.gridLayoutWidget = QtWidgets.QWidget(Dialog)
+    def setupUi(self, TrainerDialog):
+        TrainerDialog.setObjectName("TrainerDialog")
+        TrainerDialog.resize(400, 103)
+        TrainerDialog.setMinimumSize(QtCore.QSize(400, 103))
+        TrainerDialog.setMaximumSize(QtCore.QSize(400, 103))
+        self.gridLayoutWidget = QtWidgets.QWidget(TrainerDialog)
         self.gridLayoutWidget.setGeometry(QtCore.QRect(10, 10, 371, 80))
         self.gridLayoutWidget.setObjectName("gridLayoutWidget")
         self.gridLayout = QtWidgets.QGridLayout(self.gridLayoutWidget)
@@ -31,13 +31,13 @@ class Ui_TrainerDialog(object):
         self.buttonBox.setObjectName("buttonBox")
         self.gridLayout.addWidget(self.buttonBox, 1, 0, 1, 1)
 
-        self.retranslateUi(Dialog)
-        self.buttonBox.accepted.connect(Dialog.accept)
-        self.buttonBox.rejected.connect(Dialog.reject)
-        QtCore.QMetaObject.connectSlotsByName(Dialog)
+        self.retranslateUi(TrainerDialog)
+        self.buttonBox.accepted.connect(TrainerDialog.accept)
+        self.buttonBox.rejected.connect(TrainerDialog.reject)
+        QtCore.QMetaObject.connectSlotsByName(TrainerDialog)
 
-    def retranslateUi(self, Dialog):
+    def retranslateUi(self, TrainerDialog):
         _translate = QtCore.QCoreApplication.translate
-        Dialog.setWindowTitle(_translate("Dialog", "Add Trainer"))
+        TrainerDialog.setWindowTitle(_translate("TrainerDialog", "Add Trainer"))
 
 

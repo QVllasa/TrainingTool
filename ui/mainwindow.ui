@@ -36,7 +36,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="materialTab">
      <attribute name="title">
@@ -123,6 +123,13 @@
        </item>
        <item row="1" column="1" colspan="3">
         <widget class="QComboBox" name="matCombo"/>
+       </item>
+       <item row="2" column="0">
+        <widget class="QPushButton" name="addMaterial">
+         <property name="text">
+          <string>Add Material</string>
+         </property>
+        </widget>
        </item>
       </layout>
      </widget>

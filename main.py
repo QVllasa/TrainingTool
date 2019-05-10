@@ -1,5 +1,7 @@
+import glob
 import sys
 import shutil
+import os
 
 from os import listdir
 from os.path import isfile, join
@@ -10,6 +12,8 @@ from qtpy.QtWidgets import *
 from ui.mainwindow import Ui_MainWindow
 from ui.addLocationDialog import Ui_LocationDialog
 from ui.addTrainerDialog import Ui_TrainerDialog
+from ui.LocationListDialog import Ui_RemoveLocationDialog
+from ui.trainerListDialog import Ui_RemoveTrainerDialog
 from PyPDF4 import PdfFileWriter, PdfFileReader
 from io import BytesIO
 from reportlab.pdfgen import canvas
@@ -25,20 +29,25 @@ class MainWindow(QMainWindow):
 
         self.configFile = 'config.txt'
         self.currentFile = ''
-        self.path = 'files/Material/PDF/'
+        self.materialPath = 'files/Material/PDF/'
+        self.certificatePath = 'files/Certificates/'
         self.participantList = []
 
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         self.getComboBoxes()
 
-        self.addFiles()
+        self.getComboBoxes()
         self.ui.addPart.clicked.connect(self.addCell)
         self.ui.saveMat.clicked.connect(self.saveFiles)
         self.ui.addWat.clicked.connect(self.addWatermark)
         self.ui.generateCert.clicked.connect(self.genCertificate)
         self.ui.addLocation.clicked.connect(self.addingLocation)
         self.ui.addTrainer.clicked.connect(self.addingTrainer)
+        self.ui.addMaterial.clicked.connect(self.addingMaterial)
+        self.ui.removeTrainer.clicked.connect(self.removingTrainer)
+        self.ui.removeLocation.clicked.connect(self.removingLocation)
+
 
     #   print(glob.glob('files/Material/*.pdf'))
 
@@ -46,7 +55,7 @@ class MainWindow(QMainWindow):
         dateTo = self.ui.certDateTo.text()
         dateFrom = self.ui.certDateFrom.text()
 
-        print('date '+dateFrom+'.'+' - '+dateTo)
+        print('date ' + dateFrom + '.' + ' - ' + dateTo)
         # self.getParticipants()
         # self.currentFile = self.ui.matCombo.currentText()
         #
@@ -56,7 +65,50 @@ class MainWindow(QMainWindow):
         # self.obj.start()
 
     def removingLocation(self):
-        pass
+        self.remLocationDialog = QDialog()
+        self.uiRemLocationDialog = Ui_RemoveLocationDialog()
+        self.uiRemLocationDialog.setupUi(self.remLocationDialog)
+        self.remLocationDialog.show()
+
+        AllItemsLocation = [self.ui.locationCombo.itemText(i) for i in range(self.ui.locationCombo.count())]
+        for i in AllItemsLocation:
+            row = self.uiRemLocationDialog.locationList.rowCount()
+            self.uiRemLocationDialog.locationList.insertRow(row)
+            self.uiRemLocationDialog.locationList.setItem(row, 0, QTableWidgetItem(str(i)))
+
+        self.uiRemLocationDialog.removeButton.clicked.connect(self.removeLocationItem)
+        self.uiRemLocationDialog.cancelButton.clicked.connect(self.remLocationDialog.reject)
+
+        self.getComboBoxes()
+
+    def removeLocationItem(self):
+        row = self.uiRemLocationDialog.locationList.rowCount()
+        if not row == None:
+            self.ui.locationCombo.clear()
+            item = self.uiRemLocationDialog.locationList.currentItem().text()
+            f = open(self.configFile, "r")
+            contents = f.readlines()
+            f.close()
+            print('remove pressed')
+
+            for i in contents:
+                if item in i:
+                    contents.remove(i)
+                    for j in range(0, row):
+                        if item in self.uiRemLocationDialog.locationList.item(j, 0).text():
+                            print(item)
+
+                else: continue
+
+            selected = self.uiRemLocationDialog.locationList.currentRow()
+            self.uiRemLocationDialog.locationList.removeRow(selected)
+
+            f = open(self.configFile, "w")
+            contents = "".join(contents)
+            f.write(contents)
+            f.close()
+        self.getComboBoxes()
+
 
     def addingLocation(self):
         self.locationDialog = QDialog()
@@ -84,7 +136,49 @@ class MainWindow(QMainWindow):
         self.getComboBoxes()
 
     def removingTrainer(self):
-        pass
+        self.remTrainerDialog = QDialog()
+        self.uiRemTrainerDialog = Ui_RemoveTrainerDialog()
+        self.uiRemTrainerDialog.setupUi(self.remTrainerDialog)
+        self.remTrainerDialog.show()
+
+        AllItemsTrainer = [self.ui.trainerCombo.itemText(i) for i in range(self.ui.trainerCombo.count())]
+        for i in AllItemsTrainer:
+            row = self.uiRemTrainerDialog.trainerList.rowCount()
+            self.uiRemTrainerDialog.trainerList.insertRow(row)
+            self.uiRemTrainerDialog.trainerList.setItem(row, 0, QTableWidgetItem(str(i)))
+
+        self.uiRemTrainerDialog.removeButton.clicked.connect(self.removeTrainerItem)
+        self.uiRemTrainerDialog.cancelButton.clicked.connect(self.remTrainerDialog.reject)
+
+        self.getComboBoxes()
+
+
+    def removeTrainerItem(self):
+        row = self.uiRemTrainerDialog.trainerList.rowCount()
+        if not row == None:
+            self.ui.trainerCombo.clear()
+            item = self.uiRemTrainerDialog.trainerList.currentItem().text()
+            f = open(self.configFile, "r")
+            contents = f.readlines()
+            f.close()
+            print('remove pressed')
+
+            for i in contents:
+                if item in i:
+                    for j in range(0, row):
+                        if item in self.uiRemTrainerDialog.trainerList.item(j, 0).text():
+                            print(item)
+                            contents.remove(i)
+                else: continue
+
+            selected = self.uiRemTrainerDialog.trainerList.currentRow()
+            self.uiRemTrainerDialog.trainerList.removeRow(selected)
+
+            f = open(self.configFile, "w")
+            contents = "".join(contents)
+            f.write(contents)
+            f.close()
+        self.getComboBoxes()
 
     def addingTrainer(self):
         self.trainerDialog = QDialog()
@@ -112,6 +206,14 @@ class MainWindow(QMainWindow):
         self.getComboBoxes()
 
     def getComboBoxes(self):
+        self.ui.matCombo.clear()
+        self.ui.certCombo.clear()
+
+
+        certificateFiles = [f for f in listdir(self.certificatePath) if isfile(join(self.certificatePath, f))]
+        materialFiles = [f for f in listdir(self.materialPath) if isfile(join(self.materialPath, f))]
+        self.ui.matCombo.addItems(materialFiles)
+        self.ui.certCombo.addItems(certificateFiles)
         AllItemsTrainer = [self.ui.trainerCombo.itemText(i) for i in range(self.ui.trainerCombo.count())]
         AllItemsLocation = [self.ui.locationCombo.itemText(i) for i in range(self.ui.locationCombo.count())]
 
@@ -143,10 +245,35 @@ class MainWindow(QMainWindow):
         self.getParticipants()
         self.currentFile = self.ui.matCombo.currentText()
 
-        self.obj = MWorker(self.path, self.currentFile, self.participantList)
+        self.obj = MWorker(self.materialPath, self.currentFile, self.participantList)
         self.obj.finish.connect(self.disableEnable)
         self.obj.progress.connect(self.progressing)
         self.obj.start()
+
+    def addingMaterial(self):
+        dialog = QFileDialog(self)
+        dialog.setFileMode(QFileDialog.AnyFile)
+        dialog.setLabelText(QFileDialog.Accept, 'import')
+        if dialog.exec_():
+            fname = dialog.selectedFiles()
+
+        path, name = os.path.split(fname[0])
+        if fname[0]:
+            shutil.copyfile(fname[0], self.materialPath + name)
+        self.getComboBoxes()
+
+
+    def addingCertificate(self):
+        dialog = QFileDialog(self)
+        dialog.setFileMode(QFileDialog.AnyFile)
+        dialog.setLabelText(QFileDialog.Accept, 'import')
+        if dialog.exec_():
+            fname = dialog.selectedFiles()
+
+        path, name = os.path.split(fname[0])
+        if fname[0]:
+            shutil.copyfile(fname[0], self.certificatePath + name)
+        self.getComboBoxes()
 
     def disableEnable(self, str):
         if str == 'begin':
@@ -169,8 +296,6 @@ class MainWindow(QMainWindow):
                 self.participant.email = self.ui.participants.item(i, 2).text()
                 self.participantList.append(self.participant)
 
-
-
         for s in self.participantList:
             print(s)
 
@@ -186,9 +311,7 @@ class MainWindow(QMainWindow):
         row = self.ui.participants.rowCount()
         self.ui.participants.insertRow(row)
 
-    def addFiles(self):
-        self.onlyfiles = [f for f in listdir(self.path) if isfile(join(self.path, f))]
-        self.ui.matCombo.addItems(self.onlyfiles)
+
 
 
 class Participant():
@@ -210,7 +333,7 @@ class MWorker(QThread):
 
         self.currentFile = filename
         self.plist = plist
-        self.path = path
+        self.materialPath = path
 
     def run(self):
         self.finish.emit('begin')
@@ -220,7 +343,7 @@ class MWorker(QThread):
         for participant in self.plist:
 
             self.buffer = BytesIO()
-            self.file = open(str(self.path) + str(self.currentFile), 'rb')
+            self.file = open(str(self.materialPath) + str(self.currentFile), 'rb')
             self.material = PdfFileReader(self.file)
             self.x = float(self.material.getPage(0).mediaBox[-2])
             self.y = float(self.material.getPage(0).mediaBox[-1])

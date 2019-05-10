@@ -10,12 +10,12 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 
 class Ui_LocationDialog(object):
-    def setupUi(self, Dialog):
-        Dialog.setObjectName("Dialog")
-        Dialog.resize(400, 103)
-        Dialog.setMinimumSize(QtCore.QSize(400, 103))
-        Dialog.setMaximumSize(QtCore.QSize(400, 103))
-        self.gridLayoutWidget = QtWidgets.QWidget(Dialog)
+    def setupUi(self, LocationDialog):
+        LocationDialog.setObjectName("LocationDialog")
+        LocationDialog.resize(400, 103)
+        LocationDialog.setMinimumSize(QtCore.QSize(400, 103))
+        LocationDialog.setMaximumSize(QtCore.QSize(400, 103))
+        self.gridLayoutWidget = QtWidgets.QWidget(LocationDialog)
         self.gridLayoutWidget.setGeometry(QtCore.QRect(10, 10, 371, 80))
         self.gridLayoutWidget.setObjectName("gridLayoutWidget")
         self.gridLayout = QtWidgets.QGridLayout(self.gridLayoutWidget)
@@ -31,13 +31,13 @@ class Ui_LocationDialog(object):
         self.buttonBox.setObjectName("buttonBox")
         self.gridLayout.addWidget(self.buttonBox, 1, 0, 1, 1)
 
-        self.retranslateUi(Dialog)
-        self.buttonBox.accepted.connect(Dialog.accept)
-        self.buttonBox.rejected.connect(Dialog.reject)
-        QtCore.QMetaObject.connectSlotsByName(Dialog)
+        self.retranslateUi(LocationDialog)
+        self.buttonBox.accepted.connect(LocationDialog.accept)
+        self.buttonBox.rejected.connect(LocationDialog.reject)
+        QtCore.QMetaObject.connectSlotsByName(LocationDialog)
 
-    def retranslateUi(self, Dialog):
+    def retranslateUi(self, LocationDialog):
         _translate = QtCore.QCoreApplication.translate
-        Dialog.setWindowTitle(_translate("Dialog", "Add  Location"))
+        LocationDialog.setWindowTitle(_translate("LocationDialog", "Add  Location"))
 
 

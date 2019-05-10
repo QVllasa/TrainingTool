@@ -64,6 +64,9 @@ class Ui_MainWindow(object):
         self.matCombo = QtWidgets.QComboBox(self.gridLayoutWidget_2)
         self.matCombo.setObjectName("matCombo")
         self.gridLayout_2.addWidget(self.matCombo, 1, 1, 1, 3)
+        self.addMaterial = QtWidgets.QPushButton(self.gridLayoutWidget_2)
+        self.addMaterial.setObjectName("addMaterial")
+        self.gridLayout_2.addWidget(self.addMaterial, 2, 0, 1, 1)
         self.tabWidget.addTab(self.materialTab, "")
         self.certificateTab = QtWidgets.QWidget()
         self.certificateTab.setObjectName("certificateTab")
@@ -210,7 +213,7 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusBar)
 
         self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(1)
+        self.tabWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -226,6 +229,7 @@ class Ui_MainWindow(object):
         item.setText(_translate("MainWindow", "E-Mail"))
         self.label_4.setText(_translate("MainWindow", "Select Material"))
         self.addPart.setText(_translate("MainWindow", "Add Participant"))
+        self.addMaterial.setText(_translate("MainWindow", "Add Material"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.materialTab), _translate("MainWindow", "1. Material Generator"))
         self.addTrainer.setText(_translate("MainWindow", "Add Trainer"))
         self.removeTrainer.setText(_translate("MainWindow", "Remove Trainer"))
