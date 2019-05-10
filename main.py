@@ -18,6 +18,7 @@ from PyPDF4 import PdfFileWriter, PdfFileReader
 from io import BytesIO
 from reportlab.pdfgen import canvas
 from reportlab.lib.colors import Color
+from generateCertificate import generateCertificate
 from compressor import compress
 
 app = QApplication(sys.argv)
@@ -48,21 +49,28 @@ class MainWindow(QMainWindow):
         self.ui.removeTrainer.clicked.connect(self.removingTrainer)
         self.ui.removeLocation.clicked.connect(self.removingLocation)
 
-
     #   print(glob.glob('files/Material/*.pdf'))
 
     def genCertificate(self):
+
+        self.getParticipants()
         dateTo = self.ui.certDateTo.text()
         dateFrom = self.ui.certDateFrom.text()
 
-        print('date ' + dateFrom + '.' + ' - ' + dateTo)
-        # self.getParticipants()
-        # self.currentFile = self.ui.matCombo.currentText()
-        #
-        # self.obj = CWorker(self.participant.firstname, self.participant.lastname, date, )
-        # self.obj.finish.connect(self.disableEnable)
-        # self.obj.progress.connect(self.progressing)
-        # self.obj.start()
+        if dateFrom:
+            date = dateFrom + '.' + ' - ' + dateTo
+        else:
+            date = dateTo
+
+        self.getParticipants()
+        path = self.certificatePath
+        filename = self.ui.certCombo.currentText()
+        location = self.ui.locationCombo.currentText()
+
+        self.obj = CWorker(self.participantList, date, location, path, filename)
+        self.obj.finish.connect(self.disableEnable)
+        self.obj.progress.connect(self.progressing)
+        self.obj.start()
 
     def removingLocation(self):
         self.remLocationDialog = QDialog()
@@ -98,7 +106,8 @@ class MainWindow(QMainWindow):
                         if item in self.uiRemLocationDialog.locationList.item(j, 0).text():
                             print(item)
 
-                else: continue
+                else:
+                    continue
 
             selected = self.uiRemLocationDialog.locationList.currentRow()
             self.uiRemLocationDialog.locationList.removeRow(selected)
@@ -108,7 +117,6 @@ class MainWindow(QMainWindow):
             f.write(contents)
             f.close()
         self.getComboBoxes()
-
 
     def addingLocation(self):
         self.locationDialog = QDialog()
@@ -152,7 +160,6 @@ class MainWindow(QMainWindow):
 
         self.getComboBoxes()
 
-
     def removeTrainerItem(self):
         row = self.uiRemTrainerDialog.trainerList.rowCount()
         if not row == None:
@@ -169,7 +176,8 @@ class MainWindow(QMainWindow):
                         if item in self.uiRemTrainerDialog.trainerList.item(j, 0).text():
                             print(item)
                             contents.remove(i)
-                else: continue
+                else:
+                    continue
 
             selected = self.uiRemTrainerDialog.trainerList.currentRow()
             self.uiRemTrainerDialog.trainerList.removeRow(selected)
@@ -208,7 +216,6 @@ class MainWindow(QMainWindow):
     def getComboBoxes(self):
         self.ui.matCombo.clear()
         self.ui.certCombo.clear()
-
 
         certificateFiles = [f for f in listdir(self.certificatePath) if isfile(join(self.certificatePath, f))]
         materialFiles = [f for f in listdir(self.materialPath) if isfile(join(self.materialPath, f))]
@@ -262,7 +269,6 @@ class MainWindow(QMainWindow):
             shutil.copyfile(fname[0], self.materialPath + name)
         self.getComboBoxes()
 
-
     def addingCertificate(self):
         dialog = QFileDialog(self)
         dialog.setFileMode(QFileDialog.AnyFile)
@@ -310,8 +316,6 @@ class MainWindow(QMainWindow):
         self.ui.participants.setEnabled(True)
         row = self.ui.participants.rowCount()
         self.ui.participants.insertRow(row)
-
-
 
 
 class Participant():
@@ -391,11 +395,15 @@ class CWorker(QThread):
     progress = pyqtSignal(float)
     finish = pyqtSignal(str)
 
-    def __init__(self, fname, lname, date, location, path, filename):
+    def __init__(self, participants, date, location, path, filename):
         QThread.__init__(self)
 
+        self.participants = participants
+
     def run(self):
-        pass
+        for i in self.participants:
+            print(i)
+        # generateCertificate()
 
 
 window = MainWindow()
