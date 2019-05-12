@@ -127,7 +127,7 @@
        <item row="2" column="0">
         <widget class="QPushButton" name="addMaterial">
          <property name="text">
-          <string>Add Material</string>
+          <string>Import Material</string>
          </property>
         </widget>
        </item>
@@ -143,7 +143,7 @@
        <rect>
         <x>10</x>
         <y>10</y>
-        <width>664</width>
+        <width>673</width>
         <height>228</height>
        </rect>
       </property>
@@ -296,6 +296,13 @@
           </widget>
          </item>
         </layout>
+       </item>
+       <item row="6" column="4">
+        <widget class="QPushButton" name="addCertificate">
+         <property name="text">
+          <string>Import Certificate</string>
+         </property>
+        </widget>
        </item>
       </layout>
      </widget>

@@ -30,7 +30,7 @@ class MainWindow(QMainWindow):
 
         self.configFile = 'config.txt'
         self.currentFile = ''
-        self.materialPath = 'files/Material/PDF/'
+        self.materialPath = 'files/Material/'
         self.certificatePath = 'files/Certificates/'
         self.participantList = []
 
@@ -45,6 +45,7 @@ class MainWindow(QMainWindow):
         self.ui.addLocation.clicked.connect(self.addingLocation)
         self.ui.addTrainer.clicked.connect(self.addingTrainer)
         self.ui.addMaterial.clicked.connect(self.addingMaterial)
+        self.ui.addCertificate.clicked.connect(self.addingCertificate)
         self.ui.removeTrainer.clicked.connect(self.removingTrainer)
         self.ui.removeLocation.clicked.connect(self.removingLocation)
 
@@ -261,10 +262,10 @@ class MainWindow(QMainWindow):
         dialog.setLabelText(QFileDialog.Accept, 'import')
         if dialog.exec_():
             fname = dialog.selectedFiles()
-
-        path, name = os.path.split(fname[0])
-        if fname[0]:
-            shutil.copyfile(fname[0], self.materialPath + name)
+        if type(fname) == list:
+            path, name = os.path.split(fname[0])
+            if fname[0]:
+                shutil.copyfile(fname[0], self.materialPath + name)
         self.getComboBoxes()
 
     def addingCertificate(self):
@@ -273,10 +274,10 @@ class MainWindow(QMainWindow):
         dialog.setLabelText(QFileDialog.Accept, 'import')
         if dialog.exec_():
             fname = dialog.selectedFiles()
-
-        path, name = os.path.split(fname[0])
-        if fname[0]:
-            shutil.copyfile(fname[0], self.certificatePath + name)
+        if type(fname) == list:
+            path, name = os.path.split(fname[0])
+            if fname[0]:
+                shutil.copyfile(fname[0], self.certificatePath + name)
         self.getComboBoxes()
 
     def disableEnable(self, str):
@@ -292,14 +293,13 @@ class MainWindow(QMainWindow):
 
     def getParticipants(self):
         self.ui.participants.setEnabled(False)
-        self.participantList =[]
+        self.participantList = []
         for i in range(0, self.ui.participants.rowCount()):
             if self.ui.participants.item(i, 2):
                 firstname = self.ui.participants.item(i, 0).text()
                 lastname = self.ui.participants.item(i, 1).text()
                 email = self.ui.participants.item(i, 2).text()
                 self.participantList.append(Participant(firstname, lastname, email))
-
 
     def saveFiles(self):
         file = str(QFileDialog.getExistingDirectory(self, "Select Directory") + '/')
@@ -319,7 +319,8 @@ class Participant():
         self.firstname, self.lastname, self.email = firstname, lastname, email
 
     def __repr__(self):
-        return self.firstname+' '+self.lastname+' '+self.email
+        return self.firstname + ' ' + self.lastname + ' ' + self.email
+
 
 class MWorker(QThread):
     progress = pyqtSignal(float)
@@ -398,7 +399,8 @@ class CWorker(QThread):
 
     def run(self):
         for participant in self.participants:
-            generateCertificate(participant.firstname, participant.lastname, self.date, self.location, self.path, self.filename)
+            generateCertificate(participant.firstname, participant.lastname, self.date, self.location, self.path,
+                                self.filename)
         # generateCertificate()
 
 
