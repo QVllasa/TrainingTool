@@ -38,8 +38,11 @@ class MainWindow(QMainWindow):
         self.ui.setupUi(self)
         self.getComboBoxes()
 
+        self.ui.trainingType.currentTextChanged.connect(self.onTrainingTypeChange)
+
         self.ui.addPart.clicked.connect(self.addCell)
-        self.ui.saveMat.clicked.connect(self.saveFiles)
+        self.ui.saveMat.clicked.connect(self.saveMaterialFiles)
+        self.ui.saveCert.clicked.connect(self.saveCertificationFiles)
         self.ui.addWat.clicked.connect(self.addWatermark)
         self.ui.generateCert.clicked.connect(self.genCertificate)
         self.ui.addLocation.clicked.connect(self.addingLocation)
@@ -50,26 +53,34 @@ class MainWindow(QMainWindow):
         self.ui.removeLocation.clicked.connect(self.removingLocation)
 
     #   print(glob.glob('files/Material/*.pdf'))
+    def onTrainingTypeChange(self):
+        if self.ui.trainingType.currentText() == 'Webinar':
+            self.ui.locationCombo.setEnabled(False)
+        else: self.ui.locationCombo.setEnabled(True)
 
     def genCertificate(self):
 
         self.getParticipants()
         dateTo = self.ui.certDateTo.text()
-        dateFrom = self.ui.certDateFrom.text()
-
-        if dateFrom:
+        if self.ui.certDateFrom.isEnabled():
+            dateFrom = self.ui.certDateFrom.text()
             date = dateFrom + '.' + ' - ' + dateTo
         else:
             date = dateTo
 
         path = self.certificatePath
         filename = self.ui.certCombo.currentText()
-        location = self.ui.locationCombo.currentText()
+        if self.ui.locationCombo.isEnabled():
+            location = self.ui.locationCombo.currentText()
+        else: location = ''
 
-        self.obj = CWorker(self.participantList, date, location, path, filename)
-        self.obj.finish.connect(self.disableEnable)
-        self.obj.progress.connect(self.progressing)
-        self.obj.start()
+        trainer = self.ui.trainerCombo.currentText()
+
+
+        obj = CWorker(self.participantList, date, location, path, filename, trainer)
+        obj.finish.connect(self.disableEnableCertification)
+        obj.progress.connect(self.progressingCertification)
+        obj.start()
 
     def removingLocation(self):
         self.remLocationDialog = QDialog()
@@ -251,12 +262,13 @@ class MainWindow(QMainWindow):
         self.getParticipants()
         self.currentFile = self.ui.matCombo.currentText()
 
-        self.obj = MWorker(self.materialPath, self.currentFile, self.participantList)
-        self.obj.finish.connect(self.disableEnable)
-        self.obj.progress.connect(self.progressing)
-        self.obj.start()
+        obj = MWorker(self.materialPath, self.currentFile, self.participantList)
+        obj.finish.connect(self.disableEnableParticipantList)
+        obj.progress.connect(self.progressingMaterial)
+        obj.start()
 
     def addingMaterial(self):
+        fname = ''
         dialog = QFileDialog(self)
         dialog.setFileMode(QFileDialog.AnyFile)
         dialog.setLabelText(QFileDialog.Accept, 'import')
@@ -269,6 +281,7 @@ class MainWindow(QMainWindow):
         self.getComboBoxes()
 
     def addingCertificate(self):
+        fname = ''
         dialog = QFileDialog(self)
         dialog.setFileMode(QFileDialog.AnyFile)
         dialog.setLabelText(QFileDialog.Accept, 'import')
@@ -280,15 +293,40 @@ class MainWindow(QMainWindow):
                 shutil.copyfile(fname[0], self.certificatePath + name)
         self.getComboBoxes()
 
-    def disableEnable(self, str):
+    def disableEnableParticipantList(self, str):
         if str == 'begin':
             self.ui.addPart.setEnabled(False)
+            self.ui.saveMat.setEnabled(False)
 
         if str == 'finished':
             self.ui.participants.setEnabled(True)
             self.ui.addPart.setEnabled(True)
+            self.ui.saveMat.setEnabled(True)
 
-    def progressing(self, count):
+    def disableEnableCertification(self, str):
+        if str == 'begin':
+            self.ui.locationCombo.setEnabled(False)
+            self.ui.trainerCombo.setEnabled(False)
+            self.ui.certCombo.setEnabled(False)
+            self.ui.saveCert.setEnabled(False)
+
+            self.ui.certDateTo.setEnabled(False)
+
+
+
+        if str == 'finished':
+            self.ui.locationCombo.setEnabled(True)
+            self.ui.trainerCombo.setEnabled(True)
+            self.ui.certCombo.setEnabled(True)
+            self.ui.saveCert.setEnabled(True)
+
+            self.ui.certDateTo.setEnabled(True)
+
+
+    def progressingCertification(self,count):
+        self.ui.progressBarCert.setValue(count)
+
+    def progressingMaterial(self, count):
         self.ui.progressBarMat.setValue(count)
 
     def getParticipants(self):
@@ -301,12 +339,20 @@ class MainWindow(QMainWindow):
                 email = self.ui.participants.item(i, 2).text()
                 self.participantList.append(Participant(firstname, lastname, email))
 
-    def saveFiles(self):
+    def saveMaterialFiles(self):
         file = str(QFileDialog.getExistingDirectory(self, "Select Directory") + '/')
-        temp = 'temp/'
+        temp = 'temp/mat/'
         onlyfiles = [f for f in listdir(temp) if isfile(join(temp, f))]
         for i in onlyfiles:
             shutil.move(temp + i, file + i)
+
+    def saveCertificationFiles(self):
+        file = str(QFileDialog.getExistingDirectory(self, "Select Directory") + '/')
+        temp = 'temp/cert/'
+        onlyfiles = [f for f in listdir(temp) if isfile(join(temp, f))]
+        for i in onlyfiles:
+            shutil.move(temp + i, file + i)
+
 
     def addCell(self):
         self.ui.participants.setEnabled(True)
@@ -373,12 +419,12 @@ class MWorker(QThread):
                 self.progress.emit(count)
 
             newfile = self.currentFile.replace('.pdf', '')
-
-            outputStream = open('temp/mat/' + str(newfile) + '_' + str(participant.email) + '.pdf', 'wb')
+            src = 'temp/mat/' + str(newfile) + '_' + str(participant.email) + '.pdf'
+            outputStream = open(src, 'wb')
             output.write(outputStream)
             outputStream.close()
             # compress('output.pdf', 'temp/' + str(newfile) + '_' + str(participant.email) + '.pdf', power=0)
-            # os.remove('output.pdf')
+            #os.remove('output.pdf')
 
         self.finish.emit('finished')
         count = float(0)
@@ -389,18 +435,25 @@ class CWorker(QThread):
     progress = pyqtSignal(float)
     finish = pyqtSignal(str)
 
-    def __init__(self, participants, date, location, path, filename):
+    def __init__(self, participants, date, location, path, filename, trainer):
         QThread.__init__(self)
         self.participants = participants
         self.date = date
         self.location = location
         self.path = path
         self.filename = filename
+        self.trainer = trainer
 
     def run(self):
+        self.finish.emit('begin')
+        count = float(0)
         for participant in self.participants:
             generateCertificate(participant.firstname, participant.lastname, self.date, self.location, self.path,
-                                self.filename)
+                                self.filename, self.trainer)
+            count += (float(100) / float(len(self.participants)))
+        count = float(0)
+        self.progress.emit(count)
+        self.finish.emit('finished')
         # generateCertificate()
 
 

@@ -3,6 +3,19 @@
   <component name="ChangeListManager">
     <list default="true" id="4054586e-83c3-4709-a95e-6c4b1870f80e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/Certificates/MindSphere_Academy_attendance_certificate_Basic_application_Development_training_V2.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/Certificates/MindSphere_Academy_attendance_certificate_Edge_Analytics_training_V2.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/Certificates/MindSphere_Academy_attendance_certificate_Introduction_Training_V2.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/Certificates/MindSphere_Academy_attendance_certificate_Introduction_Webinar_V2.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/Certificates/MindSphere_Academy_attendance_certificate_MC_API_training_V2.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/Certificates/MindSphere_Academy_attendance_certificate_MC_Device_training_V2.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/Certificates/MindSphere_Academy_attendance_certificate_MC_Integration_training_V2.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/Certificates/MindSphere_Academy_attendance_certificate_MC_IoT_Extension_V2.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/Certificates/MindSphere_Academy_attendance_certificate_MC_LIB_training_V2.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/Material/MindSphere_Academy_attendance_certificate_Edge_Analytics_training_V2.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/Material/MindSphere_Academy_attendance_certificate_MC_Device_training_V2.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/generateCertificate.py" beforeDir="false" afterPath="$PROJECT_DIR$/generateCertificate.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ui/mainwindow.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui/mainwindow.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ui/mainwindow.ui" beforeDir="false" afterPath="$PROJECT_DIR$/ui/mainwindow.ui" afterDir="false" />
     </list>
@@ -17,8 +30,35 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="19" column="38" selection-start-line="19" selection-start-column="38" selection-end-line="19" selection-end-column="38" />
+            <state relative-caret-position="514">
+              <caret line="256" column="28" lean-forward="true" selection-start-line="256" selection-start-column="28" selection-end-line="256" selection-end-column="28" />
+              <folding>
+                <element signature="e#0#11#0" expanded="true" />
+                <element signature="e#2424#3202#0" />
+                <element signature="e#3246#4226#0" />
+                <element signature="e#4266#5123#0" />
+                <element signature="e#5164#5922#0" />
+                <element signature="e#5965#6941#0" />
+                <element signature="e#6980#7826#0" />
+                <element signature="e#7865#9199#0" />
+                <element signature="e#9620#10025#0" />
+                <element signature="e#10068#10476#0" />
+                <element signature="e#10565#10842#0" />
+                <element signature="e#10903#11676#0" />
+                <element signature="e#10833#11294#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/generateCertificate.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="774">
+              <caret line="86" lean-forward="true" selection-start-line="86" selection-end-line="86" />
+              <folding>
+                <element signature="e#0#47#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -57,12 +97,24 @@
       <find>getParticipants</find>
       <find>GETparticipants</find>
       <find>PDF</find>
+      <find>disableEnable</find>
+      <find>datefrom</find>
+      <find>disableenable</find>
+      <find>Savefiles</find>
+      <find>setEnab</find>
+      <find>isen</find>
+      <find>certificatePath</find>
+      <find>V2</find>
+      <find>isenab</find>
+      <find>currenttext</find>
+      <find>progressing</find>
     </findStrings>
     <replaceStrings>
       <replace />
       <replace>pdfminer3</replace>
       <replace>self.materialPath</replace>
       <replace>getComboBoxes</replace>
+      <replace>V3</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -92,8 +144,8 @@
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="y" value="23" />
-    <option name="width" value="2099" />
-    <option name="height" value="1220" />
+    <option name="width" value="1720" />
+    <option name="height" value="1341" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="false" id="Update" />
@@ -104,6 +156,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -111,11 +164,44 @@
               <item name="TrainingTool" type="b2602c69:ProjectViewProjectNode" />
               <item name="TrainingTool" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="TrainingTool" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TrainingTool" type="462c0819:PsiDirectoryNode" />
+              <item name="files" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TrainingTool" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TrainingTool" type="462c0819:PsiDirectoryNode" />
+              <item name="files" type="462c0819:PsiDirectoryNode" />
+              <item name="Certificates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TrainingTool" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TrainingTool" type="462c0819:PsiDirectoryNode" />
+              <item name="files" type="462c0819:PsiDirectoryNode" />
+              <item name="Material" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TrainingTool" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TrainingTool" type="462c0819:PsiDirectoryNode" />
+              <item name="temp" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TrainingTool" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TrainingTool" type="462c0819:PsiDirectoryNode" />
+              <item name="temp" type="462c0819:PsiDirectoryNode" />
+              <item name="cert" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TrainingTool" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TrainingTool" type="462c0819:PsiDirectoryNode" />
+              <item name="temp" type="462c0819:PsiDirectoryNode" />
+              <item name="mat" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -126,8 +212,8 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/files/Material" />
       <recent name="$PROJECT_DIR$/files/Certificates" />
+      <recent name="$PROJECT_DIR$/files/Material" />
       <recent name="$PROJECT_DIR$/files/new_version/Certification" />
       <recent name="$PROJECT_DIR$/misc" />
       <recent name="$PROJECT_DIR$/files" />
@@ -274,9 +360,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.generateCertificate" />
         <item itemvalue="Python.classTesting" />
         <item itemvalue="Python.configTest" />
-        <item itemvalue="Python.generateCertificate" />
         <item itemvalue="Python.demo" />
       </list>
     </recent_temporary>
@@ -474,18 +560,25 @@
       <option name="project" value="LOCAL" />
       <updated>1557700100509</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="generate Certificate method addded to main">
+      <created>1557775534403</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1557775534403</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="854" y="81" width="2099" height="1220" extended-state="0" />
+    <frame x="0" y="23" width="3440" height="1341" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.3479307" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21146534" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49849308" weight="0.28280142" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49849308" visible="true" weight="0.2826261" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -606,16 +699,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/generateCertificate.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="38" column="32" lean-forward="true" selection-start-line="38" selection-start-column="32" selection-end-line="38" selection-end-column="32" />
-          <folding>
-            <element signature="e#0#47#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/misc/demo.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -626,17 +709,42 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="38" selection-start-line="19" selection-start-column="38" selection-end-line="19" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
           <caret line="1" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/generateCertificate.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="774">
+          <caret line="86" lean-forward="true" selection-start-line="86" selection-end-line="86" />
+          <folding>
+            <element signature="e#0#47#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="514">
+          <caret line="256" column="28" lean-forward="true" selection-start-line="256" selection-start-column="28" selection-end-line="256" selection-end-column="28" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+            <element signature="e#2424#3202#0" />
+            <element signature="e#3246#4226#0" />
+            <element signature="e#4266#5123#0" />
+            <element signature="e#5164#5922#0" />
+            <element signature="e#5965#6941#0" />
+            <element signature="e#6980#7826#0" />
+            <element signature="e#7865#9199#0" />
+            <element signature="e#9620#10025#0" />
+            <element signature="e#10068#10476#0" />
+            <element signature="e#10565#10842#0" />
+            <element signature="e#10903#11676#0" />
+            <element signature="e#10833#11294#0" />
+          </folding>
         </state>
       </provider>
     </entry>
