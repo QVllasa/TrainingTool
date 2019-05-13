@@ -128,6 +128,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout.addWidget(self.label_8)
         self.checkBoxFrom = QtWidgets.QCheckBox(self.gridLayoutWidget_3)
         self.checkBoxFrom.setLayoutDirection(QtCore.Qt.RightToLeft)
+        self.checkBoxFrom.setChecked(True)
         self.checkBoxFrom.setObjectName("checkBoxFrom")
         self.horizontalLayout.addWidget(self.checkBoxFrom)
         self.certDateFrom = QtWidgets.QDateEdit(self.gridLayoutWidget_3)
@@ -217,6 +218,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         self.tabWidget.setCurrentIndex(1)
+        self.checkBoxFrom.toggled['bool'].connect(self.certDateFrom.setEnabled)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):

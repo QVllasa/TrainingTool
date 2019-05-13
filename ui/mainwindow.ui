@@ -249,6 +249,9 @@
            <property name="text">
             <string>from</string>
            </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
           </widget>
          </item>
          <item>
@@ -440,5 +443,22 @@
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>checkBoxFrom</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>certDateFrom</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>175</x>
+     <y>208</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>271</x>
+     <y>208</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
