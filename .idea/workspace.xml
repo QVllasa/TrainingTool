@@ -2,22 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4054586e-83c3-4709-a95e-6c4b1870f80e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/outlook.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/files/Certificates/MindSphere_Academy_attendance_certificate_Basic_application_Development_training_V2.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/files/Certificates/MindSphere_Academy_attendance_certificate_Edge_Analytics_training_V2.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/files/Certificates/MindSphere_Academy_attendance_certificate_Introduction_Training_V2.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/files/Certificates/MindSphere_Academy_attendance_certificate_Introduction_Webinar_V2.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/files/Certificates/MindSphere_Academy_attendance_certificate_MC_API_training_V2.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/files/Certificates/MindSphere_Academy_attendance_certificate_MC_Device_training_V2.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/files/Certificates/MindSphere_Academy_attendance_certificate_MC_Integration_training_V2.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/files/Certificates/MindSphere_Academy_attendance_certificate_MC_IoT_Extension_V2.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/files/Certificates/MindSphere_Academy_attendance_certificate_MC_LIB_training_V2.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/files/Material/MindSphere_Academy_attendance_certificate_Edge_Analytics_training_V2.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/files/Material/MindSphere_Academy_attendance_certificate_MC_Device_training_V2.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/generateCertificate.py" beforeDir="false" afterPath="$PROJECT_DIR$/generateCertificate.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/mainwindow.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui/mainwindow.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/mainwindow.ui" beforeDir="false" afterPath="$PROJECT_DIR$/ui/mainwindow.ui" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -30,22 +17,10 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="514">
-              <caret line="256" column="28" lean-forward="true" selection-start-line="256" selection-start-column="28" selection-end-line="256" selection-end-column="28" />
+            <state relative-caret-position="400">
+              <caret line="442" column="24" lean-forward="true" selection-start-line="442" selection-start-column="24" selection-end-line="442" selection-end-column="24" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
-                <element signature="e#2424#3202#0" />
-                <element signature="e#3246#4226#0" />
-                <element signature="e#4266#5123#0" />
-                <element signature="e#5164#5922#0" />
-                <element signature="e#5965#6941#0" />
-                <element signature="e#6980#7826#0" />
-                <element signature="e#7865#9199#0" />
-                <element signature="e#9620#10025#0" />
-                <element signature="e#10068#10476#0" />
-                <element signature="e#10565#10842#0" />
-                <element signature="e#10903#11676#0" />
-                <element signature="e#10833#11294#0" />
               </folding>
             </state>
           </provider>
@@ -54,8 +29,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/generateCertificate.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="774">
-              <caret line="86" lean-forward="true" selection-start-line="86" selection-end-line="86" />
+            <state relative-caret-position="1140">
+              <caret line="86" selection-start-line="86" selection-end-line="86" />
               <folding>
                 <element signature="e#0#47#0" expanded="true" />
               </folding>
@@ -139,6 +114,7 @@
         <option value="$PROJECT_DIR$/classTesting.py" />
         <option value="$PROJECT_DIR$/generateCertificate.py" />
         <option value="$PROJECT_DIR$/main.py" />
+        <option value="$PROJECT_DIR$/outlook.py" />
       </list>
     </option>
   </component>
@@ -156,7 +132,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -172,36 +147,13 @@
             <path>
               <item name="TrainingTool" type="b2602c69:ProjectViewProjectNode" />
               <item name="TrainingTool" type="462c0819:PsiDirectoryNode" />
-              <item name="files" type="462c0819:PsiDirectoryNode" />
-              <item name="Certificates" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TrainingTool" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TrainingTool" type="462c0819:PsiDirectoryNode" />
-              <item name="files" type="462c0819:PsiDirectoryNode" />
-              <item name="Material" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TrainingTool" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TrainingTool" type="462c0819:PsiDirectoryNode" />
               <item name="temp" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TrainingTool" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TrainingTool" type="462c0819:PsiDirectoryNode" />
-              <item name="temp" type="462c0819:PsiDirectoryNode" />
-              <item name="cert" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TrainingTool" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TrainingTool" type="462c0819:PsiDirectoryNode" />
-              <item name="temp" type="462c0819:PsiDirectoryNode" />
-              <item name="mat" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -358,8 +310,30 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="outlook" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="TrainingTool" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/outlook.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.outlook" />
         <item itemvalue="Python.generateCertificate" />
         <item itemvalue="Python.classTesting" />
         <item itemvalue="Python.configTest" />
@@ -567,18 +541,26 @@
       <option name="project" value="LOCAL" />
       <updated>1557775534403</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="finished material and certificate generator">
+      <created>1557791067070</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1557791067070</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="3440" height="1341" extended-state="6" />
+    <frame x="0" y="23" width="3440" height="1342" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21146534" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21146534" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49849308" visible="true" weight="0.2826261" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49849308" visible="true" weight="0.2824" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -620,7 +602,8 @@
     <MESSAGE value="create script for certificates" />
     <MESSAGE value="Location and Trainer added" />
     <MESSAGE value="generate Certificate method addded to main" />
-    <option name="LAST_COMMIT_MESSAGE" value="generate Certificate method addded to main" />
+    <MESSAGE value="finished material and certificate generator" />
+    <option name="LAST_COMMIT_MESSAGE" value="finished material and certificate generator" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/compressor.py">
@@ -709,6 +692,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/generateCertificate.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1140">
+          <caret line="86" selection-start-line="86" selection-end-line="86" />
+          <folding>
+            <element signature="e#0#47#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/config.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -716,34 +709,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/generateCertificate.py">
+    <entry file="file://$PROJECT_DIR$/outlook.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="774">
-          <caret line="86" lean-forward="true" selection-start-line="86" selection-end-line="86" />
-          <folding>
-            <element signature="e#0#47#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="30">
+          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="514">
-          <caret line="256" column="28" lean-forward="true" selection-start-line="256" selection-start-column="28" selection-end-line="256" selection-end-column="28" />
+        <state relative-caret-position="400">
+          <caret line="442" column="24" lean-forward="true" selection-start-line="442" selection-start-column="24" selection-end-line="442" selection-end-column="24" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
-            <element signature="e#2424#3202#0" />
-            <element signature="e#3246#4226#0" />
-            <element signature="e#4266#5123#0" />
-            <element signature="e#5164#5922#0" />
-            <element signature="e#5965#6941#0" />
-            <element signature="e#6980#7826#0" />
-            <element signature="e#7865#9199#0" />
-            <element signature="e#9620#10025#0" />
-            <element signature="e#10068#10476#0" />
-            <element signature="e#10565#10842#0" />
-            <element signature="e#10903#11676#0" />
-            <element signature="e#10833#11294#0" />
           </folding>
         </state>
       </provider>

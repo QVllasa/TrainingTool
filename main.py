@@ -432,7 +432,7 @@ class MWorker(QThread):
 
 
 class CWorker(QThread):
-    progress = pyqtSignal(float)
+    progressCert = pyqtSignal(float)
     finish = pyqtSignal(str)
 
     def __init__(self, participants, date, location, path, filename, trainer):
@@ -452,7 +452,7 @@ class CWorker(QThread):
                                 self.filename, self.trainer)
             count += (float(100) / float(len(self.participants)))
         count = float(0)
-        self.progress.emit(count)
+        self.progressCert.emit(count)
         self.finish.emit('finished')
         # generateCertificate()
 
@@ -463,4 +463,6 @@ window.show()
 sys.exit(app.exec_())
 
 # TODO
+#excel datei einlesen
+# email programm erstellen
 # programm nicht schließbar, ohne dass man save bei Material/Certificate geklickt hat
