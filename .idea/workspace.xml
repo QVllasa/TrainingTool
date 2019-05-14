@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4054586e-83c3-4709-a95e-6c4b1870f80e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/TrainingTool.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/TrainingTool.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/outlook.py" beforeDir="false" afterPath="$PROJECT_DIR$/outlook.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/mainwindow.ui" beforeDir="false" afterPath="$PROJECT_DIR$/ui/mainwindow.ui" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/generateCertificate.py" beforeDir="false" afterPath="$PROJECT_DIR$/generateCertificate.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -14,25 +16,36 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="201">
-              <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
+            <state relative-caret-position="446">
+              <caret line="405" column="8" selection-start-line="405" selection-start-column="8" selection-end-line="405" selection-end-column="8" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/outlook.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="23" column="14" selection-start-line="23" selection-start-column="14" selection-end-line="23" selection-end-column="14" />
-              <folding>
-                <element signature="e#0#31#0" expanded="true" />
+                <element signature="e#2424#2580#0" />
+                <element signature="e#3417#4195#0" />
+                <element signature="e#4239#5219#0" />
+                <element signature="e#5259#6116#0" />
+                <element signature="e#6157#6915#0" />
+                <element signature="e#6958#7934#0" />
+                <element signature="e#7973#8819#0" />
+                <element signature="e#8858#10192#0" />
+                <element signature="e#9528#10318#0" />
+                <element signature="e#10356#10867#0" />
+                <element signature="e#10873#11244#0" />
+                <element signature="e#11172#11599#0" />
+                <element signature="e#11658#11939#0" />
+                <element signature="e#11996#12538#0" />
+                <element signature="e#12595#12634#0" />
+                <element signature="e#12686#12724#0" />
+                <element signature="e#12765#13226#0" />
+                <element signature="e#13848#13975#0" />
+                <element signature="e#14003#14225#0" />
+                <element signature="e#14225#16828#0" />
+                <element signature="e#14360#14521#0" />
+                <element signature="e#16859#17717#0" />
+                <element signature="e#17009#17219#0" />
               </folding>
             </state>
           </provider>
@@ -41,20 +54,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/generateCertificate.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1140">
-              <caret line="86" selection-start-line="86" selection-end-line="86" />
+            <state relative-caret-position="353">
+              <caret line="97" column="29" selection-start-line="97" selection-start-column="29" selection-end-line="97" selection-end-column="29" />
               <folding>
                 <element signature="e#0#47#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="1" selection-start-line="1" selection-end-line="1" />
             </state>
           </provider>
         </entry>
@@ -95,6 +99,10 @@
       <find>isenab</find>
       <find>currenttext</find>
       <find>progressing</find>
+      <find>currentText()</find>
+      <find>addingCertificate</find>
+      <find>\\</find>
+      <find>finish</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -102,6 +110,8 @@
       <replace>self.materialPath</replace>
       <replace>getComboBoxes</replace>
       <replace>V3</replace>
+      <replace>importMaterial</replace>
+      <replace>importCertificate</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -124,17 +134,17 @@
         <option value="$PROJECT_DIR$/ui/addLocationDialog.py" />
         <option value="$PROJECT_DIR$/ui/addTrainerDialog.py" />
         <option value="$PROJECT_DIR$/classTesting.py" />
+        <option value="$PROJECT_DIR$/outlook.py" />
         <option value="$PROJECT_DIR$/generateCertificate.py" />
         <option value="$PROJECT_DIR$/main.py" />
-        <option value="$PROJECT_DIR$/outlook.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="736" />
-    <option name="y" value="23" />
-    <option name="width" value="2142" />
-    <option name="height" value="1342" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="866" />
+    <option name="y" value="29" />
+    <option name="width" value="1642" />
+    <option name="height" value="1235" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="false" id="Update" />
@@ -156,13 +166,13 @@
             <path>
               <item name="TrainingTool" type="b2602c69:ProjectViewProjectNode" />
               <item name="TrainingTool" type="462c0819:PsiDirectoryNode" />
-              <item name="files" type="462c0819:PsiDirectoryNode" />
+              <item name="temp" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="TrainingTool" type="b2602c69:ProjectViewProjectNode" />
               <item name="TrainingTool" type="462c0819:PsiDirectoryNode" />
-              <item name="files" type="462c0819:PsiDirectoryNode" />
-              <item name="new_version" type="462c0819:PsiDirectoryNode" />
+              <item name="temp" type="462c0819:PsiDirectoryNode" />
+              <item name="cert" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -172,9 +182,9 @@
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../PasswordManager" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="preferences.editor" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -345,6 +355,15 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Python.build" />
+      <item itemvalue="Python.main" />
+      <item itemvalue="Python.classTesting" />
+      <item itemvalue="Python.configTest" />
+      <item itemvalue="Python.demo" />
+      <item itemvalue="Python.generateCertificate" />
+      <item itemvalue="Python.outlook" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.outlook" />
@@ -580,22 +599,22 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="736" y="23" width="2142" height="1342" extended-state="0" />
+    <frame x="-8" y="-8" width="3456" height="1416" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18906176" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21796373" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49849308" weight="0.2824" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49849308" visible="true" weight="0.2657833" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49933466" weight="0.3296" />
+      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.4986619" weight="0.32919767" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.3288" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5015069" side_tool="true" weight="0.28304094" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50133806" side_tool="true" weight="0.32919767" />
       <window_info anchor="bottom" id="Python Console" order="10" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -721,30 +740,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/generateCertificate.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1140">
-          <caret line="86" selection-start-line="86" selection-end-line="86" />
-          <folding>
-            <element signature="e#0#47#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
           <caret line="1" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
-          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -754,6 +753,49 @@
           <caret line="23" column="14" selection-start-line="23" selection-start-column="14" selection-end-line="23" selection-end-column="14" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/generateCertificate.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="353">
+          <caret line="97" column="29" selection-start-line="97" selection-start-column="29" selection-end-line="97" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#47#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="446">
+          <caret line="405" column="8" selection-start-line="405" selection-start-column="8" selection-end-line="405" selection-end-column="8" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+            <element signature="e#2424#2580#0" />
+            <element signature="e#3417#4195#0" />
+            <element signature="e#4239#5219#0" />
+            <element signature="e#5259#6116#0" />
+            <element signature="e#6157#6915#0" />
+            <element signature="e#6958#7934#0" />
+            <element signature="e#7973#8819#0" />
+            <element signature="e#8858#10192#0" />
+            <element signature="e#9528#10318#0" />
+            <element signature="e#10356#10867#0" />
+            <element signature="e#10873#11244#0" />
+            <element signature="e#11172#11599#0" />
+            <element signature="e#11658#11939#0" />
+            <element signature="e#11996#12538#0" />
+            <element signature="e#12595#12634#0" />
+            <element signature="e#12686#12724#0" />
+            <element signature="e#12765#13226#0" />
+            <element signature="e#13848#13975#0" />
+            <element signature="e#14003#14225#0" />
+            <element signature="e#14225#16828#0" />
+            <element signature="e#14360#14521#0" />
+            <element signature="e#16859#17717#0" />
+            <element signature="e#17009#17219#0" />
           </folding>
         </state>
       </provider>

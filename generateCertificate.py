@@ -10,6 +10,18 @@ from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 import os
 
+
+def resource_path(relative_path):
+    """ Get absolute path to resource, works for dev and for PyInstaller """
+    try:
+        # PyInstaller creates a temp folder and stores path in _MEIPASS
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.environ.get("_MEIPASS2", os.path.abspath("."))
+
+    return os.path.join(base_path, relative_path)
+
+
 pdfmetrics.registerFont(TTFont('Siemens Sans03', 'misc/Siemens_Sans/SISAN03.ttf'))
 pdfmetrics.registerFont(TTFont('Siemens Sans06', 'misc/Siemens_Sans/SISAN06.ttf'))
 pdfmetrics.registerFont(TTFont('Siemens Sans08', 'misc/Siemens_Sans/SISAN08.ttf'))
@@ -84,12 +96,17 @@ def generateCertificate(fname, lname, date, location, path, filename, trainer):
         slide.mergePage(watermark.getPage(0))
         slide.compressContentStreams()
         output.addPage(slide)
-
+    print('saving to temp')
     newfile = filename.replace('.pdf', '')
-
-    outputStream = open('temp/cert/' + str(newfile) + '_' +str(fname[0])+str(lname) + '.pdf', 'wb')
+    src = resource_path('temp/cert/')
+    name = str(newfile) + '_' +str(fname[0])+str(lname) + '.pdf'
+    if not os.path.exists(src):
+        os.makedirs(src)
+    certificate = src+name
+    outputStream = open(certificate, 'wb')
     output.write(outputStream)
     outputStream.close()
+    print('process successfull')
     # compress('output.pdf', 'output_mat.pdf', power=3)
     # os.remove('output.pdf')
 

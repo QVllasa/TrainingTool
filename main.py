@@ -24,14 +24,25 @@ from compressor import compress
 app = QApplication(sys.argv)
 
 
+def resource_path(relative_path):
+    """ Get absolute path to resource, works for dev and for PyInstaller """
+    try:
+        # PyInstaller creates a temp folder and stores path in _MEIPASS
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.environ.get("_MEIPASS2", os.path.abspath("."))
+
+    return os.path.join(base_path, relative_path)
+
+
 class MainWindow(QMainWindow):
     def __init__(self, parent=None):
         super().__init__(parent)
 
-        self.configFile = 'config.txt'
+        self.configFile = resource_path('config.txt')
         self.currentFile = ''
-        self.materialPath = 'files/Material/'
-        self.certificatePath = 'files/Certificates/'
+        self.materialPath = resource_path('files/Material/')
+        self.certificatePath = resource_path("files/Certificates/")
         self.participantList = []
 
         self.ui = Ui_MainWindow()
@@ -47,40 +58,21 @@ class MainWindow(QMainWindow):
         self.ui.generateCert.clicked.connect(self.genCertificate)
         self.ui.addLocation.clicked.connect(self.addingLocation)
         self.ui.addTrainer.clicked.connect(self.addingTrainer)
-        self.ui.addMaterial.clicked.connect(self.addingMaterial)
-        self.ui.addCertificate.clicked.connect(self.addingCertificate)
+        self.ui.addMaterial.clicked.connect(self.importMaterial)
+        self.ui.addCertificate.clicked.connect(self.importCertificate)
         self.ui.removeTrainer.clicked.connect(self.removingTrainer)
         self.ui.removeLocation.clicked.connect(self.removingLocation)
+
+        app.aboutToQuit.connect(self.closeEvent)
 
     #   print(glob.glob('files/Material/*.pdf'))
     def onTrainingTypeChange(self):
         if self.ui.trainingType.currentText() == 'Webinar':
             self.ui.locationCombo.setEnabled(False)
-        else: self.ui.locationCombo.setEnabled(True)
-
-    def genCertificate(self):
-
-        self.getParticipants()
-        dateTo = self.ui.certDateTo.text()
-        if self.ui.certDateFrom.isEnabled():
-            dateFrom = self.ui.certDateFrom.text()
-            date = dateFrom + '.' + ' - ' + dateTo
         else:
-            date = dateTo
-
-        path = self.certificatePath
-        filename = self.ui.certCombo.currentText()
-        if self.ui.locationCombo.isEnabled():
-            location = self.ui.locationCombo.currentText()
-        else: location = ''
-
-        trainer = self.ui.trainerCombo.currentText()
+            self.ui.locationCombo.setEnabled(True)
 
 
-        obj = CWorker(self.participantList, date, location, path, filename, trainer)
-        obj.finish.connect(self.disableEnableCertification)
-        obj.progress.connect(self.progressingCertification)
-        obj.start()
 
     def removingLocation(self):
         self.remLocationDialog = QDialog()
@@ -256,18 +248,73 @@ class MainWindow(QMainWindow):
                 else:
                     continue
 
-    def addWatermark(self):
+    def genCertificate(self):
+        print('start')
+        temp = resource_path('temp/cert/')
+        if os.path.exists(temp):
+            onlyfiles = [f for f in listdir(temp) if isfile(join(temp, f))]
+            if onlyfiles:
+                self.forgotSaving()
+                print('tempordner existiert ist aber NICHT leer')
+            else:
+                print('tempordner existiert und ist leer')
+                self.startCertification()
 
+        else:
+            print('tempordner existiert nicht')
+            self.startCertification()
+
+
+    def startCertification(self):
+        self.getParticipants()
+        dateTo = self.ui.certDateTo.text()
+        if self.ui.certDateFrom.isEnabled():
+            dateFrom = self.ui.certDateFrom.text()
+            date = dateFrom + '.' + ' - ' + dateTo
+        else:
+            date = dateTo
+
+        path = self.certificatePath
+        filename = self.ui.certCombo.currentText()
+        if self.ui.locationCombo.isEnabled():
+            location = self.ui.locationCombo.currentText()
+        else:
+            location = ''
+
+        trainer = self.ui.trainerCombo.currentText()
+        self.objC = CWorker(self.participantList, date, location, path, filename, trainer)
+        self.objC.finishC.connect(self.disableEnableCertification)
+        self.objC.progressC.connect(self.progressingCertification)
+        self.objC.start()
+
+    def addWatermark(self):
+        print('start')
+        temp = resource_path('temp/mat/')
+        if os.path.exists(temp):
+            onlyfiles = [f for f in listdir(temp) if isfile(join(temp, f))]
+            if onlyfiles:
+                self.forgotSaving()
+                print('tempordner existiert ist aber NICHT leer')
+            else:
+                print('tempordner existiert und ist leer')
+                self.startWatermarking()
+
+        else:
+            print('tempordner existiert nicht')
+            self.startWatermarking()
+
+
+    def startWatermarking(self):
         self.ui.participants.clearSelection()
         self.getParticipants()
         self.currentFile = self.ui.matCombo.currentText()
 
-        obj = MWorker(self.materialPath, self.currentFile, self.participantList)
-        obj.finish.connect(self.disableEnableParticipantList)
-        obj.progress.connect(self.progressingMaterial)
-        obj.start()
+        self.objM = MWorker(self.materialPath, self.currentFile, self.participantList)
+        self.objM.finishM.connect(self.disableEnableParticipantList)
+        self.objM.progressM.connect(self.progressingMaterial)
+        self.objM.start()
 
-    def addingMaterial(self):
+    def importMaterial(self):
         fname = ''
         dialog = QFileDialog(self)
         dialog.setFileMode(QFileDialog.AnyFile)
@@ -280,7 +327,7 @@ class MainWindow(QMainWindow):
                 shutil.copyfile(fname[0], self.materialPath + name)
         self.getComboBoxes()
 
-    def addingCertificate(self):
+    def importCertificate(self):
         fname = ''
         dialog = QFileDialog(self)
         dialog.setFileMode(QFileDialog.AnyFile)
@@ -312,8 +359,6 @@ class MainWindow(QMainWindow):
 
             self.ui.certDateTo.setEnabled(False)
 
-
-
         if str == 'finished':
             self.ui.locationCombo.setEnabled(True)
             self.ui.trainerCombo.setEnabled(True)
@@ -322,8 +367,7 @@ class MainWindow(QMainWindow):
 
             self.ui.certDateTo.setEnabled(True)
 
-
-    def progressingCertification(self,count):
+    def progressingCertification(self, count):
         self.ui.progressBarCert.setValue(count)
 
     def progressingMaterial(self, count):
@@ -340,24 +384,46 @@ class MainWindow(QMainWindow):
                 self.participantList.append(Participant(firstname, lastname, email))
 
     def saveMaterialFiles(self):
-        file = str(QFileDialog.getExistingDirectory(self, "Select Directory") + '/')
-        temp = 'temp/mat/'
-        onlyfiles = [f for f in listdir(temp) if isfile(join(temp, f))]
-        for i in onlyfiles:
-            shutil.move(temp + i, file + i)
+        dialog = QFileDialog(self)
+        file = str(dialog.getExistingDirectory(self, "Select Directory") + '/')
+        dialog.exec_()
+        temp = resource_path('temp/mat/')
+        if os.path.exists(temp):
+            onlyfiles = [f for f in listdir(temp) if isfile(join(temp, f))]
+            for i in onlyfiles:
+                shutil.move(temp + i, file + i)
+            shutil.rmtree(temp, ignore_errors=True)
 
     def saveCertificationFiles(self):
-        file = str(QFileDialog.getExistingDirectory(self, "Select Directory") + '/')
-        temp = 'temp/cert/'
-        onlyfiles = [f for f in listdir(temp) if isfile(join(temp, f))]
-        for i in onlyfiles:
-            shutil.move(temp + i, file + i)
+        file = QFileDialog(self).getExistingDirectory(self, "Select Directory") + '/'
+        if file:
+            temp = resource_path('temp/cert/')
+            if os.path.exists(temp):
+                onlyfiles = [f for f in listdir(temp) if isfile(join(temp, f))]
+                for i in onlyfiles:
+                    shutil.move(temp + i, file + i)
+                shutil.rmtree(temp, ignore_errors=True)
 
 
     def addCell(self):
         self.ui.participants.setEnabled(True)
         row = self.ui.participants.rowCount()
         self.ui.participants.insertRow(row)
+
+    def forgotSaving(self):
+        self.forgotToSave = QMessageBox()
+        self.forgotToSave.setIcon(QMessageBox.Critical)
+        self.forgotToSave.setText('Please save Material and Certificates first!')
+        self.forgotToSave.show()
+
+
+    def closeEvent(self, event):
+        src = 'temp'
+        if os.path.exists(src):
+            self.forgotSaving()
+
+        print("User has clicked the red x on the main window")
+        event.accept()
 
 
 class Participant():
@@ -369,8 +435,8 @@ class Participant():
 
 
 class MWorker(QThread):
-    progress = pyqtSignal(float)
-    finish = pyqtSignal(str)
+    progressM = pyqtSignal(float)
+    finishM = pyqtSignal(str)
 
     def __init__(self, path, filename, plist):
         QThread.__init__(self)
@@ -378,16 +444,21 @@ class MWorker(QThread):
         self.currentFile = filename
         self.plist = plist
         self.materialPath = path
+        print('Process started...')
 
     def run(self):
-        self.finish.emit('begin')
+        print('Generating Material...')
+
+        self.finishM.emit('begin')
 
         count = float(0)
-        self.progress.emit(count)
+        self.progressM.emit(count)
         for participant in self.plist:
 
             self.buffer = BytesIO()
-            self.file = open(str(self.materialPath) + str(self.currentFile), 'rb')
+
+            self.file = open(self.materialPath + self.currentFile, 'rb')
+            print('opened file')
             self.material = PdfFileReader(self.file)
             self.x = float(self.material.getPage(0).mediaBox[-2])
             self.y = float(self.material.getPage(0).mediaBox[-1])
@@ -416,24 +487,34 @@ class MWorker(QThread):
                 output.addPage(slide)
                 count += (float(100) / float(len(self.plist))) / float(len(range(self.pageNum)))
                 print(round(count))
-                self.progress.emit(count)
-
+                self.progressM.emit(count)
+            print('saving to Temp')
             newfile = self.currentFile.replace('.pdf', '')
-            src = 'temp/mat/' + str(newfile) + '_' + str(participant.email) + '.pdf'
-            outputStream = open(src, 'wb')
+            src = resource_path('temp/mat/')
+            name = str(newfile) + '_' + str(participant.email) + '.pdf'
+            print(src)
+            if not os.path.exists(src):
+                os.makedirs(src)
+
+            material = src+name
+
+            print('creating watermarked file')
+            outputStream = open(material, 'wb')
             output.write(outputStream)
             outputStream.close()
+            print('process successfull')
             # compress('output.pdf', 'temp/' + str(newfile) + '_' + str(participant.email) + '.pdf', power=0)
-            #os.remove('output.pdf')
+            # os.remove('output.pdf')
 
-        self.finish.emit('finished')
+        self.finishM.emit('finished')
         count = float(0)
-        self.progress.emit(count)
+        self.progressM.emit(count)
+        print('finished')
 
 
 class CWorker(QThread):
-    progressCert = pyqtSignal(float)
-    finish = pyqtSignal(str)
+    progressC = pyqtSignal(float)
+    finishC = pyqtSignal(str)
 
     def __init__(self, participants, date, location, path, filename, trainer):
         QThread.__init__(self)
@@ -445,26 +526,30 @@ class CWorker(QThread):
         self.trainer = trainer
 
     def run(self):
-        self.finish.emit('begin')
+        self.finishC.emit('begin')
         count = float(0)
         for participant in self.participants:
             generateCertificate(participant.firstname, participant.lastname, self.date, self.location, self.path,
                                 self.filename, self.trainer)
             count += (float(100) / float(len(self.participants)))
+            self.progressC.emit(count)
         count = float(0)
-        self.progressCert.emit(count)
-        self.finish.emit('finished')
+        self.progressC.emit(count)
+        self.finishC.emit('finished')
         # generateCertificate()
 
 
 window = MainWindow()
 window.show()
 
+
 sys.exit(app.exec_())
+
+
 
 # TODO
 # let programm create a 'temp' folder in the beginnging and delete it after ending the programm
-# adapt path for windows like in password manager
+# closing programm not possible until data is saved somewhere
 # read excel file
 # open outlook
-# closing programm not possible until data is saved somewhere
+
