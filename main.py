@@ -463,6 +463,7 @@ window.show()
 sys.exit(app.exec_())
 
 # TODO
-#excel datei einlesen
-# email programm erstellen
-# programm nicht schließbar, ohne dass man save bei Material/Certificate geklickt hat
+# adapt path for windows like in password manager
+# read excel file
+# open outlook
+# closing programm not possible until data is saved somewhere
