@@ -463,6 +463,7 @@ window.show()
 sys.exit(app.exec_())
 
 # TODO
+# let programm create a 'temp' folder in the beginnging and delete it after ending the programm
 # adapt path for windows like in password manager
 # read excel file
 # open outlook
