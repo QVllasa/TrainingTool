@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4054586e-83c3-4709-a95e-6c4b1870f80e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/outlook.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-    </list>
+    <list default="true" id="4054586e-83c3-4709-a95e-6c4b1870f80e" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,8 +13,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="400">
-              <caret line="442" column="24" lean-forward="true" selection-start-line="442" selection-start-column="24" selection-end-line="442" selection-end-column="24" />
+            <state relative-caret-position="-1848">
+              <caret line="39" lean-forward="true" selection-start-line="39" selection-end-line="39" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -113,8 +109,8 @@
         <option value="$PROJECT_DIR$/ui/addTrainerDialog.py" />
         <option value="$PROJECT_DIR$/classTesting.py" />
         <option value="$PROJECT_DIR$/generateCertificate.py" />
-        <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/outlook.py" />
+        <option value="$PROJECT_DIR$/main.py" />
       </list>
     </option>
   </component>
@@ -548,7 +544,14 @@
       <option name="project" value="LOCAL" />
       <updated>1557791067070</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="working outlook app">
+      <created>1557791994541</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1557791994541</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -560,7 +563,7 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49849308" visible="true" weight="0.2824" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49849308" weight="0.2824" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -603,7 +606,8 @@
     <MESSAGE value="Location and Trainer added" />
     <MESSAGE value="generate Certificate method addded to main" />
     <MESSAGE value="finished material and certificate generator" />
-    <option name="LAST_COMMIT_MESSAGE" value="finished material and certificate generator" />
+    <MESSAGE value="working outlook app" />
+    <option name="LAST_COMMIT_MESSAGE" value="working outlook app" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/compressor.py">
@@ -718,8 +722,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="442" column="24" lean-forward="true" selection-start-line="442" selection-start-column="24" selection-end-line="442" selection-end-column="24" />
+        <state relative-caret-position="-1848">
+          <caret line="39" lean-forward="true" selection-start-line="39" selection-end-line="39" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>
