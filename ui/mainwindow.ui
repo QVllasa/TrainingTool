@@ -449,34 +449,27 @@
        </property>
       </widget>
      </item>
-     <item row="3" column="1">
-      <widget class="QDateEdit" name="trainingDateFilter">
-       <property name="enabled">
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
      <item row="2" column="1">
       <widget class="QLabel" name="label">
        <property name="enabled">
-        <bool>false</bool>
+        <bool>true</bool>
        </property>
        <property name="text">
-        <string>Type in Training Date</string>
+        <string>Filter Training Date</string>
        </property>
       </widget>
      </item>
      <item row="3" column="2">
-      <widget class="QComboBox" name="trainingCourse">
+      <widget class="QComboBox" name="trainingCourseCombo">
        <property name="enabled">
-        <bool>false</bool>
+        <bool>true</bool>
        </property>
       </widget>
      </item>
      <item row="2" column="2">
       <widget class="QLabel" name="label_2">
        <property name="enabled">
-        <bool>false</bool>
+        <bool>true</bool>
        </property>
        <property name="text">
         <string>Choose Training</string>
@@ -496,6 +489,9 @@
         <string>Trainings Calendar:</string>
        </property>
       </widget>
+     </item>
+     <item row="3" column="1">
+      <widget class="QComboBox" name="trainingStartCombo"/>
      </item>
     </layout>
    </widget>

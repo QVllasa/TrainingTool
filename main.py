@@ -40,11 +40,10 @@ class MainWindow(QMainWindow):
     def __init__(self, parent=None):
         super().__init__(parent)
 
-        data = pd.read_excel(
+        self.data = pd.read_excel(
             r'files/testfile.xlsx')  # for an earlier version of Excel, you may need to use the file extension of 'xls'
-        df = pd.DataFrame(data, columns=['Training Start', 'First Name', 'Last Name', 'E-Mail Address'])
-
-        print(df)
+        self.df = pd.DataFrame(self.data, columns=['Training Title', 'Training Start', 'First Name', 'Last Name',
+                                                   'E-Mail Address', 'Status'])
 
         self.configFile = resource_path('config.txt')
         self.currentFile = ''
@@ -57,6 +56,27 @@ class MainWindow(QMainWindow):
         self.getComboBoxes()
 
         self.ui.trainingType.currentTextChanged.connect(self.onTrainingTypeChange)
+        self.ui.trainingType.currentTextChanged.connect(self.onTrainingDateChange)
+        self.ui.trainingStartCombo.currentTextChanged.connect(self.dateFilter)
+        self.ui.trainingCourseCombo.currentTextChanged.connect(self.trainingFilter)
+
+
+
+        for (a, b) in self.df['Training Start'].iteritems():
+            if type(b) == str:
+                AllItemsDate = [self.ui.trainingStartCombo.itemText(i) for i in
+                                range(self.ui.trainingStartCombo.count())]
+                if not b in AllItemsDate:
+                    self.ui.trainingStartCombo.addItem(b)
+
+
+
+        for (a, b) in self.df['Training Title'].iteritems():
+            if type(b) == str:
+                AllItemsType = [self.ui.trainingCourseCombo.itemText(i) for i in
+                                range(self.ui.trainingCourseCombo.count())]
+                if not b in AllItemsType:
+                    self.ui.trainingCourseCombo.addItem(b)
 
         self.ui.addPart.clicked.connect(self.addCell)
         self.ui.saveMat.clicked.connect(self.saveMaterialFiles)
@@ -71,25 +91,87 @@ class MainWindow(QMainWindow):
         self.ui.removeLocation.clicked.connect(self.removingLocation)
         self.ui.openMail.clicked.connect(self.emailer)
 
+
+
         quit = QAction("Quit", self)
         quit.triggered.connect(self.closeEvent)
-        #app.aboutToQuit.connect(self.closeEvent)
+        # app.aboutToQuit.connect(self.closeEvent)
 
     #   print(glob.glob('files/Material/*.pdf'))
+
+    def dateFilter(self):
+        filter = self.ui.trainingStartCombo.currentText()
+        newData = self.df[self.df['Training Start'] == filter]
+        self.ui.trainingCourseCombo.clear()
+        for a, b in newData.iterrows():
+            if type(b['Training Title']) == str:
+                AllItemsType = [self.ui.trainingCourseCombo.itemText(i) for i in
+                                range(self.ui.trainingCourseCombo.count())]
+                if not b['Training Title'] in AllItemsType:
+                    self.ui.trainingCourseCombo.addItem(b['Training Title'])
+        self.insertParticipants(newData)
+
+
+
+    def trainingFilter(self):
+        filter = self.ui.trainingCourseCombo.currentText()
+        newData = self.df[self.df['Training Title'] == filter]
+        #self.ui.trainingStartCombo.clear()
+        for a, b in newData.iterrows():
+            if type(b['Training Start']) == str:
+                AllItemsDate = [self.ui.trainingStartCombo.itemText(i) for i in
+                                range(self.ui.trainingStartCombo.count())]
+                if not b['Training Start'] in AllItemsDate:
+                    self.ui.trainingStartCombo.addItem(b['Training Start'])
+        self.insertParticipants(newData)
+
+    def insertParticipants(self, data):
+        self.ui.participants.setRowCount(0)
+        #datas = pd.DataFrame(data, columns=['First Name', 'Last Name', 'E-Mail Address'])
+
+
+        for pos, row in data.iterrows():
+            fname = row['First Name']
+            lname = row['Last Name']
+            email = row['E-Mail Address']
+            counter = self.ui.participants.rowCount()
+            if not row['Status'] == 'Canceled':
+                if type(row['First Name']) == str:
+                    self.ui.participants.insertRow(counter)
+                    self.ui.participants.setItem(counter, 0, QTableWidgetItem(str(fname)))
+
+                if type(row['Last Name']) == str:
+                    self.ui.participants.setItem(counter, 1, QTableWidgetItem(str(lname)))
+
+                if type(row['E-Mail Address']) == str:
+                    self.ui.participants.setItem(counter, 2, QTableWidgetItem(str(email)))
+
+
+
 
     def emailer(self):
         self.getParticipants()
         for participant in self.participantList:
             send_mail_via_com('blablabla', 'blablabla', participant.email)
 
+    # TODO finish emailer
 
-
-
-
-
+    def onTrainingDateChange(self):
+        if self.ui.trainingType.currentText() == 'On-Site':
+            self.ui.trainingStartCombo.setEnabled(False)
+            self.ui.trainingCourseCombo.setEnabled(False)
+        else:
+            self.ui.trainingStartCombo.setEnabled(True)
+            self.ui.trainingCourseCombo.setEnabled(True)
 
     def onTrainingTypeChange(self):
         if self.ui.trainingType.currentText() == 'Webinar':
+#TODO           remove entries when webinar is chosen
+# AllItemsType = [self.ui.trainingCourseCombo.itemText(i) for i in
+            #                 range(self.ui.trainingCourseCombo.count())]
+            # for i in AllItemsType:
+            #     if not 'Webinar' in i:
+            #         self.ui.trainingCourseCombo.removeItem(i)
             self.ui.locationCombo.setEnabled(False)
         else:
             self.ui.locationCombo.setEnabled(True)
@@ -284,7 +366,6 @@ class MainWindow(QMainWindow):
             print('tempordner existiert nicht')
             self.startCertification()
 
-
     def startCertification(self):
         self.getParticipants()
         dateTo = self.ui.certDateTo.text()
@@ -322,7 +403,6 @@ class MainWindow(QMainWindow):
         else:
             print('tempordner existiert nicht')
             self.startWatermarking()
-
 
     def startWatermarking(self):
         self.ui.participants.clearSelection()
@@ -413,12 +493,12 @@ class MainWindow(QMainWindow):
             if os.path.exists(temp):
                 onlyfiles = [f for f in listdir(temp) if isfile(join(temp, f))]
                 for i in onlyfiles:
-                    print(temp+i)
-                    print(file+i)
+                    print(temp + i)
+                    print(file + i)
                     shutil.move(temp + i, file + i)
                 shutil.rmtree(temp, ignore_errors=True)
-#TODO fix cancel button
 
+    # TODO fix cancel button
 
     def saveCertificationFiles(self):
 
@@ -428,14 +508,12 @@ class MainWindow(QMainWindow):
             if os.path.exists(temp):
                 onlyfiles = [f for f in listdir(temp) if isfile(join(temp, f))]
                 for i in onlyfiles:
-                    print(temp+i)
-                    print(file+i)
+                    print(temp + i)
+                    print(file + i)
                     shutil.move(temp + i, file + i)
                 shutil.rmtree(temp, ignore_errors=True)
-#TODO fix cancel button
 
-
-
+    # TODO fix cancel button
 
     def addCell(self):
         self.ui.participants.setEnabled(True)
@@ -448,7 +526,6 @@ class MainWindow(QMainWindow):
         self.forgotToSave.setText('Please save Material and Certificates first!')
         self.forgotToSave.show()
 
-
     def closeEvent(self, event):
         mat = resource_path('temp/mat')
         cert = resource_path('temp/cert')
@@ -458,11 +535,6 @@ class MainWindow(QMainWindow):
         else:
             if os.path.exists('temp'): shutil.rmtree(resource_path('temp'))
             event.accept()
-
-
-
-
-
 
 
 class Participant():
@@ -535,7 +607,7 @@ class MWorker(QThread):
             if not os.path.exists(src):
                 os.makedirs(src)
 
-            material = src+name
+            material = src + name
 
             print('creating watermarked file')
             outputStream = open(material, 'wb')
@@ -582,12 +654,3 @@ window = MainWindow()
 window.show()
 
 sys.exit(app.exec_())
-
-
-
-# TODO
-
-
-# read excel file
-# open outlook
-
