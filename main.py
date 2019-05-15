@@ -63,6 +63,7 @@ class MainWindow(QMainWindow):
         self.ui.removeTrainer.clicked.connect(self.removingTrainer)
         self.ui.removeLocation.clicked.connect(self.removingLocation)
 
+
         app.aboutToQuit.connect(self.closeEvent)
 
     #   print(glob.glob('files/Material/*.pdf'))
@@ -385,24 +386,36 @@ class MainWindow(QMainWindow):
 
     def saveMaterialFiles(self):
         dialog = QFileDialog(self)
-        file = str(dialog.getExistingDirectory(self, "Select Directory") + '/')
-        dialog.exec_()
-        temp = resource_path('temp/mat/')
-        if os.path.exists(temp):
-            onlyfiles = [f for f in listdir(temp) if isfile(join(temp, f))]
-            for i in onlyfiles:
-                shutil.move(temp + i, file + i)
-            shutil.rmtree(temp, ignore_errors=True)
+        dialog.setLabelText(dialog.Accept, 'Save To')
 
-    def saveCertificationFiles(self):
-        file = QFileDialog(self).getExistingDirectory(self, "Select Directory") + '/'
+        file = resource_path(str(dialog.getExistingDirectory(self, "Select Directory") + '/'))
+        temp = resource_path('temp/mat/')
         if file:
-            temp = resource_path('temp/cert/')
             if os.path.exists(temp):
                 onlyfiles = [f for f in listdir(temp) if isfile(join(temp, f))]
                 for i in onlyfiles:
+                    print(temp+i)
+                    print(file+i)
                     shutil.move(temp + i, file + i)
                 shutil.rmtree(temp, ignore_errors=True)
+#TODO fix cancel button
+
+
+    def saveCertificationFiles(self):
+
+        file = resource_path(str(QFileDialog.getExistingDirectory(self, "Select Directory") + '/'))
+        temp = resource_path('temp/cert/')
+        if file:
+            if os.path.exists(temp):
+                onlyfiles = [f for f in listdir(temp) if isfile(join(temp, f))]
+                for i in onlyfiles:
+                    print(temp+i)
+                    print(file+i)
+                    shutil.move(temp + i, file + i)
+                shutil.rmtree(temp, ignore_errors=True)
+#TODO fix cancel button
+
+
 
 
     def addCell(self):
@@ -418,12 +431,18 @@ class MainWindow(QMainWindow):
 
 
     def closeEvent(self, event):
-        src = 'temp'
-        if os.path.exists(src):
+        mat = resource_path('temp/mat')
+        cert = resource_path('temp/cert')
+        if os.path.exists(mat) or os.path.exists(cert):
             self.forgotSaving()
+            event.ignore()
+        else:
+            shutil.rmtree(resource_path('temp'))
+            event.accept()
 
-        print("User has clicked the red x on the main window")
-        event.accept()
+
+
+
 
 
 class Participant():
@@ -541,7 +560,6 @@ class CWorker(QThread):
 
 window = MainWindow()
 window.show()
-
 
 sys.exit(app.exec_())
 
