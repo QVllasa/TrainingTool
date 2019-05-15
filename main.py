@@ -568,8 +568,8 @@ sys.exit(app.exec_())
 
 
 # TODO
-# let programm create a 'temp' folder in the beginnging and delete it after ending the programm
-# closing programm not possible until data is saved somewhere
+
+
 # read excel file
 # open outlook
 
