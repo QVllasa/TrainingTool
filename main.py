@@ -63,8 +63,9 @@ class MainWindow(QMainWindow):
         self.ui.removeTrainer.clicked.connect(self.removingTrainer)
         self.ui.removeLocation.clicked.connect(self.removingLocation)
 
-
-        app.aboutToQuit.connect(self.closeEvent)
+        quit = QAction("Quit", self)
+        quit.triggered.connect(self.closeEvent)
+        #app.aboutToQuit.connect(self.closeEvent)
 
     #   print(glob.glob('files/Material/*.pdf'))
     def onTrainingTypeChange(self):
@@ -437,8 +438,9 @@ class MainWindow(QMainWindow):
             self.forgotSaving()
             event.ignore()
         else:
-            shutil.rmtree(resource_path('temp'))
+            if os.path.exists('temp'): shutil.rmtree(resource_path('temp'))
             event.accept()
+
 
 
 
