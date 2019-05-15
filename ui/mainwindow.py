@@ -47,7 +47,7 @@ class Ui_MainWindow(object):
         self.participants.setHorizontalHeaderItem(1, item)
         item = QtWidgets.QTableWidgetItem()
         self.participants.setHorizontalHeaderItem(2, item)
-        self.participants.horizontalHeader().setVisible(False)
+        self.participants.horizontalHeader().setVisible(True)
         self.participants.horizontalHeader().setCascadingSectionResizes(False)
         self.participants.horizontalHeader().setStretchLastSection(True)
         self.gridLayout_2.addWidget(self.participants, 0, 0, 1, 6)
@@ -220,9 +220,9 @@ class Ui_MainWindow(object):
         self.label_2.setEnabled(True)
         self.label_2.setObjectName("label_2")
         self.gridLayout.addWidget(self.label_2, 2, 2, 1, 1)
-        self.pushButton = QtWidgets.QPushButton(self.gridLayoutWidget)
-        self.pushButton.setObjectName("pushButton")
-        self.gridLayout.addWidget(self.pushButton, 1, 0, 1, 1)
+        self.openData = QtWidgets.QPushButton(self.gridLayoutWidget)
+        self.openData.setObjectName("openData")
+        self.gridLayout.addWidget(self.openData, 1, 0, 1, 1)
         self.label_13 = QtWidgets.QLabel(self.gridLayoutWidget)
         self.label_13.setObjectName("label_13")
         self.gridLayout.addWidget(self.label_13, 0, 0, 1, 1)
@@ -238,7 +238,7 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusBar)
 
         self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(2)
+        self.tabWidget.setCurrentIndex(0)
         self.checkBoxFrom.toggled['bool'].connect(self.certDateFrom.setEnabled)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
@@ -287,7 +287,7 @@ class Ui_MainWindow(object):
         self.label_3.setText(_translate("MainWindow", "Type of Training"))
         self.label.setText(_translate("MainWindow", "Filter Training Date"))
         self.label_2.setText(_translate("MainWindow", "Choose Training"))
-        self.pushButton.setText(_translate("MainWindow", "Open"))
+        self.openData.setText(_translate("MainWindow", "Open"))
         self.label_13.setText(_translate("MainWindow", "Trainings Calendar:"))
 
 

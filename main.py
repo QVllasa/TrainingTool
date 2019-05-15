@@ -40,10 +40,7 @@ class MainWindow(QMainWindow):
     def __init__(self, parent=None):
         super().__init__(parent)
 
-        self.data = pd.read_excel(
-            r'files/testfile.xlsx')  # for an earlier version of Excel, you may need to use the file extension of 'xls'
-        self.df = pd.DataFrame(self.data, columns=['Training Title', 'Training Start', 'First Name', 'Last Name',
-                                                   'E-Mail Address', 'Status'])
+
 
         self.configFile = resource_path('config.txt')
         self.currentFile = ''
@@ -61,23 +58,6 @@ class MainWindow(QMainWindow):
         self.ui.trainingCourseCombo.currentTextChanged.connect(self.trainingFilter)
 
 
-
-        for (a, b) in self.df['Training Start'].iteritems():
-            if type(b) == str:
-                AllItemsDate = [self.ui.trainingStartCombo.itemText(i) for i in
-                                range(self.ui.trainingStartCombo.count())]
-                if not b in AllItemsDate:
-                    self.ui.trainingStartCombo.addItem(b)
-
-
-
-        for (a, b) in self.df['Training Title'].iteritems():
-            if type(b) == str:
-                AllItemsType = [self.ui.trainingCourseCombo.itemText(i) for i in
-                                range(self.ui.trainingCourseCombo.count())]
-                if not b in AllItemsType:
-                    self.ui.trainingCourseCombo.addItem(b)
-
         self.ui.addPart.clicked.connect(self.addCell)
         self.ui.saveMat.clicked.connect(self.saveMaterialFiles)
         self.ui.saveCert.clicked.connect(self.saveCertificationFiles)
@@ -90,6 +70,7 @@ class MainWindow(QMainWindow):
         self.ui.removeTrainer.clicked.connect(self.removingTrainer)
         self.ui.removeLocation.clicked.connect(self.removingLocation)
         self.ui.openMail.clicked.connect(self.emailer)
+        self.ui.openData.clicked.connect(self.openDataFile)
 
 
 
@@ -98,6 +79,32 @@ class MainWindow(QMainWindow):
         # app.aboutToQuit.connect(self.closeEvent)
 
     #   print(glob.glob('files/Material/*.pdf'))
+
+    def openDataFile(self):
+        fname = ''
+        dialog = QFileDialog(self)
+        dialog.setFileMode(QFileDialog.AnyFile)
+        dialog.setLabelText(QFileDialog.Accept, 'import')
+        if dialog.exec_():
+            fname = dialog.selectedFiles()
+
+        self.data = pd.read_excel(resource_path(fname))  # for an earlier version of Excel, you may need to use the file extension of 'xls'
+        self.df = pd.DataFrame(self.data, columns=['Training Title', 'Training Start', 'First Name', 'Last Name',
+                                                   'E-Mail Address', 'Status'])
+
+        for (a, b) in self.df['Training Title'].iteritems():
+            if type(b) == str:
+                AllItemsType = [self.ui.trainingCourseCombo.itemText(i) for i in
+                                range(self.ui.trainingCourseCombo.count())]
+                if not b in AllItemsType:
+                    self.ui.trainingCourseCombo.addItem(b)
+        for (a, b) in self.df['Training Start'].iteritems():
+            if type(b) == str:
+                AllItemsDate = [self.ui.trainingStartCombo.itemText(i) for i in
+                                range(self.ui.trainingStartCombo.count())]
+                if not b in AllItemsDate:
+                    self.ui.trainingStartCombo.addItem(b)
+
 
     def dateFilter(self):
         filter = self.ui.trainingStartCombo.currentText()
