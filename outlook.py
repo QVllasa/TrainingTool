@@ -1,6 +1,6 @@
 import win32com.client
 
-def send_mail_via_com(text, subject, recipient, profilename="Outlook2003"):
+def send_mail_via_com(text, subject, recipient,):
 
     o = win32com.client.Dispatch("Outlook.Application")
 
@@ -17,3 +17,6 @@ def send_mail_via_com(text, subject, recipient, profilename="Outlook2003"):
     # Msg.Attachments.Add(attachment2)
 
     Msg.Display()
+
+
+

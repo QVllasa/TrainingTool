@@ -2,7 +2,7 @@ import glob
 import sys
 import shutil
 import os
-
+import pandas as pd
 from os import listdir
 from os.path import isfile, join
 
@@ -19,6 +19,7 @@ from io import BytesIO
 from reportlab.pdfgen import canvas
 from reportlab.lib.colors import Color
 from generateCertificate import generateCertificate
+from outlook import send_mail_via_com
 from compressor import compress
 
 app = QApplication(sys.argv)
@@ -38,6 +39,12 @@ def resource_path(relative_path):
 class MainWindow(QMainWindow):
     def __init__(self, parent=None):
         super().__init__(parent)
+
+        data = pd.read_excel(
+            r'files/testfile.xlsx')  # for an earlier version of Excel, you may need to use the file extension of 'xls'
+        df = pd.DataFrame(data, columns=['Training Start', 'First Name', 'Last Name', 'E-Mail Address'])
+
+        print(df)
 
         self.configFile = resource_path('config.txt')
         self.currentFile = ''
@@ -62,19 +69,30 @@ class MainWindow(QMainWindow):
         self.ui.addCertificate.clicked.connect(self.importCertificate)
         self.ui.removeTrainer.clicked.connect(self.removingTrainer)
         self.ui.removeLocation.clicked.connect(self.removingLocation)
+        self.ui.openMail.clicked.connect(self.emailer)
 
         quit = QAction("Quit", self)
         quit.triggered.connect(self.closeEvent)
         #app.aboutToQuit.connect(self.closeEvent)
 
     #   print(glob.glob('files/Material/*.pdf'))
+
+    def emailer(self):
+        self.getParticipants()
+        for participant in self.participantList:
+            send_mail_via_com('blablabla', 'blablabla', participant.email)
+
+
+
+
+
+
+
     def onTrainingTypeChange(self):
         if self.ui.trainingType.currentText() == 'Webinar':
             self.ui.locationCombo.setEnabled(False)
         else:
             self.ui.locationCombo.setEnabled(True)
-
-
 
     def removingLocation(self):
         self.remLocationDialog = QDialog()

@@ -6,20 +6,20 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>721</width>
-    <height>640</height>
+    <width>719</width>
+    <height>583</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>626</width>
-    <height>566</height>
+    <width>719</width>
+    <height>583</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>900</width>
-    <height>900</height>
+    <width>719</width>
+    <height>583</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -36,7 +36,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="materialTab">
      <attribute name="title">
@@ -52,43 +52,6 @@
        </rect>
       </property>
       <layout class="QGridLayout" name="gridLayout_2">
-       <item row="2" column="5">
-        <spacer name="horizontalSpacer">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>40</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="1" column="0">
-        <widget class="QLabel" name="label_4">
-         <property name="text">
-          <string>Select Material:</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="1" colspan="4">
-        <widget class="QComboBox" name="matCombo"/>
-       </item>
-       <item row="2" column="2">
-        <widget class="QPushButton" name="addWat">
-         <property name="text">
-          <string>Add Watermark</string>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="0" colspan="5">
-        <widget class="QProgressBar" name="progressBarMat">
-         <property name="value">
-          <number>0</number>
-         </property>
-        </widget>
-       </item>
        <item row="2" column="0">
         <widget class="QPushButton" name="addMaterial">
          <property name="text">
@@ -137,10 +100,34 @@
          </column>
         </widget>
        </item>
-       <item row="2" column="3">
+       <item row="1" column="0">
+        <widget class="QLabel" name="label_4">
+         <property name="text">
+          <string>Select Material:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1" colspan="4">
+        <widget class="QComboBox" name="matCombo"/>
+       </item>
+       <item row="2" column="4">
         <widget class="QPushButton" name="saveMat">
          <property name="text">
           <string>Save </string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="3">
+        <widget class="QPushButton" name="addWat">
+         <property name="text">
+          <string>Add Watermark</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0" colspan="6">
+        <widget class="QProgressBar" name="progressBarMat">
+         <property name="value">
+          <number>0</number>
          </property>
         </widget>
        </item>
@@ -161,14 +148,7 @@
        </rect>
       </property>
       <layout class="QGridLayout" name="gridLayout_3">
-       <item row="1" column="0">
-        <widget class="QLabel" name="label_10">
-         <property name="text">
-          <string>Location</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="0" colspan="5">
+       <item row="0" column="2" colspan="4">
         <layout class="QHBoxLayout" name="horizontalLayout">
          <item>
           <widget class="QLabel" name="label_8">
@@ -236,20 +216,29 @@
          </item>
         </layout>
        </item>
-       <item row="3" column="4">
-        <widget class="QPushButton" name="generateCert">
-         <property name="font">
-          <font>
-           <pointsize>10</pointsize>
-          </font>
-         </property>
+       <item row="14" column="2">
+        <widget class="QPushButton" name="removeTrainer">
          <property name="text">
-          <string>Generate Certificate</string>
+          <string>Remove Trainer</string>
          </property>
         </widget>
        </item>
-       <item row="6" column="0">
-        <spacer name="horizontalSpacer_2">
+       <item row="3" column="2">
+        <widget class="QLabel" name="label_5">
+         <property name="text">
+          <string>Select Certificate</string>
+         </property>
+        </widget>
+       </item>
+       <item row="13" column="2">
+        <widget class="QPushButton" name="addTrainer">
+         <property name="text">
+          <string>Add Trainer</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="2" colspan="4">
+        <spacer name="horizontalSpacer">
          <property name="orientation">
           <enum>Qt::Horizontal</enum>
          </property>
@@ -261,75 +250,73 @@
          </property>
         </spacer>
        </item>
-       <item row="7" column="0">
-        <widget class="QPushButton" name="addCertificate">
+       <item row="1" column="2">
+        <widget class="QLabel" name="label_10">
          <property name="text">
-          <string>Import Certificate</string>
+          <string>Location</string>
          </property>
         </widget>
        </item>
-       <item row="5" column="0" colspan="4">
-        <widget class="QProgressBar" name="progressBarCert">
-         <property name="value">
-          <number>0</number>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="1" colspan="3">
-        <widget class="QComboBox" name="certCombo"/>
-       </item>
-       <item row="2" column="1" colspan="3">
-        <widget class="QComboBox" name="trainerCombo"/>
-       </item>
-       <item row="9" column="3">
-        <widget class="QPushButton" name="removeTrainer">
-         <property name="text">
-          <string>Remove Trainer</string>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="0">
-        <widget class="QLabel" name="label_5">
-         <property name="text">
-          <string>Select Certificate</string>
-         </property>
-        </widget>
-       </item>
-       <item row="5" column="4">
-        <widget class="QPushButton" name="saveCert">
-         <property name="text">
-          <string>Save</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="0">
-        <widget class="QLabel" name="label_9">
-         <property name="text">
-          <string>Trainer</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="1" colspan="3">
-        <widget class="QComboBox" name="locationCombo"/>
-       </item>
-       <item row="8" column="3">
-        <widget class="QPushButton" name="addTrainer">
-         <property name="text">
-          <string>Add Trainer</string>
-         </property>
-        </widget>
-       </item>
-       <item row="8" column="1">
+       <item row="13" column="3">
         <widget class="QPushButton" name="addLocation">
          <property name="text">
           <string>Add Location</string>
          </property>
         </widget>
        </item>
-       <item row="9" column="1">
+       <item row="14" column="3">
         <widget class="QPushButton" name="removeLocation">
          <property name="text">
           <string>Remove Location</string>
+         </property>
+        </widget>
+       </item>
+       <item row="9" column="2" colspan="2">
+        <widget class="QPushButton" name="addCertificate">
+         <property name="text">
+          <string>Import Certificate</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="2">
+        <widget class="QLabel" name="label_9">
+         <property name="text">
+          <string>Trainer</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="5">
+        <widget class="QPushButton" name="generateCert">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Generate Certificate</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="3" colspan="3">
+        <widget class="QComboBox" name="certCombo"/>
+       </item>
+       <item row="2" column="3" colspan="3">
+        <widget class="QComboBox" name="trainerCombo"/>
+       </item>
+       <item row="1" column="3" colspan="3">
+        <widget class="QComboBox" name="locationCombo"/>
+       </item>
+       <item row="5" column="2" colspan="3">
+        <widget class="QProgressBar" name="progressBarCert">
+         <property name="value">
+          <number>0</number>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="5">
+        <widget class="QPushButton" name="saveCert">
+         <property name="text">
+          <string>Save</string>
          </property>
         </widget>
        </item>
@@ -412,12 +399,15 @@
        <item row="2" column="0">
         <widget class="QLabel" name="label_12">
          <property name="text">
-          <string>Templates:</string>
+          <string>E-Mail Templates:</string>
          </property>
         </widget>
        </item>
-       <item row="0" column="1" colspan="2">
+       <item row="0" column="1">
         <widget class="QLineEdit" name="mailSubText"/>
+       </item>
+       <item row="0" column="2">
+        <widget class="QComboBox" name="comboBox_2"/>
        </item>
       </layout>
      </widget>

@@ -1,8 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4054586e-83c3-4709-a95e-6c4b1870f80e" name="Default Changelist" comment="">
+    <list default="true" id="4c058548-9a13-4298-b790-ab0d272418ee" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/excel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/TrainingTool.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/TrainingTool.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/Participant_list_3.0 (1).xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/outlook.py" beforeDir="false" afterPath="$PROJECT_DIR$/outlook.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/LocationListDialog.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui/LocationListDialog.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/addLocationDialog.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui/addLocationDialog.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/addTrainerDialog.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui/addTrainerDialog.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/mainwindow.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui/mainwindow.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/mainwindow.ui" beforeDir="false" afterPath="$PROJECT_DIR$/ui/mainwindow.ui" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/trainerListDialog.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui/trainerListDialog.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/ui.pro.user" beforeDir="false" afterPath="$PROJECT_DIR$/ui/ui.pro.user" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,90 +28,10 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="624">
-              <caret line="431" lean-forward="true" selection-start-line="431" selection-end-line="431" />
+            <state relative-caret-position="306">
+              <caret line="46" column="17" selection-start-line="46" selection-start-column="17" selection-end-line="46" selection-end-column="17" />
               <folding>
-                <element signature="e#716#1045#0" />
-                <element signature="e#806#902#0" />
-                <element signature="e#2435#2603#0" />
-                <element signature="e#2647#3425#0" />
-                <element signature="e#3003#3214#0" />
-                <element signature="e#3469#4449#0" />
-                <element signature="e#3564#4420#0" />
-                <element signature="e#3858#4138#0" />
-                <element signature="e#3892#4086#0" />
-                <element signature="e#3979#4086#0" />
-                <element signature="e#4489#5346#0" />
-                <element signature="e#4742#5317#0" />
-                <element signature="e#4880#5011#0" />
-                <element signature="e#5387#6145#0" />
-                <element signature="e#5733#5938#0" />
-                <element signature="e#6188#7164#0" />
-                <element signature="e#6281#7135#0" />
-                <element signature="e#6572#6857#0" />
-                <element signature="e#6606#6806#0" />
-                <element signature="e#6654#6806#0" />
-                <element signature="e#6748#6806#0" />
-                <element signature="e#7203#8049#0" />
-                <element signature="e#7449#8020#0" />
-                <element signature="e#7587#7718#0" />
-                <element signature="e#8088#9422#0" />
-                <element signature="e#8737#9422#0" />
-                <element signature="e#8866#9017#0" />
-                <element signature="e#9072#9219#0" />
-                <element signature="e#9273#9422#0" />
-                <element signature="e#9462#9976#0" />
-                <element signature="e#9565#9875#0" />
-                <element signature="e#9671#9756#0" />
-                <element signature="e#9791#9875#0" />
-                <element signature="e#9903#9976#0" />
-                <element signature="e#10021#10811#0" />
-                <element signature="e#10144#10233#0" />
-                <element signature="e#10849#11360#0" />
-                <element signature="e#10951#11260#0" />
-                <element signature="e#11057#11142#0" />
-                <element signature="e#11177#11260#0" />
-                <element signature="e#11288#11360#0" />
-                <element signature="e#11404#11775#0" />
-                <element signature="e#11815#12239#0" />
-                <element signature="e#12081#12210#0" />
-                <element signature="e#12282#12709#0" />
-                <element signature="e#12548#12680#0" />
-                <element signature="e#12768#13049#0" />
-                <element signature="e#12799#12878#0" />
-                <element signature="e#12922#13049#0" />
-                <element signature="e#13106#13646#0" />
-                <element signature="e#13137#13372#0" />
-                <element signature="e#13416#13646#0" />
-                <element signature="e#13703#13742#0" />
-                <element signature="e#13794#13832#0" />
-                <element signature="e#13873#14334#0" />
-                <element signature="e#14018#14334#0" />
-                <element signature="e#14070#14334#0" />
-                <element signature="e#14377#14941#0" />
-                <element signature="e#14546#14866#0" />
-                <element signature="e#14562#14821#0" />
-                <element signature="e#14707#14806#0" />
-                <element signature="e#14999#15479#0" />
-                <element signature="e#15242#15558#0" />
-                <element signature="e#15283#15558#0" />
-                <element signature="e#15403#15502#0" />
-                <element signature="e#15226#15353#0" />
-                <element signature="e#15391#15595#0" />
-                <element signature="e#15841#16063#0" />
-                <element signature="e#15897#15967#0" />
-                <element signature="e#16001#16063#0" />
-                <element signature="e#16094#18829#0" />
-                <element signature="e#16210#16365#0" />
-                <element signature="e#16394#18829#0" />
-                <element signature="e#16575#18704#0" />
-                <element signature="e#17656#18006#0" />
-                <element signature="e#18569#18666#0" />
-                <element signature="e#18860#19754#0" />
-                <element signature="e#19008#19218#0" />
-                <element signature="e#19247#19754#0" />
-                <element signature="e#19357#19624#0" />
-                <element signature="e#19819#19825#0" />
+                <element signature="e#0#11#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -107,29 +40,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/outlook.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" column="17" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="17" />
+            <state>
+              <caret column="22" selection-start-column="22" selection-end-column="22" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/generateCertificate.py">
+        <entry file="file://$PROJECT_DIR$/excel.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1320">
-              <caret line="98" selection-start-line="98" selection-end-line="98" />
-              <folding>
-                <element signature="e#0#47#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="1" selection-start-line="1" selection-end-line="1" />
+            <state relative-caret-position="198">
+              <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
             </state>
           </provider>
         </entry>
@@ -202,14 +123,14 @@
         <option value="$PROJECT_DIR$/generateCertificate.py" />
         <option value="$PROJECT_DIR$/outlook.py" />
         <option value="$PROJECT_DIR$/main.py" />
+        <option value="$PROJECT_DIR$/excel.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1720" />
-    <option name="y" value="23" />
-    <option name="width" value="1720" />
-    <option name="height" value="1342" />
+    <option name="x" value="-7" />
+    <option name="width" value="1734" />
+    <option name="height" value="1407" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="false" id="Update" />
@@ -220,6 +141,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -231,7 +153,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -261,7 +182,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.main">
+  <component name="RunManager" selected="Python.excel">
     <configuration name="build" type="PythonConfigurationType" factoryName="Python">
       <module name="TrainingTool" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -325,7 +246,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="demo" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="excel" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="TrainingTool" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -337,7 +258,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/misc/demo.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/excel.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -411,11 +332,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.excel" />
         <item itemvalue="Python.outlook" />
         <item itemvalue="Python.generateCertificate" />
         <item itemvalue="Python.classTesting" />
         <item itemvalue="Python.configTest" />
-        <item itemvalue="Python.demo" />
       </list>
     </recent_temporary>
   </component>
@@ -424,7 +345,7 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="4054586e-83c3-4709-a95e-6c4b1870f80e" name="Default Changelist" comment="" />
+      <changelist id="4c058548-9a13-4298-b790-ab0d272418ee" name="Default Changelist" comment="" />
       <created>1554937469955</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -661,26 +582,33 @@
       <option name="project" value="LOCAL" />
       <updated>1557879729084</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="prevent closing without saving implemented">
+      <created>1557880864090</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1557880864090</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1720" y="23" width="1720" height="1342" extended-state="0" />
+    <frame x="-7" y="0" width="1734" height="1407" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23602119" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2476415" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49849308" visible="true" weight="0.2824" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.8767689" visible="true" weight="0.60047096" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49933466" weight="0.3296" />
+      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49812967" weight="0.32940108" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.3288" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5015069" side_tool="true" weight="0.28304094" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.123231135" side_tool="true" visible="true" weight="0.60047096" />
       <window_info anchor="bottom" id="Python Console" order="10" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -717,7 +645,8 @@
     <MESSAGE value="finished material and certificate generator" />
     <MESSAGE value="working outlook app" />
     <MESSAGE value="update" />
-    <option name="LAST_COMMIT_MESSAGE" value="update" />
+    <MESSAGE value="prevent closing without saving implemented" />
+    <option name="LAST_COMMIT_MESSAGE" value="prevent closing without saving implemented" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/compressor.py">
@@ -806,103 +735,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="624">
-          <caret line="431" lean-forward="true" selection-start-line="431" selection-end-line="431" />
-          <folding>
-            <element signature="e#716#1045#0" />
-            <element signature="e#806#902#0" />
-            <element signature="e#2435#2603#0" />
-            <element signature="e#2647#3425#0" />
-            <element signature="e#3003#3214#0" />
-            <element signature="e#3469#4449#0" />
-            <element signature="e#3564#4420#0" />
-            <element signature="e#3858#4138#0" />
-            <element signature="e#3892#4086#0" />
-            <element signature="e#3979#4086#0" />
-            <element signature="e#4489#5346#0" />
-            <element signature="e#4742#5317#0" />
-            <element signature="e#4880#5011#0" />
-            <element signature="e#5387#6145#0" />
-            <element signature="e#5733#5938#0" />
-            <element signature="e#6188#7164#0" />
-            <element signature="e#6281#7135#0" />
-            <element signature="e#6572#6857#0" />
-            <element signature="e#6606#6806#0" />
-            <element signature="e#6654#6806#0" />
-            <element signature="e#6748#6806#0" />
-            <element signature="e#7203#8049#0" />
-            <element signature="e#7449#8020#0" />
-            <element signature="e#7587#7718#0" />
-            <element signature="e#8088#9422#0" />
-            <element signature="e#8737#9422#0" />
-            <element signature="e#8866#9017#0" />
-            <element signature="e#9072#9219#0" />
-            <element signature="e#9273#9422#0" />
-            <element signature="e#9462#9976#0" />
-            <element signature="e#9565#9875#0" />
-            <element signature="e#9671#9756#0" />
-            <element signature="e#9791#9875#0" />
-            <element signature="e#9903#9976#0" />
-            <element signature="e#10021#10811#0" />
-            <element signature="e#10144#10233#0" />
-            <element signature="e#10849#11360#0" />
-            <element signature="e#10951#11260#0" />
-            <element signature="e#11057#11142#0" />
-            <element signature="e#11177#11260#0" />
-            <element signature="e#11288#11360#0" />
-            <element signature="e#11404#11775#0" />
-            <element signature="e#11815#12239#0" />
-            <element signature="e#12081#12210#0" />
-            <element signature="e#12282#12709#0" />
-            <element signature="e#12548#12680#0" />
-            <element signature="e#12768#13049#0" />
-            <element signature="e#12799#12878#0" />
-            <element signature="e#12922#13049#0" />
-            <element signature="e#13106#13646#0" />
-            <element signature="e#13137#13372#0" />
-            <element signature="e#13416#13646#0" />
-            <element signature="e#13703#13742#0" />
-            <element signature="e#13794#13832#0" />
-            <element signature="e#13873#14334#0" />
-            <element signature="e#14018#14334#0" />
-            <element signature="e#14070#14334#0" />
-            <element signature="e#14377#14941#0" />
-            <element signature="e#14546#14866#0" />
-            <element signature="e#14562#14821#0" />
-            <element signature="e#14707#14806#0" />
-            <element signature="e#14999#15479#0" />
-            <element signature="e#15242#15558#0" />
-            <element signature="e#15283#15558#0" />
-            <element signature="e#15403#15502#0" />
-            <element signature="e#15226#15353#0" />
-            <element signature="e#15391#15595#0" />
-            <element signature="e#15841#16063#0" />
-            <element signature="e#15897#15967#0" />
-            <element signature="e#16001#16063#0" />
-            <element signature="e#16094#18829#0" />
-            <element signature="e#16210#16365#0" />
-            <element signature="e#16394#18829#0" />
-            <element signature="e#16575#18704#0" />
-            <element signature="e#17656#18006#0" />
-            <element signature="e#18569#18666#0" />
-            <element signature="e#18860#19754#0" />
-            <element signature="e#19008#19218#0" />
-            <element signature="e#19247#19754#0" />
-            <element signature="e#19357#19624#0" />
-            <element signature="e#19819#19825#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/outlook.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="17" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/generateCertificate.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1320">
@@ -917,6 +749,30 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
           <caret line="1" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/outlook.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="22" selection-start-column="22" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/excel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="46" column="17" selection-start-line="46" selection-start-column="17" selection-end-line="46" selection-end-column="17" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
