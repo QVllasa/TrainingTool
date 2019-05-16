@@ -19,8 +19,9 @@ from io import BytesIO
 from reportlab.pdfgen import canvas
 from reportlab.lib.colors import Color
 from generateCertificate import generateCertificate
-from outlook import send_mail_via_com
+# from outlook import send_mail_via_com
 from compressor import compress
+from xlrd.biffh import XLRDError
 
 app = QApplication(sys.argv)
 
@@ -40,8 +41,6 @@ class MainWindow(QMainWindow):
     def __init__(self, parent=None):
         super().__init__(parent)
 
-
-
         self.configFile = resource_path('config.txt')
         self.currentFile = ''
         self.materialPath = resource_path('files/Material/')
@@ -55,8 +54,7 @@ class MainWindow(QMainWindow):
         self.ui.trainingType.currentTextChanged.connect(self.onTrainingTypeChange)
         self.ui.trainingType.currentTextChanged.connect(self.onTrainingDateChange)
         self.ui.trainingStartCombo.currentTextChanged.connect(self.dateFilter)
-        self.ui.trainingCourseCombo.currentTextChanged.connect(self.trainingFilter)
-
+        # self.ui.trainingCourseCombo.currentTextChanged.connect(self.trainingFilter)
 
         self.ui.addPart.clicked.connect(self.addCell)
         self.ui.saveMat.clicked.connect(self.saveMaterialFiles)
@@ -72,8 +70,6 @@ class MainWindow(QMainWindow):
         self.ui.openMail.clicked.connect(self.emailer)
         self.ui.openData.clicked.connect(self.openDataFile)
 
-
-
         quit = QAction("Quit", self)
         quit.triggered.connect(self.closeEvent)
         # app.aboutToQuit.connect(self.closeEvent)
@@ -82,84 +78,151 @@ class MainWindow(QMainWindow):
 
     def openDataFile(self):
         fname = ''
+        self.ui.trainingCourseCombo.clear()
+        self.ui.trainingStartCombo.clear()
+
         dialog = QFileDialog(self)
         dialog.setFileMode(QFileDialog.AnyFile)
-        dialog.setLabelText(QFileDialog.Accept, 'import')
+        dialog.setLabelText(QFileDialog.Accept, 'open')
         if dialog.exec_():
             fname = dialog.selectedFiles()
+        print(fname)
+        try:
+            try:
+                try:
+                    try:
+                        self.data = pd.read_excel(io=fname[0], sheet_name='owssvr')
+                        self.df = pd.DataFrame(self.data,
+                                               columns=['Training Title', 'Training Start', 'First Name', 'Last Name',
+                                                        'E-Mail Address', 'Status'])
 
-        self.data = pd.read_excel(resource_path(fname))  # for an earlier version of Excel, you may need to use the file extension of 'xls'
-        self.df = pd.DataFrame(self.data, columns=['Training Title', 'Training Start', 'First Name', 'Last Name',
-                                                   'E-Mail Address', 'Status'])
+                        for (a, b) in self.df['Training Title'].iteritems():
+                            if type(b) == str:
+                                AllItemsType = [self.ui.trainingCourseCombo.itemText(i) for i in
+                                                range(self.ui.trainingCourseCombo.count())]
+                                if not b in AllItemsType:
+                                    self.ui.trainingCourseCombo.addItem(b)
+                        for (a, b) in self.df['Training Start'].iteritems():
+                            if type(b) == str:
+                                AllItemsDate = [self.ui.trainingStartCombo.itemText(i) for i in
+                                                range(self.ui.trainingStartCombo.count())]
+                                if not b in AllItemsDate:
+                                    self.ui.trainingStartCombo.addItem(b)
+                    except XLRDError:
+                        self.data = pd.read_excel(io=fname[0], sheet_name='FY19')
+                        self.df = pd.DataFrame(self.data,
+                                               columns=['Course title', 'Date of course', 'First Name', 'Last Name',
+                                                        'E-mail address'])
 
-        for (a, b) in self.df['Training Title'].iteritems():
-            if type(b) == str:
-                AllItemsType = [self.ui.trainingCourseCombo.itemText(i) for i in
-                                range(self.ui.trainingCourseCombo.count())]
-                if not b in AllItemsType:
-                    self.ui.trainingCourseCombo.addItem(b)
-        for (a, b) in self.df['Training Start'].iteritems():
-            if type(b) == str:
-                AllItemsDate = [self.ui.trainingStartCombo.itemText(i) for i in
-                                range(self.ui.trainingStartCombo.count())]
-                if not b in AllItemsDate:
-                    self.ui.trainingStartCombo.addItem(b)
+                        for (a, b) in self.df['Course title'].iteritems():
+                            if type(b) == str:
+                                AllItemsType = [self.ui.trainingCourseCombo.itemText(i) for i in
+                                                range(self.ui.trainingCourseCombo.count())]
+                                if not b in AllItemsType:
+                                    self.ui.trainingCourseCombo.addItem(b)
+                        for (a, b) in self.df['Date of course'].iteritems():
 
+                            if b:
+                                AllItemsDate = [self.ui.trainingStartCombo.itemText(i) for i in
+                                                range(self.ui.trainingStartCombo.count())]
+                                if not str(b) in AllItemsDate:
+                                    self.ui.trainingStartCombo.addItem(str(b))
+                except XLRDError:
+                    self.wrongFile = QMessageBox()
+                    self.wrongFile.setIcon(QMessageBox.Critical)
+                    self.wrongFile.setText('Please choose only participant_list_all-vX.X or participant_list_X.X!')
+                    self.wrongFile.show()
+            except IndexError:
+                pass
+        except IsADirectoryError:
+            self.fileNotDir = QMessageBox()
+            self.fileNotDir.setIcon(QMessageBox.Critical)
+            self.fileNotDir.setText('Choose file not directory!')
+            self.fileNotDir.show()
 
     def dateFilter(self):
         filter = self.ui.trainingStartCombo.currentText()
-        newData = self.df[self.df['Training Start'] == filter]
-        self.ui.trainingCourseCombo.clear()
-        for a, b in newData.iterrows():
-            if type(b['Training Title']) == str:
-                AllItemsType = [self.ui.trainingCourseCombo.itemText(i) for i in
-                                range(self.ui.trainingCourseCombo.count())]
-                if not b['Training Title'] in AllItemsType:
-                    self.ui.trainingCourseCombo.addItem(b['Training Title'])
-        self.insertParticipants(newData)
 
-
+        try:
+            newData = self.df[self.df['Training Start'] == filter]
+            self.ui.trainingCourseCombo.clear()
+            for a, b in newData.iterrows():
+                if type(b['Training Title']) == str:
+                    AllItemsType = [self.ui.trainingCourseCombo.itemText(i) for i in
+                                    range(self.ui.trainingCourseCombo.count())]
+                    if not b['Training Title'] in AllItemsType:
+                        self.ui.trainingCourseCombo.addItem(b['Training Title'])
+            self.insertParticipants(newData)
+        except KeyError:
+            newData = self.df[self.df['Date of course'] == filter]
+            self.ui.trainingCourseCombo.clear()
+            for a, b in newData.iterrows():
+                if type(b['Course title']) == str:
+                    AllItemsType = [self.ui.trainingCourseCombo.itemText(i) for i in
+                                    range(self.ui.trainingCourseCombo.count())]
+                    if not b['Course title'] in AllItemsType:
+                        self.ui.trainingCourseCombo.addItem(b['Course title'])
+            self.insertParticipants(newData)
 
     def trainingFilter(self):
         filter = self.ui.trainingCourseCombo.currentText()
-        newData = self.df[self.df['Training Title'] == filter]
-        #self.ui.trainingStartCombo.clear()
-        for a, b in newData.iterrows():
-            if type(b['Training Start']) == str:
-                AllItemsDate = [self.ui.trainingStartCombo.itemText(i) for i in
-                                range(self.ui.trainingStartCombo.count())]
-                if not b['Training Start'] in AllItemsDate:
-                    self.ui.trainingStartCombo.addItem(b['Training Start'])
-        self.insertParticipants(newData)
+
+        try:
+            newData = self.df[self.df['Training Title'] == filter]
+            for a, b in newData.iterrows():
+                if type(b['Training Start']) == str:
+                    AllItemsDate = [self.ui.trainingStartCombo.itemText(i) for i in
+                                    range(self.ui.trainingStartCombo.count())]
+                    if not b['Training Start'] in AllItemsDate:
+                        self.ui.trainingStartCombo.addItem(b['Training Start'])
+            self.insertParticipants(newData)
+        except KeyError:
+            newData = self.df[self.df['Course title'] == filter]
+            for a, b in newData.iterrows():
+                if type(b['Date of course']) == str:
+                    AllItemsDate = [self.ui.trainingStartCombo.itemText(i) for i in
+                                    range(self.ui.trainingStartCombo.count())]
+                    if not b['Date of course'] in AllItemsDate:
+                        self.ui.trainingStartCombo.addItem(b['Date of course'])
+            self.insertParticipants(newData)
 
     def insertParticipants(self, data):
         self.ui.participants.setRowCount(0)
-        #datas = pd.DataFrame(data, columns=['First Name', 'Last Name', 'E-Mail Address'])
-
 
         for pos, row in data.iterrows():
             fname = row['First Name']
             lname = row['Last Name']
-            email = row['E-Mail Address']
+            try:
+                email = row['E-Mail Address']
+            except KeyError:
+                email = row['E-mail address']
             counter = self.ui.participants.rowCount()
-            if not row['Status'] == 'Canceled':
-                if type(row['First Name']) == str:
+            try:
+                if not row['Status'] == 'Canceled':
+                    if type(fname) == str:
+                        self.ui.participants.insertRow(counter)
+                        self.ui.participants.setItem(counter, 0, QTableWidgetItem(str(fname)))
+
+                    if type(lname) == str:
+                        self.ui.participants.setItem(counter, 1, QTableWidgetItem(str(lname)))
+
+                    if type(email) == str:
+                        self.ui.participants.setItem(counter, 2, QTableWidgetItem(str(email)))
+            except KeyError:
+                if type(fname) == str:
                     self.ui.participants.insertRow(counter)
                     self.ui.participants.setItem(counter, 0, QTableWidgetItem(str(fname)))
 
-                if type(row['Last Name']) == str:
+                if type(lname) == str:
                     self.ui.participants.setItem(counter, 1, QTableWidgetItem(str(lname)))
 
-                if type(row['E-Mail Address']) == str:
+                if type(email) == str:
                     self.ui.participants.setItem(counter, 2, QTableWidgetItem(str(email)))
-
-
-
 
     def emailer(self):
         self.getParticipants()
-        for participant in self.participantList:
-            send_mail_via_com('blablabla', 'blablabla', participant.email)
+        # for participant in self.participantList:
+        #   send_mail_via_com('blablabla', 'blablabla', participant.email)
 
     # TODO finish emailer
 
@@ -173,8 +236,8 @@ class MainWindow(QMainWindow):
 
     def onTrainingTypeChange(self):
         if self.ui.trainingType.currentText() == 'Webinar':
-#TODO           remove entries when webinar is chosen
-# AllItemsType = [self.ui.trainingCourseCombo.itemText(i) for i in
+            # TODO           remove entries when webinar is chosen
+            # AllItemsType = [self.ui.trainingCourseCombo.itemText(i) for i in
             #                 range(self.ui.trainingCourseCombo.count())]
             # for i in AllItemsType:
             #     if not 'Webinar' in i:
@@ -412,7 +475,7 @@ class MainWindow(QMainWindow):
             self.startWatermarking()
 
     def startWatermarking(self):
-        self.ui.participants.clearSelection()
+        # self.ui.participants.clearSelection()
         self.getParticipants()
         self.currentFile = self.ui.matCombo.currentText()
 
@@ -483,44 +546,74 @@ class MainWindow(QMainWindow):
     def getParticipants(self):
         self.ui.participants.setEnabled(False)
         self.participantList = []
-        for i in range(0, self.ui.participants.rowCount()):
-            if self.ui.participants.item(i, 2):
-                firstname = self.ui.participants.item(i, 0).text()
-                lastname = self.ui.participants.item(i, 1).text()
-                email = self.ui.participants.item(i, 2).text()
+        print(self.ui.participants.rowCount())
+        if self.ui.participants.rowCount() == 0:
+            self.emptyList = QMessageBox()
+            self.emptyList.setIcon(QMessageBox.Critical)
+            self.emptyList.setText('List is empty!')
+            self.emptyList.show()
+        else:
+            for i in range(0, self.ui.participants.rowCount()):
+                firstname = 'None'
+                lastname = 'None'
+                email = 'None'
+                if self.ui.participants.item(i, 0):
+                    firstname = self.ui.participants.item(i, 0).text()
+
+                if self.ui.participants.item(i, 1):
+                    lastname = self.ui.participants.item(i, 1).text()
+
+                if self.ui.participants.item(i, 2):
+                    email = self.ui.participants.item(i, 2).text()
+
+                if email == 'None':
+                    self.missingInfo = QMessageBox()
+                    self.missingInfo.setIcon(QMessageBox.Critical)
+                    self.missingInfo.setText('One or more E-Mail Addresses are empty! But I will continue... :)')
+                    self.missingInfo.show()
+
                 self.participantList.append(Participant(firstname, lastname, email))
 
     def saveMaterialFiles(self):
-        dialog = QFileDialog(self)
-        dialog.setLabelText(dialog.Accept, 'Save To')
 
-        file = resource_path(str(dialog.getExistingDirectory(self, "Select Directory") + '/'))
-        temp = resource_path('temp/mat/')
-        if file:
+        try:
+
+            temp = resource_path('temp/mat/')
             if os.path.exists(temp):
                 onlyfiles = [f for f in listdir(temp) if isfile(join(temp, f))]
+                file = resource_path(str(QFileDialog.getExistingDirectory(self, "Select Directory") + '/'))
                 for i in onlyfiles:
                     print(temp + i)
                     print(file + i)
                     shutil.move(temp + i, file + i)
                 shutil.rmtree(temp, ignore_errors=True)
-
-    # TODO fix cancel button
+            else:
+                self.noMat = QMessageBox()
+                self.noMat.setIcon(QMessageBox.Critical)
+                self.noMat.setText('No Material to save!')
+                self.noMat.show()
+        except PermissionError:
+            pass
 
     def saveCertificationFiles(self):
 
-        file = resource_path(str(QFileDialog.getExistingDirectory(self, "Select Directory") + '/'))
-        temp = resource_path('temp/cert/')
-        if file:
+        try:
+            temp = resource_path('temp/cert/')
             if os.path.exists(temp):
                 onlyfiles = [f for f in listdir(temp) if isfile(join(temp, f))]
+                file = resource_path(str(QFileDialog.getExistingDirectory(self, "Select Directory") + '/'))
                 for i in onlyfiles:
                     print(temp + i)
                     print(file + i)
                     shutil.move(temp + i, file + i)
                 shutil.rmtree(temp, ignore_errors=True)
-
-    # TODO fix cancel button
+            else:
+                self.noCert = QMessageBox()
+                self.noCert.setIcon(QMessageBox.Critical)
+                self.noCert.setText('No Certificates to save!')
+                self.noCert.show()
+        except PermissionError:
+            pass
 
     def addCell(self):
         self.ui.participants.setEnabled(True)
@@ -572,7 +665,7 @@ class MWorker(QThread):
         count = float(0)
         self.progressM.emit(count)
         for participant in self.plist:
-
+            print(participant.email)
             self.buffer = BytesIO()
 
             self.file = open(self.materialPath + self.currentFile, 'rb')

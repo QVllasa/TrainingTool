@@ -486,7 +486,7 @@
      <item row="0" column="0">
       <widget class="QLabel" name="label_13">
        <property name="text">
-        <string>Trainings Calendar:</string>
+        <string>Participant List:</string>
        </property>
       </widget>
      </item>

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'ui\mainwindow.ui'
+# Form implementation generated from reading ui file 'ui/mainwindow.ui'
 #
 # Created by: PyQt5 UI code generator 5.12.1
 #
@@ -288,6 +288,6 @@ class Ui_MainWindow(object):
         self.label.setText(_translate("MainWindow", "Filter Training Date"))
         self.label_2.setText(_translate("MainWindow", "Choose Training"))
         self.openData.setText(_translate("MainWindow", "Open"))
-        self.label_13.setText(_translate("MainWindow", "Trainings Calendar:"))
+        self.label_13.setText(_translate("MainWindow", "Participant List:"))
 
 
