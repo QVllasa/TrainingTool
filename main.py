@@ -54,7 +54,7 @@ class MainWindow(QMainWindow):
         self.ui.trainingType.currentTextChanged.connect(self.onTrainingTypeChange)
         self.ui.trainingType.currentTextChanged.connect(self.onTrainingDateChange)
         self.ui.trainingStartCombo.currentTextChanged.connect(self.dateFilter)
-        # self.ui.trainingCourseCombo.currentTextChanged.connect(self.trainingFilter)
+        self.ui.trainingCourseCombo.currentTextChanged.connect(self.trainingFilter)
 
         self.ui.addPart.clicked.connect(self.addCell)
         self.ui.saveMat.clicked.connect(self.saveMaterialFiles)
@@ -142,7 +142,7 @@ class MainWindow(QMainWindow):
 
     def dateFilter(self):
         filter = self.ui.trainingStartCombo.currentText()
-
+        # TODO filter properly when multiple courses conducted paralell
         try:
             newData = self.df[self.df['Training Start'] == filter]
             self.ui.trainingCourseCombo.clear()
@@ -166,7 +166,7 @@ class MainWindow(QMainWindow):
 
     def trainingFilter(self):
         filter = self.ui.trainingCourseCombo.currentText()
-
+        # TODO make only date main filter and training as sub filter
         try:
             newData = self.df[self.df['Training Title'] == filter]
             for a, b in newData.iterrows():
