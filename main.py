@@ -228,6 +228,7 @@ class MainWindow(QMainWindow):
 
     def onTrainingDateChange(self):
         if self.ui.trainingType.currentText() == 'On-Site':
+            self.ui.participants.clear()
             self.ui.trainingStartCombo.setEnabled(False)
             self.ui.trainingCourseCombo.setEnabled(False)
         else:
