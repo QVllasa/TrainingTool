@@ -141,6 +141,7 @@ class MainWindow(QMainWindow):
             self.fileNotDir.show()
 
     def dateFilter(self):
+        #TODO only Classroom -> if not Webinar
         filterTraining = self.ui.trainingCourseCombo.currentText()
         filterDate = self.ui.trainingStartCombo.currentText()
         try:
@@ -168,6 +169,7 @@ class MainWindow(QMainWindow):
             self.insertParticipants(newData2)
 
     def trainingFilter(self):
+        #TODO only Classroom -> if not Webinar
         filterTraining = self.ui.trainingCourseCombo.currentText()
         filterDate = self.ui.trainingStartCombo.currentText()
         try:
@@ -234,6 +236,7 @@ class MainWindow(QMainWindow):
     # TODO finish emailer
 
     def onTrainingTypeChange(self):
+
         if self.ui.trainingType.currentText() == 'On-Site':
             self.ui.participants.clearContents()
 
@@ -245,8 +248,13 @@ class MainWindow(QMainWindow):
 
         if self.ui.trainingType.currentText() == 'Webinar':
             self.ui.participants.clearContents()
-            # TODO remove entries when webinar is chosen
             self.ui.locationCombo.setEnabled(False)
+            newData = self.df['Course title']
+            for b in newData:
+                if type(b) == str:
+                    if 'Webinar' in b:
+                        print(b)
+
 
         else:
             self.ui.locationCombo.setEnabled(True)
