@@ -52,9 +52,9 @@ class MainWindow(QMainWindow):
         self.getComboBoxes()
 
         self.ui.trainingType.currentTextChanged.connect(self.onTrainingTypeChange)
-        #self.ui.trainingType.currentTextChanged.connect(self.onTrainingDateChange)
-        #self.ui.trainingStartCombo.currentTextChanged.connect(self.dateFilter)
-        #self.ui.trainingCourseCombo.currentTextChanged.connect(self.trainingFilter)
+
+        self.ui.trainingStartCombo.currentTextChanged.connect(self.dateFilter)
+        self.ui.trainingCourseCombo.currentTextChanged.connect(self.trainingFilter)
 
         self.ui.addPart.clicked.connect(self.addCell)
         self.ui.saveMat.clicked.connect(self.saveMaterialFiles)
@@ -140,59 +140,59 @@ class MainWindow(QMainWindow):
             self.fileNotDir.setText('Choose file not directory!')
             self.fileNotDir.show()
 
-    # def dateFilter(self):
-    #     #TODO only Classroom -> if not Webinar
-    #     filterTraining = self.ui.trainingCourseCombo.currentText()
-    #     filterDate = self.ui.trainingStartCombo.currentText()
-    #     try:
-    #         newData = self.df[self.df['Training Start'] == filterDate]
-    #         newData2 = newData[newData['Training Title'] == filterTraining]
-    #         self.ui.trainingCourseCombo.clear()
-    #         for a, b in newData.iterrows():
-    #             if type(b['Training Title']) == str:
-    #                 AllItemsType = [self.ui.trainingCourseCombo.itemText(i) for i in
-    #                                 range(self.ui.trainingCourseCombo.count())]
-    #                 if not b['Training Title'] in AllItemsType:
-    #                     self.ui.trainingCourseCombo.addItem(b['Training Title'])
-    #         self.insertParticipants(newData2)
-    #     except KeyError:
-    #         newData = self.df[self.df['Date of course'] == filterDate]
-    #         newData2 = newData[newData['Course title'] == filterTraining]
-    #         self.ui.trainingCourseCombo.clear()
-    #         for a, b in newData.iterrows():
-    #             if type(b['Course title']) == str:
-    #
-    #                 AllItemsType = [self.ui.trainingCourseCombo.itemText(i) for i in
-    #                                 range(self.ui.trainingCourseCombo.count())]
-    #                 if not b['Course title'] in AllItemsType:
-    #                     self.ui.trainingCourseCombo.addItem(b['Course title'])
-    #         self.insertParticipants(newData2)
+    def dateFilter(self):
+        #TODO only Classroom -> if not Webinar
+        filterTraining = self.ui.trainingCourseCombo.currentText()
+        filterDate = self.ui.trainingStartCombo.currentText()
+        try:
+            newData = self.df[self.df['Training Start'] == filterDate]
+            newData2 = newData[newData['Training Title'] == filterTraining]
+            self.ui.trainingCourseCombo.clear()
+            for a, b in newData.iterrows():
+                if type(b['Training Title']) == str:
+                    AllItemsType = [self.ui.trainingCourseCombo.itemText(i) for i in
+                                    range(self.ui.trainingCourseCombo.count())]
+                    if not b['Training Title'] in AllItemsType:
+                        self.ui.trainingCourseCombo.addItem(b['Training Title'])
+            self.insertParticipants(newData2)
+        except KeyError:
+            newData = self.df[self.df['Date of course'] == filterDate]
+            newData2 = newData[newData['Course title'] == filterTraining]
+            self.ui.trainingCourseCombo.clear()
+            for a, b in newData.iterrows():
+                if type(b['Course title']) == str:
 
-    # def trainingFilter(self):
-    #     #TODO only Classroom -> if not Webinar
-    #     filterTraining = self.ui.trainingCourseCombo.currentText()
-    #     filterDate = self.ui.trainingStartCombo.currentText()
-    #     try:
-    #         newData = self.df[self.df['Training Title'] == filterTraining]
-    #         newData2 = newData[newData['Training Start'] == filterDate]
-    #         for a, b in newData.iterrows():
-    #             if type(b['Training Start']) == str:
-    #                 AllItemsDate = [self.ui.trainingStartCombo.itemText(i) for i in
-    #                                 range(self.ui.trainingStartCombo.count())]
-    #                 if not b['Training Start'] in AllItemsDate:
-    #                     self.ui.trainingStartCombo.addItem(b['Training Start'])
-    #         self.insertParticipants(newData2)
-    #     except KeyError:
-    #         newData1 = self.df[self.df['Course title'] == filterTraining]
-    #         newData2 = newData1[newData1['Date of course'] == filterDate]
-    #         for a, b in newData1.iterrows():
-    #             if type(b['Date of course']) == str:
-    #
-    #                 AllItemsDate = [self.ui.trainingStartCombo.itemText(i) for i in
-    #                                 range(self.ui.trainingStartCombo.count())]
-    #                 if not b['Date of course'] in AllItemsDate:
-    #                     self.ui.trainingStartCombo.addItem(b['Date of course'])
-    #         self.insertParticipants(newData2)
+                    AllItemsType = [self.ui.trainingCourseCombo.itemText(i) for i in
+                                    range(self.ui.trainingCourseCombo.count())]
+                    if not b['Course title'] in AllItemsType:
+                        self.ui.trainingCourseCombo.addItem(b['Course title'])
+            self.insertParticipants(newData2)
+
+    def trainingFilter(self):
+        #TODO only Classroom -> if not Webinar
+        filterTraining = self.ui.trainingCourseCombo.currentText()
+        filterDate = self.ui.trainingStartCombo.currentText()
+        try:
+            newData = self.df[self.df['Training Title'] == filterTraining]
+            newData2 = newData[newData['Training Start'] == filterDate]
+            for a, b in newData.iterrows():
+                if type(b['Training Start']) == str:
+                    AllItemsDate = [self.ui.trainingStartCombo.itemText(i) for i in
+                                    range(self.ui.trainingStartCombo.count())]
+                    if not b['Training Start'] in AllItemsDate:
+                        self.ui.trainingStartCombo.addItem(b['Training Start'])
+            self.insertParticipants(newData2)
+        except KeyError:
+            newData1 = self.df[self.df['Course title'] == filterTraining]
+            newData2 = newData1[newData1['Date of course'] == filterDate]
+            for a, b in newData1.iterrows():
+                if type(b['Date of course']) == str:
+
+                    AllItemsDate = [self.ui.trainingStartCombo.itemText(i) for i in
+                                    range(self.ui.trainingStartCombo.count())]
+                    if not b['Date of course'] in AllItemsDate:
+                        self.ui.trainingStartCombo.addItem(b['Date of course'])
+            self.insertParticipants(newData2)
 
     def insertParticipants(self, data):
 
@@ -239,7 +239,8 @@ class MainWindow(QMainWindow):
 
         if self.ui.trainingType.currentText() == 'Classroom':
             pass
-        else: pass
+        else:
+            pass
 
 
         if self.ui.trainingType.currentText() == 'On-Site':
