@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="4054586e-83c3-4709-a95e-6c4b1870f80e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/excel.py" beforeDir="false" afterPath="$PROJECT_DIR$/excel.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -18,7 +17,7 @@
         <entry file="file://$PROJECT_DIR$/excel.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="315">
-              <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+              <caret line="21" selection-start-line="21" selection-end-line="21" />
             </state>
           </provider>
         </entry>
@@ -27,7 +26,7 @@
         <entry file="file://$PROJECT_DIR$/outlook.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="150">
-              <caret line="10" column="25" lean-forward="true" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
+              <caret line="10" column="25" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -56,11 +55,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="218">
-              <caret line="254" column="43" lean-forward="true" selection-start-line="254" selection-start-column="43" selection-end-line="254" selection-end-column="43" />
+            <state relative-caret-position="1367">
+              <caret line="288" lean-forward="true" selection-start-line="288" selection-end-line="288" />
               <folding>
-                <element signature="e#9596#10970#0" />
-                <element signature="e#11003#11151#0" />
+                <element signature="e#10808#10956#0" />
+                <element signature="e#13058#13260#0" />
               </folding>
             </state>
           </provider>
@@ -77,11 +76,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>self.path</find>
-      <find>onlyfiles</find>
-      <find>addFiles</find>
-      <find>AllItemsTrainer</find>
-      <find>AllItemsLoca</find>
       <find>rowCount</find>
       <find>getParticipants</find>
       <find>GETparticipants</find>
@@ -107,6 +101,11 @@
       <find>onTrainingDateChange</find>
       <find>clear</find>
       <find>first</find>
+      <find>clearcon</find>
+      <find>clearcontents()</find>
+      <find>insert</find>
+      <find>insertparti</find>
+      <find>dateFilter</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -115,6 +114,7 @@
       <replace>getComboBoxes</replace>
       <replace>V3</replace>
       <replace>noCert</replace>
+      <replace>setRowCount(0)</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -158,7 +158,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -175,6 +174,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -639,7 +639,21 @@
       <option name="project" value="LOCAL" />
       <updated>1558360617494</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="working on webinar filter">
+      <created>1558372797085</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1558372797085</updated>
+    </task>
+    <task id="LOCAL-00040" summary="working on webinar filter">
+      <created>1558372938846</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1558372938846</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TodoView">
@@ -660,11 +674,11 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49849308" visible="true" weight="0.28187135" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49849308" weight="0.28187135" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.32982457" />
+      <window_info active="true" anchor="bottom" id="TODO" order="6" visible="true" weight="0.32982457" />
       <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49933466" weight="0.3296" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.3288" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5015069" side_tool="true" weight="0.28304094" />
@@ -805,16 +819,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/generateCertificate.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1560">
-          <caret line="114" selection-start-line="114" selection-end-line="114" />
-          <folding>
-            <element signature="e#0#47#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ui/mainwindow.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="179">
@@ -825,7 +829,17 @@
     <entry file="file://$PROJECT_DIR$/outlook.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
-          <caret line="10" column="25" lean-forward="true" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
+          <caret line="10" column="25" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/generateCertificate.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1560">
+          <caret line="114" selection-start-line="114" selection-end-line="114" />
+          <folding>
+            <element signature="e#0#47#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -839,17 +853,17 @@
     <entry file="file://$PROJECT_DIR$/excel.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
-          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+          <caret line="21" selection-start-line="21" selection-end-line="21" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="218">
-          <caret line="254" column="43" lean-forward="true" selection-start-line="254" selection-start-column="43" selection-end-line="254" selection-end-column="43" />
+        <state relative-caret-position="1367">
+          <caret line="288" lean-forward="true" selection-start-line="288" selection-end-line="288" />
           <folding>
-            <element signature="e#9596#10970#0" />
-            <element signature="e#11003#11151#0" />
+            <element signature="e#10808#10956#0" />
+            <element signature="e#13058#13260#0" />
           </folding>
         </state>
       </provider>
