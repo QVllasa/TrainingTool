@@ -67,6 +67,10 @@ class MainWindow(QMainWindow):
         self.ui.openMail.clicked.connect(self.emailer)
         self.ui.openData.clicked.connect(self.openDataFile)
 
+        self.ui.trainingStartCombo.setEnabled(False)
+        self.ui.trainingCourseCombo.setEnabled(False)
+        self.ui.trainingType.setEnabled(False)
+
         quit = QAction("Quit", self)
         quit.triggered.connect(self.closeEvent)
         # app.aboutToQuit.connect(self.closeEvent)
@@ -153,30 +157,53 @@ class MainWindow(QMainWindow):
         self.ui.trainingStartCombo.currentTextChanged.connect(self.dateFilter)
         self.ui.trainingCourseCombo.currentTextChanged.connect(self.trainingFilter)
 
+        self.ui.trainingStartCombo.setEnabled(True)
+        self.ui.trainingCourseCombo.setEnabled(True)
+        self.ui.trainingType.setEnabled(True)
+
     def dateFilter(self):
-        # TODO finish for both files
+
         filterDate = self.ui.trainingStartCombo.currentText()
         trainingType = self.ui.trainingType.currentText()
 
         self.ui.trainingCourseCombo.clear()
-        for a, b in self.df.iterrows():
-            if filterDate == str(b['Date of course']):
-                if type(b['Course title']) == str and trainingType == 'Classroom':
-                    if not 'Webinar' in b['Course title']:
-                        AllItemsType = [self.ui.trainingCourseCombo.itemText(i) for i in
-                                        range(self.ui.trainingCourseCombo.count())]
-                        if not b['Course title'] in AllItemsType:
-                            self.ui.trainingCourseCombo.addItem(b['Course title'])
 
-                if type(b['Course title']) == str and trainingType == 'Webinar':
-                    if 'Webinar' in b['Course title']:
-                        AllItemsType = [self.ui.trainingCourseCombo.itemText(i) for i in
-                                        range(self.ui.trainingCourseCombo.count())]
-                        if not b['Course title'] in AllItemsType:
-                            self.ui.trainingCourseCombo.addItem(b['Course title'])
+        try:
+            for a, b in self.df.iterrows():
+                if filterDate == str(b['Training Start']):
+                    if type(b['Training Title']) == str and trainingType == 'Classroom':
+                        if not 'Webinar' in b['Training Title']:
+                            AllItemsType = [self.ui.trainingCourseCombo.itemText(i) for i in
+                                            range(self.ui.trainingCourseCombo.count())]
+                            if not b['Training Title'] in AllItemsType:
+                                self.ui.trainingCourseCombo.addItem(b['Training Title'])
+
+                    if type(b['Training Title']) == str and trainingType == 'Webinar':
+                        if 'Webinar' in b['Training Title']:
+                            AllItemsType = [self.ui.trainingCourseCombo.itemText(i) for i in
+                                            range(self.ui.trainingCourseCombo.count())]
+                            if not b['Training Title'] in AllItemsType:
+                                self.ui.trainingCourseCombo.addItem(b['Training Title'])
+
+        except KeyError:
+            for a, b in self.df.iterrows():
+                if filterDate == str(b['Date of course']):
+                    if type(b['Course title']) == str and trainingType == 'Classroom':
+                        if not 'Webinar' in b['Course title']:
+                            AllItemsType = [self.ui.trainingCourseCombo.itemText(i) for i in
+                                            range(self.ui.trainingCourseCombo.count())]
+                            if not b['Course title'] in AllItemsType:
+                                self.ui.trainingCourseCombo.addItem(b['Course title'])
+
+                    if type(b['Course title']) == str and trainingType == 'Webinar':
+                        if 'Webinar' in b['Course title']:
+                            AllItemsType = [self.ui.trainingCourseCombo.itemText(i) for i in
+                                            range(self.ui.trainingCourseCombo.count())]
+                            if not b['Course title'] in AllItemsType:
+                                self.ui.trainingCourseCombo.addItem(b['Course title'])
 
     def trainingFilter(self):
-        ##TODO finish for both files
+
         filterTraining = self.ui.trainingCourseCombo.currentText()
         filterDate = self.ui.trainingStartCombo.currentText()
 
@@ -193,7 +220,7 @@ class MainWindow(QMainWindow):
         self.ui.participants.setRowCount(0)
 
         for pos, row in data.iterrows():
-            print(row)
+
             fname = row['First Name']
             lname = row['Last Name']
             if not type(fname) == str:
@@ -230,7 +257,7 @@ class MainWindow(QMainWindow):
     # TODO finish emailer
 
     def onTrainingTypeChange(self):
-        # #TODO finish for both files
+
         if self.ui.trainingType.currentText() == 'Classroom':
             self.ui.trainingStartCombo.setEnabled(True)
             self.ui.trainingCourseCombo.setEnabled(True)
@@ -250,8 +277,18 @@ class MainWindow(QMainWindow):
                                         range(self.ui.trainingCourseCombo.count())]
                         if not b['Course title'] in AllItemsType:
                             self.ui.trainingCourseCombo.addItem(b['Course title'])
-            except AttributeError:
-                pass
+            except KeyError:
+                for a, b in self.df.iterrows():
+                    if type(b['Training Title']) == str:
+                        if not 'Webinar' in b['Training Title']:
+                            AllItemsDate = [self.ui.trainingStartCombo.itemText(i) for i in
+                                            range(self.ui.trainingStartCombo.count())]
+                            if not str(b['Training Start']) in AllItemsDate:
+                                self.ui.trainingStartCombo.addItem(str(b['Training Start']))
+                            AllItemsType = [self.ui.trainingCourseCombo.itemText(i) for i in
+                                            range(self.ui.trainingCourseCombo.count())]
+                            if not b['Training Title'] in AllItemsType:
+                                self.ui.trainingCourseCombo.addItem(b['Training Title'])
 
 
 
@@ -282,10 +319,21 @@ class MainWindow(QMainWindow):
                         if not b['Course title'] in AllItemsType:
                             self.ui.trainingCourseCombo.addItem(b['Course title'])
 
-                # self.ui.trainingCourseCombo.currentTextChanged.connect(self.trainingFilter)
 
-            except AttributeError:
-                pass
+
+            except KeyError:
+                for a, b in self.df.iterrows():
+                    if type(b['Training Title']) == str:
+                        if 'Webinar' in b['Training Title']:
+                            AllItemsDate = [self.ui.trainingStartCombo.itemText(i) for i in
+                                            range(self.ui.trainingStartCombo.count())]
+                            if not str(b['Training Start']) in AllItemsDate:
+                                self.ui.trainingStartCombo.addItem(str(b['Training Start']))
+                            AllItemsType = [self.ui.trainingCourseCombo.itemText(i) for i in
+                                            range(self.ui.trainingCourseCombo.count())]
+                            if not b['Training Title'] in AllItemsType:
+                                self.ui.trainingCourseCombo.addItem(b['Training Title'])
+
 
     def removingLocation(self):
         self.remLocationDialog = QDialog()
