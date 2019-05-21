@@ -47,7 +47,7 @@ class Ui_MainWindow(object):
         self.participants.setHorizontalHeaderItem(1, item)
         item = QtWidgets.QTableWidgetItem()
         self.participants.setHorizontalHeaderItem(2, item)
-        self.participants.horizontalHeader().setVisible(False)
+        self.participants.horizontalHeader().setVisible(True)
         self.participants.horizontalHeader().setCascadingSectionResizes(False)
         self.participants.horizontalHeader().setStretchLastSection(True)
         self.gridLayout_2.addWidget(self.participants, 0, 0, 1, 6)
@@ -238,7 +238,7 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusBar)
 
         self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(1)
+        self.tabWidget.setCurrentIndex(0)
         self.checkBoxFrom.toggled['bool'].connect(self.certDateFrom.setEnabled)
         self.checkBoxLocation.toggled['bool'].connect(self.locationCombo.setEnabled)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)

@@ -1,4 +1,5 @@
 trainer =
+Qendrim Vllasa
 Prashant Adkoli
 Thilo Boehm
 

@@ -564,7 +564,7 @@ class MainWindow(QMainWindow):
             self.startWatermarking()
 
     def startWatermarking(self):
-        # self.ui.participants.clearSelection()
+
         self.getParticipants()
         self.currentFile = self.ui.matCombo.currentText()
 
@@ -765,7 +765,7 @@ class MWorker(QThread):
             self.pageNum = self.material.getNumPages()
             self.p = canvas.Canvas(self.buffer)
             self.r = Color(0, 0, 0, alpha=0.5)
-            self.p.setFont('Helvetica', 75)
+            self.p.setFont('Helvetica', 50)
             self.p.setFillColor(self.r)
             self.p.setPageSize((self.x, self.y))
             self.p.translate(self.x / float(2), self.y / float(2))
