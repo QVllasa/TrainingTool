@@ -1,0 +1,27 @@
+MindConnect =
+"This
+
+is the MindConnect Text
+
+Thank You!"
+
+
+
+Development =
+"This
+
+is the Development Text
+
+Thank You!"
+
+
+
+Introduction =
+"This
+
+is the Introduction Text
+
+Thank You!"
+
+
+=

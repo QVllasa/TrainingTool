@@ -19,7 +19,7 @@ from io import BytesIO
 from reportlab.pdfgen import canvas
 from reportlab.lib.colors import Color
 from generateCertificate import generateCertificate
-# from outlook import send_mail_via_com
+from outlook import send_mail_via_com
 from compressor import compress
 from xlrd.biffh import XLRDError
 
@@ -42,6 +42,7 @@ class MainWindow(QMainWindow):
         super().__init__(parent)
 
         self.configFile = resource_path('config.txt')
+        self.textFile = resource_path('texts.txt')
         self.currentFile = ''
         self.materialPath = resource_path('files/Material/')
         self.certificatePath = resource_path("files/Certificates/")
@@ -66,6 +67,8 @@ class MainWindow(QMainWindow):
         self.ui.removeLocation.clicked.connect(self.removingLocation)
         self.ui.openMail.clicked.connect(self.emailer)
         self.ui.openData.clicked.connect(self.openDataFile)
+
+        self.ui.emailCombo.currentTextChanged.connect(self.onEmailContentChange)
 
         self.ui.trainingStartCombo.setEnabled(False)
         self.ui.trainingCourseCombo.setEnabled(False)
@@ -251,10 +254,47 @@ class MainWindow(QMainWindow):
 
     def emailer(self):
         self.getParticipants()
-        # for participant in self.participantList:
-        #   send_mail_via_com('blablabla', 'blablabla', participant.email)
+        for participant in self.participantList:
+            send_mail_via_com('blablabla', 'blablabla', participant.email)
 
     # TODO finish emailer
+
+    def onEmailContentChange(self):
+
+        if self.ui.emailCombo.currentText() == 'MindConnect':
+
+            print(self.textReader(type='MindConnect'))
+            # self.ui.mailText.setPlainText('mindconnect text')
+        elif self.ui.emailCombo.currentText() == 'Development':
+            print(self.textReader(type='Development'))
+
+            # self.ui.mailText.setPlainText('development text')
+        elif self.ui.emailCombo.currentText() == 'Introduction':
+
+            print(self.textReader(type='Introduction'))
+
+        else:
+            pass
+
+    def textReader(self, type):
+
+
+        f = open(self.textFile, 'r')
+        contents = f.readlines()
+        f.close()
+        cont = []
+        for i in contents:
+            if '=' in i and type in i:
+                for j in contents:
+
+
+
+
+            else:
+                continue
+
+
+        return cont
 
     def onTrainingTypeChange(self):
 
@@ -333,7 +373,6 @@ class MainWindow(QMainWindow):
                                             range(self.ui.trainingCourseCombo.count())]
                             if not b['Training Title'] in AllItemsType:
                                 self.ui.trainingCourseCombo.addItem(b['Training Title'])
-
 
     def removingLocation(self):
         self.remLocationDialog = QDialog()

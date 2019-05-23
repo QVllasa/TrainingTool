@@ -36,7 +36,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="materialTab">
      <attribute name="title">
@@ -75,7 +75,7 @@
           <set>QAbstractItemView::AnyKeyPressed|QAbstractItemView::DoubleClicked|QAbstractItemView::EditKeyPressed</set>
          </property>
          <attribute name="horizontalHeaderVisible">
-          <bool>true</bool>
+          <bool>false</bool>
          </attribute>
          <attribute name="horizontalHeaderCascadingSectionResizes">
           <bool>false</bool>
@@ -337,21 +337,15 @@
        </rect>
       </property>
       <layout class="QGridLayout" name="gridLayout_4">
-       <item row="1" column="2">
-        <spacer name="verticalSpacer">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>40</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="1" column="1">
+       <item row="2" column="1">
         <widget class="QPlainTextEdit" name="mailText"/>
+       </item>
+       <item row="3" column="2">
+        <widget class="QPushButton" name="openMail">
+         <property name="text">
+          <string>Open Outlook</string>
+         </property>
+        </widget>
        </item>
        <item row="0" column="0">
         <widget class="QLabel" name="label_6">
@@ -360,25 +354,8 @@
          </property>
         </widget>
        </item>
-       <item row="1" column="0">
-        <widget class="QLabel" name="label_7">
-         <property name="text">
-          <string>E-Mail Content:</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="2">
-        <widget class="QPushButton" name="openMail">
-         <property name="text">
-          <string>Open Outlook</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="1">
-        <widget class="QComboBox" name="comboBox">
+       <item row="3" column="1">
+        <widget class="QComboBox" name="emailCombo">
          <item>
           <property name="text">
            <string>MindConnect</string>
@@ -396,18 +373,44 @@
          </item>
         </widget>
        </item>
+       <item row="0" column="1">
+        <widget class="QLineEdit" name="mailSubText"/>
+       </item>
        <item row="2" column="0">
+        <widget class="QLabel" name="label_7">
+         <property name="text">
+          <string>E-Mail Content:</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
         <widget class="QLabel" name="label_12">
          <property name="text">
           <string>E-Mail Templates:</string>
          </property>
         </widget>
        </item>
-       <item row="0" column="1">
-        <widget class="QLineEdit" name="mailSubText"/>
-       </item>
        <item row="0" column="2">
-        <widget class="QComboBox" name="comboBox_2"/>
+        <widget class="QComboBox" name="subjectCombo"/>
+       </item>
+       <item row="2" column="2">
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="1" column="1">
+        <widget class="QTextEdit" name="textEdit"/>
        </item>
       </layout>
      </widget>
