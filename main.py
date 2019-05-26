@@ -69,6 +69,7 @@ class MainWindow(QMainWindow):
         self.ui.openData.clicked.connect(self.openDataFile)
 
         self.ui.textsCombo.currentTextChanged.connect(self.onEmailContentChange)
+        self.ui.subjectCombo.currentTextChanged.connect(self.onSubjectChange)
 
         self.ui.trainingStartCombo.setEnabled(False)
         self.ui.trainingCourseCombo.setEnabled(False)
@@ -275,6 +276,11 @@ class MainWindow(QMainWindow):
             lines = f.readlines()
             for i in lines:
                 self.ui.mailText.insertPlainText(i)
+
+    def onSubjectChange(self):
+        self.ui.mailSubText.clear()
+        
+
 
     def onTrainingTypeChange(self):
 
