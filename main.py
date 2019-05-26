@@ -255,7 +255,7 @@ class MainWindow(QMainWindow):
     def emailer(self):
         self.getParticipants()
         for participant in self.participantList:
-            if not participant.email == None:
+            if not participant.email == 'None':
                 send_mail_via_com('mailtext', 'subject', participant.email, participant.firstname, participant.lastname)
             else:
                 continue
