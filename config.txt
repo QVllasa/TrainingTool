@@ -1,7 +1,7 @@
 trainer =
+Prashant Adkoli
 Daniel Feger
 Thilo Boehm
-Prashant Adkoli
 
 
 location =

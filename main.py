@@ -97,6 +97,7 @@ class MainWindow(QMainWindow):
             else:
                 subject = self.ui.mailSubText.text()
                 self.getParticipants()
+                self.ui.participants.setEnabled(True)
                 for participant in self.participantList:
                     pathMat = ''
                     pathCert = ''
@@ -610,7 +611,7 @@ class MainWindow(QMainWindow):
 
         trainer = self.ui.trainerCombo.currentText()
         self.objC = CWorker(self.participantList, date, location, path, filename, trainer)
-        self.objC.finishC.connect(self.disableEnableCertification)
+        self.objC.finishC.connect(self.disableEnableParticipantList)
         self.objC.progressC.connect(self.progressingCertification)
         self.objC.start()
 
