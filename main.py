@@ -127,7 +127,7 @@ class MainWindow(QMainWindow):
             self.forgotSaving()
             print('matSource und certSource nicht vorhanden!')
 
-    # TODO finish emailer
+
 
     def onEmailContentChange(self):
         self.ui.mailText.clear()
@@ -138,10 +138,12 @@ class MainWindow(QMainWindow):
                 if isfile(join(self.textsPath, i)):
                     file = join(self.textsPath, i)
 
-        with open(file, 'r') as f:
-            lines = f.readlines()
-            for i in lines:
-                self.ui.mailText.insertPlainText(i)
+        if not file == '':
+            with open(file, 'r') as f:
+                lines = f.readlines()
+                for i in lines:
+                    self.ui.mailText.insertPlainText(i)
+        else: print('file = ''')
 
     def onSubjectChange(self):
         self.ui.mailSubText.clear()
@@ -552,7 +554,7 @@ class MainWindow(QMainWindow):
         AllItemsTrainer = [self.ui.trainerCombo.itemText(i) for i in range(self.ui.trainerCombo.count())]
         AllItemsLocation = [self.ui.locationCombo.itemText(i) for i in range(self.ui.locationCombo.count())]
 
-        with open('config.txt', 'r') as file:
+        with open(self.configFile, 'r') as file:
             x = int
             b = int
             y = int

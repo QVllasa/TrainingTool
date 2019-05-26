@@ -1,11 +1,10 @@
 trainer =
-Qendrim Vllasa
-Prashant Adkoli
+Daniel Feger
 Thilo Boehm
+Prashant Adkoli
+
 
 location =
-Erlangen, Germany
 Singapore
+Erlangen, Germany
 Karlsruhe, Germany
-
-
