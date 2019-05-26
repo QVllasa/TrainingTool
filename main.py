@@ -42,7 +42,7 @@ class MainWindow(QMainWindow):
         super().__init__(parent)
 
         self.configFile = resource_path('config.txt')
-        self.textFile = resource_path('texts.txt')
+        self.textsPath = resource_path('files/Texts/')
         self.currentFile = ''
         self.materialPath = resource_path('files/Material/')
         self.certificatePath = resource_path("files/Certificates/")
@@ -68,7 +68,7 @@ class MainWindow(QMainWindow):
         self.ui.openMail.clicked.connect(self.emailer)
         self.ui.openData.clicked.connect(self.openDataFile)
 
-        self.ui.emailCombo.currentTextChanged.connect(self.onEmailContentChange)
+        self.ui.textsCombo.currentTextChanged.connect(self.onEmailContentChange)
 
         self.ui.trainingStartCombo.setEnabled(False)
         self.ui.trainingCourseCombo.setEnabled(False)
@@ -255,46 +255,26 @@ class MainWindow(QMainWindow):
     def emailer(self):
         self.getParticipants()
         for participant in self.participantList:
-            send_mail_via_com('blablabla', 'blablabla', participant.email)
+            if not participant.email == None:
+                send_mail_via_com('mailtext', 'subject', participant.email, participant.firstname, participant.lastname)
+            else:
+                continue
 
     # TODO finish emailer
 
     def onEmailContentChange(self):
+        self.ui.mailText.clear()
+        textFiles = [f for f in listdir(self.textsPath) if isfile(join(self.textsPath, f))]
+        file = ''
+        for i in textFiles:
+            if self.ui.textsCombo.currentText() == i:
+                if isfile(join(self.textsPath, i)):
+                    file = join(self.textsPath, i)
 
-        if self.ui.emailCombo.currentText() == 'MindConnect':
-
-            print(self.textReader(type='MindConnect'))
-            # self.ui.mailText.setPlainText('mindconnect text')
-        elif self.ui.emailCombo.currentText() == 'Development':
-            print(self.textReader(type='Development'))
-
-            # self.ui.mailText.setPlainText('development text')
-        elif self.ui.emailCombo.currentText() == 'Introduction':
-
-            print(self.textReader(type='Introduction'))
-
-        else:
-            pass
-
-    def textReader(self, type):
-
-
-        f = open(self.textFile, 'r')
-        contents = f.readlines()
-        f.close()
-        cont = []
-        for i in contents:
-            if '=' in i and type in i:
-                for j in contents:
-
-
-
-
-            else:
-                continue
-
-
-        return cont
+        with open(file, 'r') as f:
+            lines = f.readlines()
+            for i in lines:
+                self.ui.mailText.insertPlainText(i)
 
     def onTrainingTypeChange(self):
 
@@ -518,9 +498,13 @@ class MainWindow(QMainWindow):
     def getComboBoxes(self):
         self.ui.matCombo.clear()
         self.ui.certCombo.clear()
+        self.ui.textsCombo.clear()
 
         certificateFiles = [f for f in listdir(self.certificatePath) if isfile(join(self.certificatePath, f))]
         materialFiles = [f for f in listdir(self.materialPath) if isfile(join(self.materialPath, f))]
+        textFiles = [f for f in listdir(self.textsPath) if isfile(join(self.textsPath, f))]
+
+        self.ui.textsCombo.addItems(textFiles)
         self.ui.matCombo.addItems(materialFiles)
         self.ui.certCombo.addItems(certificateFiles)
         AllItemsTrainer = [self.ui.trainerCombo.itemText(i) for i in range(self.ui.trainerCombo.count())]

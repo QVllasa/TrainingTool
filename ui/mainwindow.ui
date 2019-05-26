@@ -355,7 +355,7 @@
         </widget>
        </item>
        <item row="3" column="1">
-        <widget class="QComboBox" name="emailCombo">
+        <widget class="QComboBox" name="textsCombo">
          <item>
           <property name="text">
            <string>MindConnect</string>
