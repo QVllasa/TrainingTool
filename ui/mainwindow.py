@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'ui/mainwindow.ui'
+# Form implementation generated from reading ui file 'ui\mainwindow.ui'
 #
 # Created by: PyQt5 UI code generator 5.12.1
 #
@@ -131,6 +131,7 @@ class Ui_MainWindow(object):
         self.progressBarCert.setObjectName("progressBarCert")
         self.gridLayout_3.addWidget(self.progressBarCert, 5, 2, 1, 4)
         self.checkBoxLocation = QtWidgets.QCheckBox(self.gridLayoutWidget_3)
+        self.checkBoxLocation.setChecked(True)
         self.checkBoxLocation.setObjectName("checkBoxLocation")
         self.gridLayout_3.addWidget(self.checkBoxLocation, 1, 2, 1, 1)
         self.certCombo = QtWidgets.QComboBox(self.gridLayoutWidget_3)
@@ -239,7 +240,7 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusBar)
 
         self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(2)
+        self.tabWidget.setCurrentIndex(1)
         self.checkBoxFrom.toggled['bool'].connect(self.certDateFrom.setEnabled)
         self.checkBoxLocation.toggled['bool'].connect(self.locationCombo.setEnabled)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)

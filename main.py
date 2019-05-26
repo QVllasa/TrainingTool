@@ -46,6 +46,9 @@ class MainWindow(QMainWindow):
         self.currentFile = ''
         self.materialPath = resource_path('files/Material/')
         self.certificatePath = resource_path("files/Certificates/")
+        self.saveMatLocation = ''
+        self.saveCertLocation = ''
+
         self.participantList = []
 
         self.ui = Ui_MainWindow()
@@ -65,6 +68,7 @@ class MainWindow(QMainWindow):
         self.ui.addCertificate.clicked.connect(self.importCertificate)
         self.ui.removeTrainer.clicked.connect(self.removingTrainer)
         self.ui.removeLocation.clicked.connect(self.removingLocation)
+
         self.ui.openMail.clicked.connect(self.emailer)
         self.ui.openData.clicked.connect(self.openDataFile)
 
@@ -77,9 +81,70 @@ class MainWindow(QMainWindow):
 
         quit = QAction("Quit", self)
         quit.triggered.connect(self.closeEvent)
-        # app.aboutToQuit.connect(self.closeEvent)
 
-    #   print(glob.glob('files/Material/*.pdf'))
+    def emailer(self):
+
+        matSource = self.saveMatLocation
+        certSource = self.saveCertLocation
+
+        if os.path.exists(matSource) and os.path.exists(certSource):
+            onlyMat = [f for f in listdir(matSource) if isfile(join(matSource, f))]
+            onlyCert = [f for f in listdir(certSource) if isfile(join(certSource, f))]
+
+            if not onlyMat or not onlyCert:
+                self.forgotSaving()
+                print('tempordner existiert ist aber NICHT leer')
+            else:
+                subject = self.ui.mailSubText.text()
+                self.getParticipants()
+                for participant in self.participantList:
+                    pathMat = ''
+                    pathCert = ''
+                    for i in onlyMat:
+                        if participant.email in i:
+                            if isfile(join(matSource, i)):
+                                pathMat = join(matSource, i)
+                                print(pathMat)
+
+                    for i in onlyCert:
+                        if participant.lastname in i:
+                            if isfile(join(certSource, i)):
+                                pathCert = join(certSource, i)
+                                print(pathCert)
+
+                    mailtext = self.ui.mailText.toPlainText()
+                    if not participant.email == 'None':
+                        if 'FirstName' in mailtext:
+                            mailtext = mailtext.replace('FirstName', participant.firstname)
+                            mailtext = mailtext.replace('LastName', participant.lastname)
+                            send_mail_via_com(mailtext, subject, participant.email, pathCert, pathMat)
+                        else:
+                            print('keine participant.email')
+                            #send_mail_via_com(mailtext, subject, participant.email, 'path1', 'path2')
+                    else:
+                        continue
+        else:
+            self.forgotSaving()
+            print('matSource und certSource nicht vorhanden!')
+
+    # TODO finish emailer
+
+    def onEmailContentChange(self):
+        self.ui.mailText.clear()
+        textFiles = [f for f in listdir(self.textsPath) if isfile(join(self.textsPath, f))]
+        file = ''
+        for i in textFiles:
+            if self.ui.textsCombo.currentText() == i:
+                if isfile(join(self.textsPath, i)):
+                    file = join(self.textsPath, i)
+
+        with open(file, 'r') as f:
+            lines = f.readlines()
+            for i in lines:
+                self.ui.mailText.insertPlainText(i)
+
+    def onSubjectChange(self):
+        self.ui.mailSubText.clear()
 
     def openDataFile(self):
         fname = ''
@@ -252,35 +317,6 @@ class MainWindow(QMainWindow):
                 self.ui.participants.setItem(counter, 0, QTableWidgetItem(str(fname)))
                 self.ui.participants.setItem(counter, 1, QTableWidgetItem(str(lname)))
                 self.ui.participants.setItem(counter, 2, QTableWidgetItem(str(email)))
-
-    def emailer(self):
-        self.getParticipants()
-        for participant in self.participantList:
-            if not participant.email == 'None':
-                send_mail_via_com('mailtext', 'subject', participant.email, participant.firstname, participant.lastname)
-            else:
-                continue
-
-    # TODO finish emailer
-
-    def onEmailContentChange(self):
-        self.ui.mailText.clear()
-        textFiles = [f for f in listdir(self.textsPath) if isfile(join(self.textsPath, f))]
-        file = ''
-        for i in textFiles:
-            if self.ui.textsCombo.currentText() == i:
-                if isfile(join(self.textsPath, i)):
-                    file = join(self.textsPath, i)
-
-        with open(file, 'r') as f:
-            lines = f.readlines()
-            for i in lines:
-                self.ui.mailText.insertPlainText(i)
-
-    def onSubjectChange(self):
-        self.ui.mailSubText.clear()
-        
-
 
     def onTrainingTypeChange(self):
 
@@ -704,6 +740,9 @@ class MainWindow(QMainWindow):
                     print(temp + i)
                     print(file + i)
                     shutil.move(temp + i, file + i)
+
+                self.saveMatLocation = file
+
                 shutil.rmtree(temp, ignore_errors=True)
             else:
                 self.noMat = QMessageBox()
@@ -724,6 +763,9 @@ class MainWindow(QMainWindow):
                     print(temp + i)
                     print(file + i)
                     shutil.move(temp + i, file + i)
+
+                self.saveCertLocation = file
+
                 shutil.rmtree(temp, ignore_errors=True)
             else:
                 self.noCert = QMessageBox()

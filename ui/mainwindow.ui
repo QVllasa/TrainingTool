@@ -36,7 +36,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="materialTab">
      <attribute name="title">
@@ -287,6 +287,9 @@
         <widget class="QCheckBox" name="checkBoxLocation">
          <property name="text">
           <string>Location</string>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
          </property>
         </widget>
        </item>
