@@ -121,14 +121,16 @@ class MainWindow(QMainWindow):
                             send_mail_via_com(mailtext, subject, participant.email, pathCert, pathMat)
                         else:
                             print('keine participant.email')
-                            #send_mail_via_com(mailtext, subject, participant.email, 'path1', 'path2')
+
                     else:
                         continue
         else:
             self.forgotSaving()
             print('matSource und certSource nicht vorhanden!')
 
-
+        self.saveMatLocation = ''
+        self.saveCertLocation = ''
+        self.ui.participants.setRowCount(0)
 
     def onEmailContentChange(self):
         self.ui.mailText.clear()
@@ -611,7 +613,7 @@ class MainWindow(QMainWindow):
 
         trainer = self.ui.trainerCombo.currentText()
         self.objC = CWorker(self.participantList, date, location, path, filename, trainer)
-        self.objC.finishC.connect(self.disableEnableParticipantList)
+        self.objC.finishC.connect(self.disableEnableCertification)
         self.objC.progressC.connect(self.progressingCertification)
         self.objC.start()
 
