@@ -41,7 +41,7 @@ class MainWindow(QMainWindow):
     def __init__(self, parent=None):
         super().__init__(parent)
 
-        self.configFile = resource_path('config.txt')
+        self.configFile = resource_path('files/config.txt')
         self.textsPath = resource_path('files/Texts/')
         self.currentFile = ''
         self.materialPath = resource_path('files/Material/')
@@ -582,7 +582,7 @@ class MainWindow(QMainWindow):
 
     def genCertificate(self):
         print('start')
-        temp = resource_path('temp/cert/')
+        temp = resource_path('../temp/cert/')
         if os.path.exists(temp):
             onlyfiles = [f for f in listdir(temp) if isfile(join(temp, f))]
             if onlyfiles:
@@ -620,7 +620,7 @@ class MainWindow(QMainWindow):
 
     def addWatermark(self):
         print('start')
-        temp = resource_path('temp/mat/')
+        temp = resource_path('../temp/mat/')
         if os.path.exists(temp):
             onlyfiles = [f for f in listdir(temp) if isfile(join(temp, f))]
             if onlyfiles:
@@ -739,7 +739,7 @@ class MainWindow(QMainWindow):
 
         try:
 
-            temp = resource_path('temp/mat/')
+            temp = resource_path('../temp/mat/')
             if os.path.exists(temp):
                 onlyfiles = [f for f in listdir(temp) if isfile(join(temp, f))]
                 file = resource_path(str(QFileDialog.getExistingDirectory(self, "Select Directory") + '/'))
@@ -766,7 +766,7 @@ class MainWindow(QMainWindow):
         self.ui.openMail.setEnabled(False)
 
         try:
-            temp = resource_path('temp/cert/')
+            temp = resource_path('../temp/cert/')
             if os.path.exists(temp):
                 onlyfiles = [f for f in listdir(temp) if isfile(join(temp, f))]
                 file = resource_path(str(QFileDialog.getExistingDirectory(self, "Select Directory") + '/'))
@@ -799,8 +799,8 @@ class MainWindow(QMainWindow):
         self.forgotToSave.show()
 
     def closeEvent(self, event):
-        mat = resource_path('temp/mat')
-        cert = resource_path('temp/cert')
+        mat = resource_path('../temp/mat')
+        cert = resource_path('../temp/cert')
         if os.path.exists(mat) or os.path.exists(cert):
             self.forgotSaving()
             event.ignore()
@@ -873,7 +873,7 @@ class MWorker(QThread):
                 self.progressM.emit(count)
             print('saving to Temp')
             newfile = self.currentFile.replace('.pdf', '')
-            src = resource_path('temp/mat/')
+            src = resource_path('../temp/mat/')
             name = str(newfile) + '_' + str(participant.email) + '.pdf'
             print(src)
             if not os.path.exists(src):
@@ -886,7 +886,7 @@ class MWorker(QThread):
             output.write(outputStream)
             outputStream.close()
             print('process successfull')
-            # compress('output.pdf', 'temp/' + str(newfile) + '_' + str(participant.email) + '.pdf', power=0)
+            # compress('output.pdf', '../temp/' + str(newfile) + '_' + str(participant.email) + '.pdf', power=0)
             # os.remove('output.pdf')
 
         self.finishM.emit('finished')
