@@ -4,7 +4,7 @@ block_cipher = None
 
 
 a = Analysis(['main.py'],
-             pathex=['C:\\Users\\qendrimvllasa\\Desktop\\TrainingTool'],
+             pathex=['/Users/qendrimvllasa/Library/Mobile Documents/com~apple~CloudDocs/Projects/TrainingTool'],
              binaries=[],
              datas=[],
              hiddenimports=[],
@@ -22,7 +22,7 @@ exe = EXE(pyz,
           [],
           exclude_binaries=True,
           name='main',
-          debug=True,
+          debug=False,
           bootloader_ignore_signals=False,
           strip=False,
           upx=True,
