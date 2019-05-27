@@ -8,6 +8,7 @@ from os.path import isfile, join
 
 
 from PyQt5.QtCore import *
+from PyQt5 import QtGui
 from qtpy.QtWidgets import *
 
 from ui.mainwindow import Ui_MainWindow
@@ -25,6 +26,7 @@ from compressor import compress
 from xlrd.biffh import XLRDError
 
 app = QApplication(sys.argv)
+app.setWindowIcon(QtGui.QIcon('icon.ico'))
 
 
 def resource_path(relative_path):
@@ -821,7 +823,7 @@ class MainWindow(QMainWindow):
             self.forgotSaving()
             event.ignore()
         else:
-            if os.path.exists('temp'): shutil.rmtree(resource_path('temp'))
+            if os.path.exists('../temp'): shutil.rmtree(resource_path('../temp'))
             event.accept()
 
 
@@ -940,5 +942,6 @@ class CWorker(QThread):
 
 window = MainWindow()
 window.show()
+window.setWindowIcon(QtGui.QIcon('icon.ico'))
 
 sys.exit(app.exec_())

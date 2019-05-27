@@ -98,7 +98,7 @@ def generateCertificate(fname, lname, date, location, path, filename, trainer):
         output.addPage(slide)
     print('saving to temp')
     newfile = filename.replace('.pdf', '')
-    src = resource_path('temp/cert/')
+    src = resource_path('../temp/cert/')
     name = str(newfile) + '_' +str(fname[0])+str(lname) + '.pdf'
     if not os.path.exists(src):
         os.makedirs(src)
