@@ -42,11 +42,11 @@ class MainWindow(QMainWindow):
     def __init__(self, parent=None):
         super().__init__(parent)
 
-        self.configFile = resource_path('../files/asd/config.txt')
-        self.textsPath = resource_path('../files/asd/Texts/')
+        self.configFile = resource_path('../files/config.txt')
+        self.textsPath = resource_path('../files/Texts/')
         self.currentFile = ''
-        self.materialPath = resource_path('../files/asd/Material/')
-        self.certificatePath = resource_path("../files/asd/Certificates/")
+        self.materialPath = resource_path('../files/Material/')
+        self.certificatePath = resource_path("../files/Certificates/")
         self.saveMatLocation = ''
         self.saveCertLocation = ''
 
