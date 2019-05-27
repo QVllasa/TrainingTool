@@ -118,6 +118,7 @@ class MainWindow(QMainWindow):
                         if 'FirstName' in mailtext:
                             mailtext = mailtext.replace('FirstName', participant.firstname)
                             mailtext = mailtext.replace('LastName', participant.lastname)
+
                             send_mail_via_com(mailtext, subject, participant.email, pathCert, pathMat)
                         else:
                             print('keine participant.email')
@@ -130,7 +131,7 @@ class MainWindow(QMainWindow):
 
         self.saveMatLocation = ''
         self.saveCertLocation = ''
-        self.ui.participants.setRowCount(0)
+
 
     def onEmailContentChange(self):
         self.ui.mailText.clear()
@@ -734,6 +735,7 @@ class MainWindow(QMainWindow):
                 self.participantList.append(Participant(firstname, lastname, email))
 
     def saveMaterialFiles(self):
+        self.ui.openMail.setEnabled(False)
 
         try:
 
@@ -757,7 +759,11 @@ class MainWindow(QMainWindow):
         except PermissionError:
             pass
 
+        self.ui.openMail.setEnabled(True)
+
+
     def saveCertificationFiles(self):
+        self.ui.openMail.setEnabled(False)
 
         try:
             temp = resource_path('temp/cert/')
@@ -779,6 +785,7 @@ class MainWindow(QMainWindow):
                 self.noCert.show()
         except PermissionError:
             pass
+        self.ui.openMail.setEnabled(True)
 
     def addCell(self):
         self.ui.participants.setEnabled(True)
