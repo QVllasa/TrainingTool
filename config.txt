@@ -1,6 +1,5 @@
 trainer =
 Prashant Adkoli
-Daniel Feger
 Thilo Boehm
 
 
