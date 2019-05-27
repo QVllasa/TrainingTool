@@ -3,7 +3,7 @@
 block_cipher = None
 
 
-a = Analysis(['main_windows.py'],
+a = Analysis(['main.py'],
              pathex=['/Users/qendrimvllasa/Library/Mobile Documents/com~apple~CloudDocs/Projects/Password Manager'],
              binaries=[('webdriver/windows/chromedriver.exe', 'webdriver/windows'),
              ('webdriver/windows/geckodriver.exe', 'webdriver/windows')],
