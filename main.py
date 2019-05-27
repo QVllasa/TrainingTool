@@ -6,6 +6,7 @@ import pandas as pd
 from os import listdir
 from os.path import isfile, join
 
+
 from PyQt5.QtCore import *
 from qtpy.QtWidgets import *
 
@@ -41,13 +42,15 @@ class MainWindow(QMainWindow):
     def __init__(self, parent=None):
         super().__init__(parent)
 
-        self.configFile = resource_path('files/config.txt')
-        self.textsPath = resource_path('files/Texts/')
+        self.configFile = resource_path('../files/asd/config.txt')
+        self.textsPath = resource_path('../files/asd/Texts/')
         self.currentFile = ''
-        self.materialPath = resource_path('files/Material/')
-        self.certificatePath = resource_path("files/Certificates/")
+        self.materialPath = resource_path('../files/asd/Material/')
+        self.certificatePath = resource_path("../files/asd/Certificates/")
         self.saveMatLocation = ''
         self.saveCertLocation = ''
+
+
 
         self.participantList = []
 
@@ -81,6 +84,54 @@ class MainWindow(QMainWindow):
 
         quit = QAction("Quit", self)
         quit.triggered.connect(self.closeEvent)
+
+
+    def getComboBoxes(self):
+        self.ui.matCombo.clear()
+        self.ui.certCombo.clear()
+        self.ui.textsCombo.clear()
+
+        try:
+            certificateFiles = [f for f in listdir(self.certificatePath) if isfile(join(self.certificatePath, f))]
+            materialFiles = [f for f in listdir(self.materialPath) if isfile(join(self.materialPath, f))]
+            textFiles = [f for f in listdir(self.textsPath) if isfile(join(self.textsPath, f))]
+
+
+            self.ui.textsCombo.addItems(textFiles)
+            self.ui.matCombo.addItems(materialFiles)
+            self.ui.certCombo.addItems(certificateFiles)
+            AllItemsTrainer = [self.ui.trainerCombo.itemText(i) for i in range(self.ui.trainerCombo.count())]
+            AllItemsLocation = [self.ui.locationCombo.itemText(i) for i in range(self.ui.locationCombo.count())]
+
+            with open(self.configFile, 'r') as file:
+                x = int
+                b = int
+                y = int
+                lines = file.readlines()
+                for i in lines:
+                    if 'trainer' in i: x = lines.index(i)
+                    if len(i.strip()) == 0: b = lines.index(i)
+                    if 'location' in i: y = lines.index(i)
+
+                for j in lines[x + 1:b]:
+                    if not j.strip() in AllItemsTrainer:
+                        self.ui.trainerCombo.addItem(j.strip())
+                    else:
+                        continue
+
+                for j in lines[y + 1:]:
+                    if not j.strip() in AllItemsLocation:
+                        self.ui.locationCombo.addItem(j.strip())
+                    else:
+                        continue
+        except IOError:
+            self.noFiles()
+
+    def noFiles(self):
+        self.noFile_dialog = QMessageBox()
+        self.noFile_dialog.setIcon(QMessageBox.Critical)
+        self.noFile_dialog.setText('Files, material or certificate folder or config.txt is missing!')
+        self.noFile_dialog.show()
 
     def emailer(self):
 
@@ -543,42 +594,7 @@ class MainWindow(QMainWindow):
             f.close()
         self.getComboBoxes()
 
-    def getComboBoxes(self):
-        self.ui.matCombo.clear()
-        self.ui.certCombo.clear()
-        self.ui.textsCombo.clear()
 
-        certificateFiles = [f for f in listdir(self.certificatePath) if isfile(join(self.certificatePath, f))]
-        materialFiles = [f for f in listdir(self.materialPath) if isfile(join(self.materialPath, f))]
-        textFiles = [f for f in listdir(self.textsPath) if isfile(join(self.textsPath, f))]
-
-        self.ui.textsCombo.addItems(textFiles)
-        self.ui.matCombo.addItems(materialFiles)
-        self.ui.certCombo.addItems(certificateFiles)
-        AllItemsTrainer = [self.ui.trainerCombo.itemText(i) for i in range(self.ui.trainerCombo.count())]
-        AllItemsLocation = [self.ui.locationCombo.itemText(i) for i in range(self.ui.locationCombo.count())]
-
-        with open(self.configFile, 'r') as file:
-            x = int
-            b = int
-            y = int
-            lines = file.readlines()
-            for i in lines:
-                if 'trainer' in i: x = lines.index(i)
-                if len(i.strip()) == 0: b = lines.index(i)
-                if 'location' in i: y = lines.index(i)
-
-            for j in lines[x + 1:b]:
-                if not j.strip() in AllItemsTrainer:
-                    self.ui.trainerCombo.addItem(j.strip())
-                else:
-                    continue
-
-            for j in lines[y + 1:]:
-                if not j.strip() in AllItemsLocation:
-                    self.ui.locationCombo.addItem(j.strip())
-                else:
-                    continue
 
     def genCertificate(self):
         print('start')

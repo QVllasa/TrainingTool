@@ -6,7 +6,22 @@ block_cipher = None
 a = Analysis(['main.py'],
              pathex=['/Users/qendrimvllasa/Library/Mobile Documents/com~apple~CloudDocs/Projects/TrainingTool'],
              binaries=[],
-             datas=[],
+             datas=[
+
+
+             ("misc/Siemens_Sans/SISAN03.ttf","misc/Siemens_Sans/"),
+             ("misc/Siemens_Sans/SISAN06.ttf","misc/Siemens_Sans/"),
+             ("misc/Siemens_Sans/SISAN08.ttf","misc/Siemens_Sans/"),
+             ("misc/Siemens_Sans/SISAN33.ttf","misc/Siemens_Sans/"),
+             ("misc/Siemens_Sans/SISAN36.ttf","misc/Siemens_Sans/"),
+             ("misc/Siemens_Sans/SISAN38.ttf","misc/Siemens_Sans/")
+
+
+
+
+
+
+             ],
              hiddenimports=[],
              hookspath=[],
              runtime_hooks=[],

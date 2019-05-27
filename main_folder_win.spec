@@ -4,10 +4,10 @@ block_cipher = None
 
 
 a = Analysis(['main.py'],
-             pathex=[],
+             pathex=['/Users/qendrimvllasa/Library/Mobile Documents/com~apple~CloudDocs/Projects/TrainingTool'],
              binaries=[],
-             datas=[('icon.ico','.')
-             ],
+             datas=[("/Users/qendrimvllasa/Library/Mobile%20Documents/com~apple~CloudDocs/Projects/TrainingTool/misc/Siemens_Sans/SISAN03.ttf
+","misc/Siemens_Sans/"),],
              hiddenimports=[],
              hookspath=[],
              runtime_hooks=[],
@@ -22,16 +22,16 @@ exe = EXE(pyz,
           a.scripts,
           [],
           exclude_binaries=True,
-          name='Training Tool',
+          name='main',
           debug=False,
           bootloader_ignore_signals=False,
           strip=False,
           upx=True,
-          console=False, icon='icon.ico' )
+          console=True )
 coll = COLLECT(exe,
                a.binaries,
                a.zipfiles,
                a.datas,
                strip=False,
                upx=True,
-               name='Training Tool')
+               name='main')

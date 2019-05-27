@@ -22,12 +22,12 @@ def resource_path(relative_path):
     return os.path.join(base_path, relative_path)
 
 
-pdfmetrics.registerFont(TTFont('Siemens Sans03', 'misc/Siemens_Sans/SISAN03.ttf'))
-pdfmetrics.registerFont(TTFont('Siemens Sans06', 'misc/Siemens_Sans/SISAN06.ttf'))
-pdfmetrics.registerFont(TTFont('Siemens Sans08', 'misc/Siemens_Sans/SISAN08.ttf'))
-pdfmetrics.registerFont(TTFont('Siemens Sans33', 'misc/Siemens_Sans/SISAN33.ttf'))
-pdfmetrics.registerFont(TTFont('Siemens Sans36', 'misc/Siemens_Sans/SISAN36.ttf'))
-pdfmetrics.registerFont(TTFont('Siemens Sans38', 'misc/Siemens_Sans/SISAN38.ttf'))
+pdfmetrics.registerFont(TTFont('Siemens Sans03', resource_path('misc/Siemens_Sans/SISAN03.ttf')))
+pdfmetrics.registerFont(TTFont('Siemens Sans06', resource_path('misc/Siemens_Sans/SISAN06.ttf')))
+pdfmetrics.registerFont(TTFont('Siemens Sans08', resource_path('misc/Siemens_Sans/SISAN08.ttf')))
+pdfmetrics.registerFont(TTFont('Siemens Sans33', resource_path('misc/Siemens_Sans/SISAN33.ttf')))
+pdfmetrics.registerFont(TTFont('Siemens Sans36', resource_path('misc/Siemens_Sans/SISAN36.ttf')))
+pdfmetrics.registerFont(TTFont('Siemens Sans38', resource_path('misc/Siemens_Sans/SISAN38.ttf')))
 # #
 # fname = 'Qendrim'
 # lname = 'VllasaVllasa Vllasa Vllasa'
