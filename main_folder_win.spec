@@ -35,4 +35,4 @@ coll = COLLECT(exe,
                a.datas,
                strip=False,
                upx=True,
-               name='Password Manager')
+               name='Training Tool')
