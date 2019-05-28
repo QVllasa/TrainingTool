@@ -7,9 +7,9 @@ from os import listdir
 from os.path import isfile, join
 
 
-from PyQt5.QtCore import *
+from PyQt5.QtCore import QThread, pyqtSignal
 from PyQt5 import QtGui
-from qtpy.QtWidgets import *
+from qtpy.QtWidgets import QApplication, QMainWindow, QMessageBox, QAction, QTableWidgetItem, QFileDialog, QDialog
 
 from ui.mainwindow import Ui_MainWindow
 from ui.addLocationDialog import Ui_LocationDialog

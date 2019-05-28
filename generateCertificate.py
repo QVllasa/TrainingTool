@@ -3,9 +3,9 @@ from io import BytesIO
 from reportlab.pdfgen import canvas
 from reportlab.lib.units import cm
 from reportlab.lib.pagesizes import A4
-from reportlab.graphics.shapes import *
-from reportlab.lib.colors import Color
-from compressor import compress
+#from reportlab.graphics.shapes import
+#from reportlab.lib.colors import Color
+#from compressor import compress
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 import os

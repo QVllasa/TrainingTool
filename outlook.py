@@ -1,11 +1,11 @@
-import win32com.client
+import win32com.client as wc
 
 
 def send_mail_via_com(text, subject, recipient, certificatepath, materialpath):
 
     print('E-Mail Beginn---------------------')
     if certificatepath and materialpath:
-        o = win32com.client.Dispatch("Outlook.Application")
+        o = wc.Dispatch("Outlook.Application")
 
         Msg = o.CreateItem(0)
         Msg.To = recipient
