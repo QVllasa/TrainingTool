@@ -4,7 +4,9 @@ import win32com.client as wc
 def send_mail_via_com(text, subject, recipient, certificatepath, materialpath):
 
     print('E-Mail Beginn---------------------')
-    if certificatepath and materialpath:
+    if not certificatepath=='' and not materialpath=='':
+        print(certificatepath)
+        print(materialpath)
         o = wc.Dispatch("Outlook.Application")
 
         Msg = o.CreateItem(0)
@@ -17,15 +19,15 @@ def send_mail_via_com(text, subject, recipient, certificatepath, materialpath):
         Msg.Display()
     else: print('Attachments not ready')
 
-    print(text)
-
-    print(subject)
-
-    print(recipient)
-
-    print(certificatepath)
-
-    print(materialpath)
+    # print(text)
+    #
+    # print(subject)
+    #
+    # print(recipient)
+    #
+    # print(certificatepath)
+    #
+    # print(materialpath)
 
 
 

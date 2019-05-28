@@ -178,12 +178,13 @@ class MainWindow(QMainWindow):
 
                     else:
                         continue
+                self.saveMatLocation = ''
+                self.saveCertLocation = ''
         else:
             self.forgotSaving()
             print('matSource und certSource nicht vorhanden!')
 
-        self.saveMatLocation = ''
-        self.saveCertLocation = ''
+
 
 
     def onEmailContentChange(self):
@@ -692,11 +693,13 @@ class MainWindow(QMainWindow):
         if str == 'begin':
             self.ui.addPart.setEnabled(False)
             self.ui.saveMat.setEnabled(False)
+            self.ui.addWat.setEnabled(False)
 
         if str == 'finished':
             self.ui.participants.setEnabled(True)
             self.ui.addPart.setEnabled(True)
             self.ui.saveMat.setEnabled(True)
+            self.ui.addWat.setEnabled(True)
 
     def disableEnableCertification(self, str):
         if str == 'begin':
@@ -704,10 +707,12 @@ class MainWindow(QMainWindow):
             self.ui.trainerCombo.setEnabled(False)
             self.ui.certCombo.setEnabled(False)
             self.ui.saveCert.setEnabled(False)
+            self.ui.generateCert.setEnabled(False)
 
             self.ui.certDateTo.setEnabled(False)
 
         if str == 'finished':
+            self.ui.generateCert.setEnabled(True)
             self.ui.locationCombo.setEnabled(True)
             self.ui.trainerCombo.setEnabled(True)
             self.ui.certCombo.setEnabled(True)
