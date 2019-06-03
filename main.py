@@ -7,6 +7,7 @@ from os import listdir
 from os.path import isfile, join
 
 
+
 from PyQt5.QtCore import QThread, pyqtSignal
 from PyQt5 import QtGui
 from qtpy.QtWidgets import QApplication, QMainWindow, QMessageBox, QAction, QTableWidgetItem, QFileDialog, QDialog
@@ -15,6 +16,7 @@ from ui.mainwindow import Ui_MainWindow
 from ui.addLocationDialog import Ui_LocationDialog
 from ui.addTrainerDialog import Ui_TrainerDialog
 from ui.LocationListDialog import Ui_RemoveLocationDialog
+from ui.saveProgUi import Ui_Dialog
 from ui.trainerListDialog import Ui_RemoveTrainerDialog
 from PyPDF4 import PdfFileWriter, PdfFileReader
 from io import BytesIO
@@ -27,6 +29,8 @@ from xlrd.biffh import XLRDError
 
 app = QApplication(sys.argv)
 app.setWindowIcon(QtGui.QIcon('icon.ico'))
+
+
 
 
 def resource_path(relative_path):
@@ -757,6 +761,10 @@ class MainWindow(QMainWindow):
 
                 self.participantList.append(Participant(firstname, lastname, email))
 
+
+
+
+
     def saveMaterialFiles(self):
         self.ui.openMail.setEnabled(False)
 
@@ -766,11 +774,23 @@ class MainWindow(QMainWindow):
             if os.path.exists(temp):
                 onlyfiles = [f for f in listdir(temp) if isfile(join(temp, f))]
                 file = resource_path(str(QFileDialog.getExistingDirectory(self, "Select Directory") + '/'))
+                count = float(0)
+                self.saveProgDialog = QDialog()
+                self.saveMatProgress = Ui_Dialog()
+                self.saveMatProgress.setupUi(self.saveProgDialog)
+                self.saveMatProgress.progressBar.setValue(count)
+
+                self.saveProgDialog.show()
+
                 for i in onlyfiles:
+                    count += (float(100) / float(len(onlyfiles)))
+                    self.saveMatProgress.progressBar.setValue(count)
                     print(temp + i)
                     print(file + i)
                     shutil.move(temp + i, file + i)
 
+                #count = float(0)
+                #self.saveMatProgress.progressBar.setValue(count)
                 self.saveMatLocation = file
 
                 shutil.rmtree(temp, ignore_errors=True)
