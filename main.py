@@ -762,6 +762,9 @@ class MainWindow(QMainWindow):
 
     def copyProgress(self, count):
         self.saveMatProgress.progressBar.setValue(count)
+        print(self.saveMatProgress.progressBar.value())
+        if self.saveMatProgress.progressBar.value() == float(100):
+            self.saveProgDialog.close()
 
 
 
@@ -788,8 +791,8 @@ class MainWindow(QMainWindow):
                 self.saving.progress.connect(self.copyProgress)
                 self.saving.start()
 
-
                 self.saveMatLocation = file
+
 
 
             else:
@@ -836,7 +839,7 @@ class MainWindow(QMainWindow):
     def forgotSaving(self):
         self.forgotToSave = QMessageBox()
         self.forgotToSave.setIcon(QMessageBox.Critical)
-        self.forgotToSave.setText('Please save Material and Certificates first!')
+        self.forgotToSave.setText('Either you forgot to save your material and certificates first or it is still saving! Please try again.')
         self.forgotToSave.show()
 
     def closeEvent(self, event):
@@ -987,7 +990,7 @@ class copyDialog(QThread):
                 print(resource_path(self.src + i))
                 print(resource_path(self.dst + i))
                 shutil.move(self.src + i, self.dst + i)
-                self.progress.emit(round(count))
+                self.progress.emit(count)
             shutil.rmtree(self.src, ignore_errors=True)
 
         except PermissionError:
