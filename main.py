@@ -5,10 +5,10 @@ import os
 import pandas as pd
 from os import listdir
 from os.path import isfile, join
+import ctypes
+from ctypes import wintypes
 
-
-
-from PyQt5.QtCore import QThread, pyqtSignal
+from PyQt5.QtCore import QThread, pyqtSignal, Qt
 from PyQt5 import QtGui
 from qtpy.QtWidgets import QApplication, QMainWindow, QMessageBox, QAction, QTableWidgetItem, QFileDialog, QDialog
 
@@ -27,10 +27,44 @@ from outlook import send_mail_via_com
 from compressor import compress
 from xlrd.biffh import XLRDError
 
+QApplication.setAttribute(Qt.AA_EnableHighDpiScaling, True)
+
 app = QApplication(sys.argv)
 app.setWindowIcon(QtGui.QIcon('icon.ico'))
 
+class _SHFILEOPSTRUCTW(ctypes.Structure):
+    _fields_ = [("hwnd", wintypes.HWND),
+                ("wFunc", wintypes.UINT),
+                ("pFrom", wintypes.LPCWSTR),
+                ("pTo", wintypes.LPCWSTR),
+                ("fFlags", ctypes.c_uint),
+                ("fAnyOperationsAborted", wintypes.BOOL),
+                ("hNameMappings", ctypes.c_uint),
+                ("lpszProgressTitle", wintypes.LPCWSTR)]
 
+
+def win_shell_copy(src, dst):
+    """
+    :param str src: Source path to copy from. Must exist!
+    :param str dst: Destination path to copy to. Will be created on demand.
+    :return: Success of the operation. False means is was aborted!
+    :rtype: bool
+    """
+    src_buffer = ctypes.create_unicode_buffer(src, len(src) + 2)
+    dst_buffer = ctypes.create_unicode_buffer(dst, len(dst) + 2)
+
+    fileop = _SHFILEOPSTRUCTW()
+    fileop.hwnd = 0
+    fileop.wFunc = 2  # FO_COPY
+    fileop.pFrom = wintypes.LPCWSTR(ctypes.addressof(src_buffer))
+    fileop.pTo = wintypes.LPCWSTR(ctypes.addressof(dst_buffer))
+    fileop.fFlags = 512  # FOF_NOCONFIRMMKDIR
+    fileop.fAnyOperationsAborted = 0
+    fileop.hNameMappings = 0
+    fileop.lpszProgressTitle = None
+
+    result = ctypes.windll.shell32.SHFileOperationW(ctypes.byref(fileop))
+    return not result
 
 
 def resource_path(relative_path):

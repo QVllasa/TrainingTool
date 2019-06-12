@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui\mainwindow.ui'
 #
-# Created by: PyQt5 UI code generator 5.12.2
+# Created by: PyQt5 UI code generator 5.12.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -12,9 +12,14 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(719, 583)
-        MainWindow.setMinimumSize(QtCore.QSize(719, 583))
-        MainWindow.setMaximumSize(QtCore.QSize(719, 583))
+        MainWindow.resize(718, 575)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(MainWindow.sizePolicy().hasHeightForWidth())
+        MainWindow.setSizePolicy(sizePolicy)
+        MainWindow.setMinimumSize(QtCore.QSize(718, 575))
+        MainWindow.setMaximumSize(QtCore.QSize(718, 575))
         self.centralWidget = QtWidgets.QWidget(MainWindow)
         self.centralWidget.setObjectName("centralWidget")
         self.tabWidget = QtWidgets.QTabWidget(self.centralWidget)
@@ -113,7 +118,12 @@ class Ui_MainWindow(object):
         self.gridLayout_3.addWidget(self.label_9, 2, 2, 1, 1)
         self.generateCert = QtWidgets.QPushButton(self.gridLayoutWidget_3)
         font = QtGui.QFont()
-        font.setPointSize(10)
+        font.setFamily("MS Shell Dlg 2")
+        font.setPointSize(8)
+        font.setBold(False)
+        font.setWeight(50)
+        font.setKerning(False)
+        font.setStyleStrategy(QtGui.QFont.NoAntialias)
         self.generateCert.setFont(font)
         self.generateCert.setObjectName("generateCert")
         self.gridLayout_3.addWidget(self.generateCert, 5, 6, 1, 1)
