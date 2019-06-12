@@ -5,8 +5,6 @@ import os
 import pandas as pd
 from os import listdir
 from os.path import isfile, join
-import ctypes
-from ctypes import wintypes
 
 from PyQt5.QtCore import QThread, pyqtSignal, Qt
 from PyQt5 import QtGui
@@ -16,7 +14,7 @@ from ui.mainwindow import Ui_MainWindow
 from ui.addLocationDialog import Ui_LocationDialog
 from ui.addTrainerDialog import Ui_TrainerDialog
 from ui.LocationListDialog import Ui_RemoveLocationDialog
-from ui.saveProgUi import Ui_Dialog
+from ui.saveProgUi import Ui_ProgressDialog
 from ui.trainerListDialog import Ui_RemoveTrainerDialog
 from PyPDF4 import PdfFileWriter, PdfFileReader
 from io import BytesIO
@@ -32,39 +30,7 @@ QApplication.setAttribute(Qt.AA_EnableHighDpiScaling, True)
 app = QApplication(sys.argv)
 app.setWindowIcon(QtGui.QIcon('icon.ico'))
 
-class _SHFILEOPSTRUCTW(ctypes.Structure):
-    _fields_ = [("hwnd", wintypes.HWND),
-                ("wFunc", wintypes.UINT),
-                ("pFrom", wintypes.LPCWSTR),
-                ("pTo", wintypes.LPCWSTR),
-                ("fFlags", ctypes.c_uint),
-                ("fAnyOperationsAborted", wintypes.BOOL),
-                ("hNameMappings", ctypes.c_uint),
-                ("lpszProgressTitle", wintypes.LPCWSTR)]
 
-
-def win_shell_copy(src, dst):
-    """
-    :param str src: Source path to copy from. Must exist!
-    :param str dst: Destination path to copy to. Will be created on demand.
-    :return: Success of the operation. False means is was aborted!
-    :rtype: bool
-    """
-    src_buffer = ctypes.create_unicode_buffer(src, len(src) + 2)
-    dst_buffer = ctypes.create_unicode_buffer(dst, len(dst) + 2)
-
-    fileop = _SHFILEOPSTRUCTW()
-    fileop.hwnd = 0
-    fileop.wFunc = 2  # FO_COPY
-    fileop.pFrom = wintypes.LPCWSTR(ctypes.addressof(src_buffer))
-    fileop.pTo = wintypes.LPCWSTR(ctypes.addressof(dst_buffer))
-    fileop.fFlags = 512  # FOF_NOCONFIRMMKDIR
-    fileop.fAnyOperationsAborted = 0
-    fileop.hNameMappings = 0
-    fileop.lpszProgressTitle = None
-
-    result = ctypes.windll.shell32.SHFileOperationW(ctypes.byref(fileop))
-    return not result
 
 
 def resource_path(relative_path):
@@ -221,8 +187,6 @@ class MainWindow(QMainWindow):
         else:
             self.forgotSaving()
             print('matSource und certSource nicht vorhanden!')
-
-
 
 
     def onEmailContentChange(self):
@@ -795,6 +759,19 @@ class MainWindow(QMainWindow):
 
                 self.participantList.append(Participant(firstname, lastname, email))
 
+    def copyProgress(self, count):
+        self.saveMatProgress.progressBar.setValue(count)
+
+    def endCopyProgress(self,str):
+        if str == 'begin':
+            self.saveProgDialog = QDialog()
+            self.saveMatProgress = Ui_ProgressDialog()
+            self.saveMatProgress.setupUi(self.saveProgDialog)
+            self.saveProgDialog.show()
+        if str == 'end':
+            self.saveProgDialog.close()
+
+
 
 
 
@@ -808,23 +785,15 @@ class MainWindow(QMainWindow):
             if os.path.exists(temp):
                 onlyfiles = [f for f in listdir(temp) if isfile(join(temp, f))]
                 file = resource_path(str(QFileDialog.getExistingDirectory(self, "Select Directory") + '/'))
-                count = float(0)
-                self.saveProgDialog = QDialog()
-                self.saveMatProgress = Ui_Dialog()
-                self.saveMatProgress.setupUi(self.saveProgDialog)
-                self.saveMatProgress.progressBar.setValue(count)
 
-                self.saveProgDialog.show()
 
-                for i in onlyfiles:
-                    count += (float(100) / float(len(onlyfiles)))
-                    self.saveMatProgress.progressBar.setValue(count)
-                    print(temp + i)
-                    print(file + i)
-                    shutil.move(temp + i, file + i)
 
-                #count = float(0)
-                #self.saveMatProgress.progressBar.setValue(count)
+                self.saving = copyDialog(temp, file, onlyfiles)
+                self.saving.progress.connect(self.copyProgress)
+                self.saving.start()
+
+
+
                 self.saveMatLocation = file
 
                 shutil.rmtree(temp, ignore_errors=True)
@@ -997,6 +966,35 @@ class CWorker(QThread):
         self.progressC.emit(count)
         self.finishC.emit('finished')
         # generateCertificate()
+
+class copyDialog(QThread):
+    progress = pyqtSignal(float)
+    finish = pyqtSignal(str)
+
+
+    def __init__(self, src, dst, onlyfiles):
+        QThread.__init__(self)
+        self.src = src
+        self.dst = dst
+        self.onlyfiles = onlyfiles
+
+
+    def run(self):
+        self.finish.emit('begin')
+        count = float(0)
+
+        for i in self.onlyfiles:
+            count += (float(100) / float(len(self.onlyfiles)))
+            print(round(count))
+            print(self.src + i)
+            print(self.dst + i)
+            shutil.move(self.src + i, self.dst + i)
+            self.progress.emit(count)
+
+        self.finish.emit('end')
+
+
+
 
 
 window = MainWindow()

@@ -9,25 +9,25 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_Dialog(object):
-    def setupUi(self, Dialog):
-        Dialog.setObjectName("Dialog")
-        Dialog.resize(317, 80)
-        self.progressBar = QtWidgets.QProgressBar(Dialog)
+class Ui_ProgressDialog(object):
+    def setupUi(self, ProgressDialog):
+        ProgressDialog.setObjectName("ProgressDialog")
+        ProgressDialog.resize(317, 80)
+        self.progressBar = QtWidgets.QProgressBar(ProgressDialog)
         self.progressBar.setGeometry(QtCore.QRect(10, 40, 301, 23))
         self.progressBar.setProperty("value", 0)
         self.progressBar.setObjectName("progressBar")
-        self.label = QtWidgets.QLabel(Dialog)
+        self.label = QtWidgets.QLabel(ProgressDialog)
         self.label.setGeometry(QtCore.QRect(10, 10, 301, 20))
         self.label.setAlignment(QtCore.Qt.AlignCenter)
         self.label.setObjectName("label")
 
-        self.retranslateUi(Dialog)
-        QtCore.QMetaObject.connectSlotsByName(Dialog)
+        self.retranslateUi(ProgressDialog)
+        QtCore.QMetaObject.connectSlotsByName(ProgressDialog)
 
-    def retranslateUi(self, Dialog):
+    def retranslateUi(self, ProgressDialog):
         _translate = QtCore.QCoreApplication.translate
-        Dialog.setWindowTitle(_translate("Dialog", "Copying"))
-        self.label.setText(_translate("Dialog", "Copying files..."))
+        ProgressDialog.setWindowTitle(_translate("ProgressDialog", "Copying"))
+        self.label.setText(_translate("ProgressDialog", "Copying files..."))
 
 
