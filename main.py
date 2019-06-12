@@ -24,6 +24,7 @@ from generateCertificate import generateCertificate
 from outlook import send_mail_via_com
 from compressor import compress
 from xlrd.biffh import XLRDError
+import time
 
 QApplication.setAttribute(Qt.AA_EnableHighDpiScaling, True)
 
@@ -762,14 +763,7 @@ class MainWindow(QMainWindow):
     def copyProgress(self, count):
         self.saveMatProgress.progressBar.setValue(count)
 
-    def endCopyProgress(self,str):
-        if str == 'begin':
-            self.saveProgDialog = QDialog()
-            self.saveMatProgress = Ui_ProgressDialog()
-            self.saveMatProgress.setupUi(self.saveProgDialog)
-            self.saveProgDialog.show()
-        if str == 'end':
-            self.saveProgDialog.close()
+
 
 
 
@@ -780,23 +774,24 @@ class MainWindow(QMainWindow):
         self.ui.openMail.setEnabled(False)
 
         try:
-
             temp = resource_path('../temp/mat/')
             if os.path.exists(temp):
-                onlyfiles = [f for f in listdir(temp) if isfile(join(temp, f))]
+
                 file = resource_path(str(QFileDialog.getExistingDirectory(self, "Select Directory") + '/'))
 
+                self.saveProgDialog = QDialog()
+                self.saveMatProgress = Ui_ProgressDialog()
+                self.saveMatProgress.setupUi(self.saveProgDialog)
+                self.saveProgDialog.show()
 
-
-                self.saving = copyDialog(temp, file, onlyfiles)
+                self.saving = copyDialog(temp, file)
                 self.saving.progress.connect(self.copyProgress)
                 self.saving.start()
 
 
-
                 self.saveMatLocation = file
 
-                shutil.rmtree(temp, ignore_errors=True)
+
             else:
                 self.noMat = QMessageBox()
                 self.noMat.setIcon(QMessageBox.Critical)
@@ -972,26 +967,31 @@ class copyDialog(QThread):
     finish = pyqtSignal(str)
 
 
-    def __init__(self, src, dst, onlyfiles):
+    def __init__(self, src, dst):
         QThread.__init__(self)
         self.src = src
         self.dst = dst
-        self.onlyfiles = onlyfiles
+
 
 
     def run(self):
-        self.finish.emit('begin')
-        count = float(0)
 
-        for i in self.onlyfiles:
-            count += (float(100) / float(len(self.onlyfiles)))
-            print(round(count))
-            print(self.src + i)
-            print(self.dst + i)
-            shutil.move(self.src + i, self.dst + i)
-            self.progress.emit(count)
+        print('GO')
+        try:
+            count = float(0)
+            onlyfiles = [f for f in listdir(self.src) if isfile(join(self.src, f))]
 
-        self.finish.emit('end')
+            for i in onlyfiles:
+
+                count += (float(100) / float(len(onlyfiles)))
+                print(resource_path(self.src + i))
+                print(resource_path(self.dst + i))
+                shutil.move(self.src + i, self.dst + i)
+                self.progress.emit(round(count))
+            shutil.rmtree(self.src, ignore_errors=True)
+
+        except PermissionError:
+            pass
 
 
 
