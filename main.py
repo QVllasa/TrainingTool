@@ -177,9 +177,11 @@ class MainWindow(QMainWindow):
                             mailtext = mailtext.replace('FirstName', participant.firstname)
                             mailtext = mailtext.replace('LastName', participant.lastname)
 
-                            send_mail_via_com(mailtext, subject, participant.email, pathCert, pathMat)
+
                         else:
                             print('keine participant.email')
+
+                        send_mail_via_com(mailtext, subject, participant.email, pathCert, pathMat)
 
                     else:
                         continue
@@ -839,7 +841,7 @@ class MainWindow(QMainWindow):
     def forgotSaving(self):
         self.forgotToSave = QMessageBox()
         self.forgotToSave.setIcon(QMessageBox.Critical)
-        self.forgotToSave.setText('Either you forgot to save your material and certificates first or it is still saving! Please try again.')
+        self.forgotToSave.setText('Either you forgot to save your material and certificates or saving is still in process! Please try again.')
         self.forgotToSave.show()
 
     def closeEvent(self, event):
