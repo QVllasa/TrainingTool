@@ -1,9 +1,0 @@
-trainer =
-Prashant Adkoli
-Thilo Boehm
-
-
-location =
-Singapore
-Erlangen, Germany
-Karlsruhe, Germany

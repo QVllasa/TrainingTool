@@ -257,7 +257,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MindSphere Academy Training Tool"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "Training Tool"))
         self.addMaterial.setText(_translate("MainWindow", "Import Material"))
         self.addPart.setText(_translate("MainWindow", "Add Participant"))
         item = self.participants.horizontalHeaderItem(0)

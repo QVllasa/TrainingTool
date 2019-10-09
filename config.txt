@@ -1,9 +1,6 @@
 trainer =
-Prashant Adkoli
-Thilo Boehm
+Max Mustermann
 
 
 location =
-Singapore
-Erlangen, Germany
-Karlsruhe, Germany
+Berlin, Germany
